@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Flame } from 'lucide-react'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -73,31 +74,53 @@ export function Navigation() {
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-2 border-t border-[#1a1f2e]/30">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
-                  isActive(item.href)
-                    ? 'bg-[#d4af37] text-[#0a0a0a] font-semibold'
-                    : 'text-gray-300 hover:bg-[#1a1f2e] hover:text-[#d4af37]'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Link
-              href="/booking"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-4 py-3 rounded-lg transition-colors text-center font-semibold shadow-lg"
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              className="md:hidden overflow-hidden border-t border-[#1a1f2e]/30"
             >
-              Book Now
-            </Link>
-          </div>
-        )}
+              <div className="py-4 space-y-2">
+                {navigation.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
+                        isActive(item.href)
+                          ? 'bg-[#d4af37] text-[#0a0a0a] font-semibold'
+                          : 'text-gray-300 hover:bg-[#1a1f2e] hover:text-[#d4af37]'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navigation.length * 0.1, duration: 0.3 }}
+                >
+                  <Link
+                    href="/booking"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-4 py-3 rounded-lg transition-colors text-center font-semibold shadow-lg"
+                  >
+                    Book Now
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   )
