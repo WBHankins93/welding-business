@@ -3,8 +3,18 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | DJN Services LLC',
-  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, hotshot, trash removal, or handyman project.',
+  title: 'Contact Us',
+  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, hotshot, trash removal, or handyman project. Available 24/7 for emergency services. We respond within 24 hours.',
+  keywords: ['contact welding services', 'welding quote', 'emergency welding', 'welding consultation'],
+  alternates: {
+    canonical: 'https://www.djnservicesllc.com/contact',
+  },
+  openGraph: {
+    title: 'Contact DJN Services LLC | Free Quote Available',
+    description: 'Get in touch for a free quote or to discuss your welding, hotshot, trash removal, or handyman project. Available 24/7 for emergencies.',
+    url: 'https://www.djnservicesllc.com/contact',
+    type: 'website',
+  },
 }
 
 export default function Contact() {
@@ -31,8 +41,53 @@ export default function Contact() {
     },
   ]
 
+  // FAQ structured data
+  const faqStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Do you offer free estimates?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes! We provide free, no-obligation quotes for all welding and fabrication projects.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What areas do you serve?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We serve the greater metropolitan area and offer mobile services within 50 miles of our location.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How quickly can you start?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Most projects can be scheduled within a few days. Emergency services are available 24/7.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Are you licensed and insured?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, we are fully licensed, insured, and our welders are AWS certified.',
+        },
+      },
+    ],
+  }
+
   return (
-    <div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
+      <div>
       {/* Hero Section */}
       <section className="bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -149,5 +204,6 @@ export default function Contact() {
         </div>
       </section>
     </div>
+    </>
   )
 }

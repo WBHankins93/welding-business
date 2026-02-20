@@ -3,8 +3,18 @@ import { Calendar, Clock } from 'lucide-react'
 import { BookingForm } from '@/components/BookingForm'
 
 export const metadata: Metadata = {
-  title: 'Book Your Service | DJN Services LLC',
-  description: 'Schedule your welding, hotshot, trash removal, or handyman service online. We\'ll contact you within 24 hours to confirm your appointment.',
+  title: 'Book Your Service',
+  description: 'Schedule your welding, hotshot, trash removal, or handyman service online. We\'ll contact you within 24 hours to confirm your appointment. Free estimates included with all bookings.',
+  keywords: ['book welding service', 'schedule welding', 'welding appointment', 'online booking'],
+  alternates: {
+    canonical: 'https://www.djnservicesllc.com/booking',
+  },
+  openGraph: {
+    title: 'Book Your Service | DJN Services LLC',
+    description: 'Schedule your welding, hotshot, trash removal, or handyman service online. Free estimates included.',
+    url: 'https://www.djnservicesllc.com/booking',
+    type: 'website',
+  },
 }
 
 export default function Booking() {

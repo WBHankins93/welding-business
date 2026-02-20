@@ -4,8 +4,17 @@ import { Shield, Zap, CheckCircle, Award } from 'lucide-react'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
 
 export const metadata: Metadata = {
-  title: 'Home | DJN Services LLC',
-  description: 'Expert welding services you can trust. Professional welding and metal fabrication for commercial, industrial, and residential projects.',
+  title: 'Home',
+  description: 'Expert welding services you can trust. Professional welding and metal fabrication for commercial, industrial, and residential projects. 100% disabled veteran-owned business with 20+ years of combined experience.',
+  alternates: {
+    canonical: 'https://www.djnservicesllc.com',
+  },
+  openGraph: {
+    title: 'DJN Services LLC | Expert Welding Services You Can Trust',
+    description: 'Professional welding and metal fabrication for commercial, industrial, and residential projects. Certified welders with 20+ years of experience.',
+    url: 'https://www.djnservicesllc.com',
+    type: 'website',
+  },
 }
 
 export default function Home() {
@@ -41,15 +50,37 @@ export default function Home() {
     'Quality Guaranteed',
   ]
 
+  // Structured data for homepage
+  const homepageStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'DJN Services LLC',
+    url: 'https://www.djnservicesllc.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://www.djnservicesllc.com/services?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
   return (
-    <div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageStructuredData) }}
+      />
+      <div>
       {/* Hero Section */}
       <section className="relative bg-[#0a0a0a] text-white">
         <div className="absolute inset-0 overflow-hidden">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1582649831749-e2d634f55cf3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWxkaW5nJTIwc3BhcmtzJTIwbWV0YWwlMjB3b3JrfGVufDF8fHx8MTc3MTUzMzU3Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Welding sparks"
+            alt="Professional welder creating sparks during metal welding work - DJN Services LLC"
             className="w-full h-full object-cover opacity-20"
+            loading="eager"
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 lg:py-40">
@@ -148,8 +179,9 @@ export default function Home() {
             <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-2xl">
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1745448797901-2a4c9d9af1c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwd2VsZGluZyUyMHdvcmtzaG9wfGVufDF8fHx8MTc3MTU1ODExOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Industrial welding workshop"
+                alt="Modern industrial welding workshop with professional equipment - DJN Services LLC facility"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>
@@ -182,5 +214,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   )
 }

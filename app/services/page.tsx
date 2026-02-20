@@ -4,8 +4,18 @@ import { Wrench, Truck, Package, Hammer } from 'lucide-react'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
 
 export const metadata: Metadata = {
-  title: 'Services | DJN Services LLC',
-  description: 'Mobile welding, hotshot services, trash removal, and handyman services. Professional on-site solutions for construction, repairs, and custom projects.',
+  title: 'Services',
+  description: 'Mobile welding, hotshot services, trash removal, and handyman services. Professional on-site solutions for construction, repairs, and custom projects. Certified welders with expertise in SMAW, FCAW, and GMAW techniques.',
+  keywords: ['mobile welding', 'hotshot services', 'trash removal', 'dump services', 'handyman services', 'welding techniques', 'SMAW', 'FCAW', 'GMAW'],
+  alternates: {
+    canonical: 'https://www.djnservicesllc.com/services',
+  },
+  openGraph: {
+    title: 'Our Services | DJN Services LLC',
+    description: 'Professional mobile welding, hotshot, trash removal, and handyman services. On-site solutions for construction, repairs, and custom projects.',
+    url: 'https://www.djnservicesllc.com/services',
+    type: 'website',
+  },
 }
 
 export default function Services() {
@@ -81,15 +91,75 @@ export default function Services() {
     },
   ]
 
+  // Structured data for services page
+  const servicesStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Welding and Construction Services',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'DJN Services LLC',
+      url: 'https://www.djnservicesllc.com',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Greater Metropolitan Area',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'DJN Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Mobile Welding Services',
+            description: 'Professional on-site welding services with SMAW, FCAW, and GMAW techniques.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Hotshot Services',
+            description: 'Fast, on-demand transportation for time-sensitive deliveries with 40\' flatbed services.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Trash Removal/Dump Services',
+            description: 'Efficient hauling and delivery of materials up to 10,000 lbs per load.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Handyman Services',
+            description: 'Comprehensive handyman services for residential and commercial properties.',
+          },
+        },
+      ],
+    },
+  }
+
   return (
-    <div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesStructuredData) }}
+      />
+      <div>
       {/* Hero Section */}
       <section className="relative bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1681407979977-ea6060c802f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMGZhYnJpY2F0aW9uJTIwc3RlZWx8ZW58MXx8fHwxNzcxNTU4MTIwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Metal fabrication"
+            alt="Professional metal fabrication and welding services - DJN Services LLC"
             className="w-full h-full object-cover opacity-20"
+            loading="eager"
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -279,5 +349,6 @@ export default function Services() {
         </div>
       </section>
     </div>
+    </>
   )
 }

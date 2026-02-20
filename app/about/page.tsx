@@ -4,8 +4,18 @@ import { Award, Users, Clock, Target } from 'lucide-react'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
 
 export const metadata: Metadata = {
-  title: 'About Us | DJN Services LLC',
-  description: '100% disabled veteran-owned business delivering top-quality welding, hotshot, trash removal, and handyman services with precision and reliability.',
+  title: 'About Us',
+  description: '100% disabled veteran-owned business delivering top-quality welding, hotshot, trash removal, and handyman services with precision and reliability. 20+ years of combined experience, AWS certified welders.',
+  keywords: ['veteran owned business', 'disabled veteran owned', 'welding company', 'certified welders', 'AWS certified'],
+  alternates: {
+    canonical: 'https://www.djnservicesllc.com/about',
+  },
+  openGraph: {
+    title: 'About DJN Services LLC | 100% Disabled Veteran-Owned Business',
+    description: 'Building trust through quality craftsmanship. 100% disabled veteran-owned business with 20+ years of combined experience.',
+    url: 'https://www.djnservicesllc.com/about',
+    type: 'website',
+  },
 }
 
 export default function About() {
@@ -50,8 +60,9 @@ export default function About() {
         <div className="absolute inset-0 overflow-hidden">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1762786219193-f34607f29d38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3ZWxkZXIlMjB3b3JraW5nfGVufDF8fHx8MTc3MTU1ODEyMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Professional welder working"
+            alt="Professional certified welder performing precision welding work - DJN Services LLC team member"
             className="w-full h-full object-cover opacity-20"
+            loading="eager"
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
