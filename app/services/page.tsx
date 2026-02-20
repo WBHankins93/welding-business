@@ -1,0 +1,283 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { Wrench, Truck, Package, Hammer } from 'lucide-react'
+import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
+
+export const metadata: Metadata = {
+  title: 'Services | DJN Services LLC',
+  description: 'Mobile welding, hotshot services, trash removal, and handyman services. Professional on-site solutions for construction, repairs, and custom projects.',
+}
+
+export default function Services() {
+  const services = [
+    {
+      icon: Wrench,
+      title: 'Mobile Welding Services',
+      description:
+        'Professional on-site welding services delivering high-quality results directly at your location. Ideal for construction, repairs, and custom fabrication projects.',
+      techniques: [
+        {
+          name: 'SMAW (Shielded Metal Arc Welding)',
+          description: 'Durable and versatile for repair and construction.',
+        },
+        {
+          name: 'FCAW (Flux-Cored Arc Welding)',
+          description: 'High-speed and efficient for structural and heavy-duty tasks.',
+        },
+        {
+          name: 'GMAW (Gas Metal Arc Welding)',
+          description: 'Precision welding for fabrication and manufacturing.',
+        },
+      ],
+      additionalOfferings: [
+        'Cutting Services: Precise metal cutting for various applications.',
+        'Custom Fabrication: Tailored solutions to meet unique specifications.',
+      ],
+    },
+    {
+      icon: Truck,
+      title: 'Hotshot Services',
+      description:
+        'Fast, on-demand transportation for time-sensitive deliveries. Reliable logistics solutions for industries requiring quick response times.',
+      coreOfferings: [
+        'Freight Delivery: Construction materials, equipment, and supplies.',
+        'Time-Sensitive Loads: Rapid response for urgent deliveries.',
+        'Small to Medium Loads: Cost-effective solutions for partial loads.',
+      ],
+      specializedCapabilities: [
+        "40' Flatbed Services: Large, irregularly shaped, or bulky items.",
+        'Regional or Long-Distance Coverage: Flexible delivery options.',
+        'Compliance: Fully insured and DOT compliant.',
+      ],
+    },
+    {
+      icon: Hammer,
+      title: 'Handyman Services',
+      description:
+        'Comprehensive handyman services for residential and commercial properties. From minor repairs to major renovations, we handle projects of all sizes with quality craftsmanship.',
+      services: [
+        'General Repairs: Doors, windows, cabinets, and fixtures.',
+        'Installation Services: Fixtures, appliances, and essential upgrades.',
+        'Painting and Finishing: Interior and exterior painting services.',
+        'Custom Projects: Tailored solutions with quality craftsmanship.',
+      ],
+    },
+    {
+      icon: Package,
+      title: 'Trash Removal/Dump Services',
+      description:
+        'Efficient on-demand hauling and delivery of materials. Reliable solutions for waste removal, dirt delivery, and material transport across various industries.',
+      coreOfferings: [
+        'Trash Delivery: Waste and unwanted materials to dump sites.',
+        'Dirt, Rock, and Sand Delivery: Material transport to specified locations.',
+        'Time-Sensitive Hauling: Quick response for urgent delivery needs.',
+        'Flexible Load Sizes: Small to large deliveries accommodated.',
+      ],
+      specializedCapabilities: [
+        'Up to 10,000 lbs per Load: Efficient handling of larger loads.',
+        'Regional or Long-Distance Coverage: Local and extended transport options.',
+        'Compliance: Fully insured and compliant with environmental regulations.',
+      ],
+    },
+  ]
+
+  return (
+    <div>
+      {/* Hero Section */}
+      <section className="relative bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="absolute inset-0 overflow-hidden">
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1681407979977-ea6060c802f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMGZhYnJpY2F0aW9uJTIwc3RlZWx8ZW58MXx8fHwxNzcxNTU4MTIwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt="Metal fabrication"
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Our Services</h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+            Welding, Hotshot, and Dump Services - Your one-stop resource for construction and service needs
+          </p>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+            {services.map((service) => {
+              const Icon = service.icon
+              return (
+                <div
+                  key={service.title}
+                  className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30"
+                >
+                  <div className="flex items-start gap-4 sm:gap-5 mb-4 sm:mb-6">
+                    <div className="bg-[#fef3c7] p-3 sm:p-4 rounded-xl flex-shrink-0 shadow-md">
+                      <Icon className="size-6 sm:size-7 md:size-8 text-[#d4af37]" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-[#0a0a0a]">{service.title}</h3>
+                    </div>
+                  </div>
+                  <p className="text-[#4a5568] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{service.description}</p>
+
+                  {/* Welding Techniques */}
+                  {service.techniques && (
+                    <div className="mb-4 sm:mb-6">
+                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Welding Techniques:</h4>
+                      <ul className="space-y-2 sm:space-y-3">
+                        {service.techniques.map((technique, idx) => (
+                          <li key={idx} className="flex items-start gap-2 sm:gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold flex-shrink-0">•</span>
+                            <div className="text-sm sm:text-base">
+                              <span className="font-semibold text-[#1a1f2e]">{technique.name}: </span>
+                              <span className="text-[#1a1f2e]">{technique.description}</span>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Additional Offerings */}
+                  {service.additionalOfferings && (
+                    <div className="mb-4 sm:mb-6">
+                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Additional Offerings:</h4>
+                      <ul className="space-y-2 sm:space-y-3">
+                        {service.additionalOfferings.map((offering, idx) => (
+                          <li key={idx} className="flex items-start gap-2 sm:gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold flex-shrink-0">•</span>
+                            <span className="text-[#1a1f2e] text-sm sm:text-base">{offering}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Core Offerings */}
+                  {service.coreOfferings && (
+                    <div className="mb-4 sm:mb-6">
+                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Core Offerings:</h4>
+                      <ul className="space-y-2 sm:space-y-3">
+                        {service.coreOfferings.map((offering, idx) => (
+                          <li key={idx} className="flex items-start gap-2 sm:gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold flex-shrink-0">•</span>
+                            <span className="text-[#1a1f2e] text-sm sm:text-base">{offering}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Specialized Capabilities */}
+                  {service.specializedCapabilities && (
+                    <div className="mb-4 sm:mb-6">
+                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Specialized Capabilities:</h4>
+                      <ul className="space-y-2 sm:space-y-3">
+                        {service.specializedCapabilities.map((capability, idx) => (
+                          <li key={idx} className="flex items-start gap-2 sm:gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold flex-shrink-0">•</span>
+                            <span className="text-[#1a1f2e] text-sm sm:text-base">{capability}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Services (for Handyman) */}
+                  {service.services && (
+                    <div className="mb-4 sm:mb-6">
+                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Services:</h4>
+                      <ul className="space-y-2 sm:space-y-3">
+                        {service.services.map((serviceItem, idx) => (
+                          <li key={idx} className="flex items-start gap-2 sm:gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold flex-shrink-0">•</span>
+                            <span className="text-[#1a1f2e] text-sm sm:text-base">{serviceItem}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Book Now Button */}
+                  <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
+                    <Link
+                      href="/booking"
+                      className="inline-block w-full sm:w-auto text-center bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg text-sm sm:text-base"
+                    >
+                      Book now
+                    </Link>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Materials Section */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-[#f7f8fa]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Materials</h2>
+            <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
+              We provide a variety of materials for your construction and landscaping needs
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Rock</h3>
+              <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                Durable natural material for construction, landscaping, and drainage. Ideal for foundations, pathways, and decorative applications.
+              </p>
+            </div>
+            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Sand</h3>
+              <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                Versatile material for construction, landscaping, and leveling. Ideal for concrete, paving, and filling applications.
+              </p>
+            </div>
+            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Dirt</h3>
+              <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                Essential material for landscaping, gardening, and leveling. Perfect for filling, grading, and creating healthy soil bases.
+              </p>
+            </div>
+            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Mulch</h3>
+              <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                Organic or synthetic material for landscaping and gardening. Ideal for moisture retention, soil temperature regulation, and enhanced curb appeal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-[#d4af37] text-[#0a0a0a] py-12 sm:py-16 md:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+            Need Our Services?
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto text-[#1a1f2e] px-4">
+            Get in touch with us today to discuss your project requirements and receive a free quote.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <Link
+              href="/booking"
+              className="bg-[#0a0a0a] text-[#d4af37] hover:bg-[#1a1f2e] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl text-sm sm:text-base"
+            >
+              Schedule Service
+            </Link>
+            <Link
+              href="/contact"
+              className="border-2 border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#d4af37] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base"
+            >
+              Request a Quote
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
