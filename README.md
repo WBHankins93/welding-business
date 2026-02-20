@@ -1,11 +1,40 @@
+# DJN Services LLC - Business Website
 
-  # Welding Business Website
+A modern, responsive website for DJN Services LLC, featuring mobile welding, hotshot services, trash removal, and handyman services.
 
-  This is a code bundle for Welding Business Website. The original project is available at https://www.figma.com/design/MmGIlGjUgv9Q1lcl5kUSLP/Welding-Business-Website.
+## Tech Stack
 
-  ## Running the code
+- **React 18** with TypeScript
+- **Vite** for build tooling
+- **React Router** for navigation
+- **Tailwind CSS** for styling
+- **Radix UI** for accessible components
+- **Vitest** for testing
 
-  Run `npm i` to install the dependencies.
+## Getting Started
 
-  Run `npm run dev` to start the development server.
-  
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Testing
+
+```bash
+npm test          # Run tests in watch mode
+npm run test:run  # Run tests once
+npm run test:coverage  # Run tests with coverage
+```
