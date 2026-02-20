@@ -88,17 +88,17 @@ export default function Home() {
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 lg:py-40">
           <div className="max-w-3xl">
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal delay={0.1} immediate>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
                 Expert Welding Services You Can Trust
               </h1>
             </ScrollReveal>
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal delay={0.2} immediate>
               <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 md:mb-10 text-gray-300 leading-relaxed">
                 Professional welding and metal fabrication for commercial, industrial, and residential projects.
               </p>
             </ScrollReveal>
-            <ScrollReveal delay={0.3}>
+            <ScrollReveal delay={0.3} immediate>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
                   href="/booking"
