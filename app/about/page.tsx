@@ -82,10 +82,10 @@ export default function About() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
+          <ScrollReveal immediate>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">About DJN Services LLC</h1>
           </ScrollReveal>
-          <ScrollReveal delay={0.1}>
+          <ScrollReveal delay={0.1} immediate>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
               Building trust through quality craftsmanship since day one
             </p>
