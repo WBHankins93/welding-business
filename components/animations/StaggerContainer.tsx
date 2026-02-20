@@ -7,21 +7,24 @@ interface StaggerContainerProps {
   children: ReactNode
   staggerDelay?: number
   className?: string
+  immediate?: boolean
 }
 
 export function StaggerContainer({
   children,
   staggerDelay = 0.1,
   className = '',
+  immediate = false,
 }: StaggerContainerProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50%' })
+  const shouldAnimate = immediate || isInView
 
   return (
     <motion.div
       ref={ref}
       initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
+      animate={shouldAnimate ? 'visible' : 'hidden'}
       variants={{
         hidden: { opacity: 0 },
         visible: {
