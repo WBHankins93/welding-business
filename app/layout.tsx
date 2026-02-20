@@ -124,7 +124,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" style={{ scrollBehavior: 'smooth' }}>
       <head>
         <link rel="canonical" href="https://www.djnservicesllc.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
