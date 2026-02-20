@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Wrench, Truck, Package, Hammer } from 'lucide-react'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -178,24 +179,26 @@ export default function Services() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Our Services</h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
-            Welding, Hotshot, and Dump Services - Your one-stop resource for construction and service needs
-          </p>
+          <ScrollReveal>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Our Services</h1>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+              Welding, Hotshot, and Dump Services - Your one-stop resource for construction and service needs
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Services Grid */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
             {services.map((service) => {
               const Icon = service.icon
               return (
-                <div
-                  key={service.title}
-                  className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30"
-                >
+                <StaggerItem key={service.title}>
+                  <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
                   <div className="flex items-start gap-4 sm:gap-5 mb-4 sm:mb-6">
                     <div className="bg-[#fef3c7] p-3 sm:p-4 rounded-xl flex-shrink-0 shadow-md">
                       <Icon className="size-6 sm:size-7 md:size-8 text-[#d4af37]" />
@@ -293,74 +296,91 @@ export default function Services() {
                       Book now
                     </Link>
                   </div>
-                </div>
+                  </div>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Materials Section */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-[#f7f8fa]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Materials</h2>
-            <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
-              We provide a variety of materials for your construction and landscaping needs
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
-              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Rock</h3>
-              <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
-                Durable natural material for construction, landscaping, and drainage. Ideal for foundations, pathways, and decorative applications.
+          <ScrollReveal>
+            <div className="text-center mb-8 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Materials</h2>
+              <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
+                We provide a variety of materials for your construction and landscaping needs
               </p>
             </div>
-            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
-              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Sand</h3>
-              <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
-                Versatile material for construction, landscaping, and leveling. Ideal for concrete, paving, and filling applications.
-              </p>
-            </div>
-            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
-              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Dirt</h3>
-              <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
-                Essential material for landscaping, gardening, and leveling. Perfect for filling, grading, and creating healthy soil bases.
-              </p>
-            </div>
-            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
-              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Mulch</h3>
-              <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
-                Organic or synthetic material for landscaping and gardening. Ideal for moisture retention, soil temperature regulation, and enhanced curb appeal.
-              </p>
-            </div>
-          </div>
+          </ScrollReveal>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <StaggerItem>
+              <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Rock</h3>
+                <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                  Durable natural material for construction, landscaping, and drainage. Ideal for foundations, pathways, and decorative applications.
+                </p>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Sand</h3>
+                <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                  Versatile material for construction, landscaping, and leveling. Ideal for concrete, paving, and filling applications.
+                </p>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Dirt</h3>
+                <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                  Essential material for landscaping, gardening, and leveling. Perfect for filling, grading, and creating healthy soil bases.
+                </p>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Mulch</h3>
+                <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                  Organic or synthetic material for landscaping and gardening. Ideal for moisture retention, soil temperature regulation, and enhanced curb appeal.
+                </p>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="bg-[#d4af37] text-[#0a0a0a] py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-            Need Our Services?
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto text-[#1a1f2e] px-4">
-            Get in touch with us today to discuss your project requirements and receive a free quote.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <Link
-              href="/booking"
-              className="bg-[#0a0a0a] text-[#d4af37] hover:bg-[#1a1f2e] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl text-sm sm:text-base"
-            >
-              Schedule Service
-            </Link>
-            <Link
-              href="/contact"
-              className="border-2 border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#d4af37] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base"
-            >
-              Request a Quote
-            </Link>
-          </div>
+          <ScrollReveal>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+              Need Our Services?
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto text-[#1a1f2e] px-4">
+              Get in touch with us today to discuss your project requirements and receive a free quote.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+              <Link
+                href="/booking"
+                className="bg-[#0a0a0a] text-[#d4af37] hover:bg-[#1a1f2e] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl text-sm sm:text-base"
+              >
+                Schedule Service
+              </Link>
+              <Link
+                href="/contact"
+                className="border-2 border-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#d4af37] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base"
+              >
+                Request a Quote
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>
