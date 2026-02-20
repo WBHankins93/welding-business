@@ -105,10 +105,10 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
+          <ScrollReveal immediate>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Contact Us</h1>
           </ScrollReveal>
-          <ScrollReveal delay={0.1}>
+          <ScrollReveal delay={0.1} immediate>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
               Get in touch with us for a free quote or to discuss your welding project
             </p>
