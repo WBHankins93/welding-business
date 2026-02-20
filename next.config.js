@@ -15,8 +15,7 @@ const nextConfig = {
     ],
   },
   
-  // Tailwind CSS is already configured via @tailwindcss/vite
-  // Next.js will use PostCSS automatically
+  // Tailwind CSS is configured via PostCSS (see postcss.config.js)
 }
 
 module.exports = nextConfig
