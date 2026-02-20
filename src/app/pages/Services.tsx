@@ -8,15 +8,15 @@ export function Services() {
       icon: Wrench,
       title: "Mobile Welding Services",
       description:
-        "Mobile welding services offer on-site solutions for industries and individuals, focusing on flexibility and convenience. Mobile welding combines expertise and convenience, delivering high-quality results directly at client locations. Ideal for construction, repairs, and custom projects.",
+        "Professional on-site welding services delivering high-quality results directly at your location. Ideal for construction, repairs, and custom fabrication projects.",
       techniques: [
         {
           name: "SMAW (Shielded Metal Arc Welding)",
-          description: "Durable, versatile for repair and construction.",
+          description: "Durable and versatile for repair and construction.",
         },
         {
           name: "FCAW (Flux-Cored Arc Welding)",
-          description: "High-speed and efficient, ideal for structural and heavy-duty tasks.",
+          description: "High-speed and efficient for structural and heavy-duty tasks.",
         },
         {
           name: "GMAW (Gas Metal Arc Welding)",
@@ -25,70 +25,52 @@ export function Services() {
       ],
       additionalOfferings: [
         "Cutting Services: Precise metal cutting for various applications.",
-        "Custom Fabrication: Tailored solutions to meet unique client specifications.",
+        "Custom Fabrication: Tailored solutions to meet unique specifications.",
       ],
     },
     {
       icon: Truck,
       title: "Hotshot Services",
       description:
-        "Hotshot services provide fast, on-demand transportation for time-sensitive deliveries, catering to industries needing quick and reliable logistics. With a commitment to flexibility and reliability, we provide exceptional solutions for critical transportation needs.",
+        "Fast, on-demand transportation for time-sensitive deliveries. Reliable logistics solutions for industries requiring quick response times.",
       coreOfferings: [
-        "Freight Delivery: Transporting goods like construction materials, equipment, and supplies.",
-        "Time-Sensitive Loads: Rapid response for urgent deliveries within tight deadlines.",
-        "Small to Medium Loads: Ideal for loads that don't require a full trailer, reducing costs.",
+        "Freight Delivery: Construction materials, equipment, and supplies.",
+        "Time-Sensitive Loads: Rapid response for urgent deliveries.",
+        "Small to Medium Loads: Cost-effective solutions for partial loads.",
       ],
       specializedCapabilities: [
-        "40' Flatbed Services: Perfect for larger, irregularly shaped, or bulky items.",
-        "Regional or Long-Distance Coverage: Flexible delivery options tailored to customer needs.",
-        "Compliance: Fully insured, adhering to all transportation regulations.",
+        "40' Flatbed Services: Large, irregularly shaped, or bulky items.",
+        "Regional or Long-Distance Coverage: Flexible delivery options.",
+        "Compliance: Fully insured and DOT compliant.",
       ],
     },
     {
       icon: Hammer,
       title: "Handyman Services",
       description:
-        "Our handyman services are designed to handle a wide range of projects, ensuring your property is functional, safe, and looking its best. From minor repairs to larger renovations, we offer expertise in various areas. No job is too big or small—whether you're tackling a to-do list or a major project, we're here to help. With our commitment to quality, attention to detail, and exceptional customer service, DJN Services LLC is your trusted partner for all your handyman needs.",
+        "Comprehensive handyman services for residential and commercial properties. From minor repairs to major renovations, we handle projects of all sizes with quality craftsmanship.",
       services: [
-        "General Repairs: Fixing doors, windows, cabinets, and more.",
-        "Installation Services: Installing fixtures, appliances, and other essential upgrades.",
-        "Painting and Finishing: Interior and exterior painting to refresh and enhance your spaces.",
-        "Custom Projects: Tailored solutions for unique needs, ensuring quality craftsmanship.",
+        "General Repairs: Doors, windows, cabinets, and fixtures.",
+        "Installation Services: Fixtures, appliances, and essential upgrades.",
+        "Painting and Finishing: Interior and exterior painting services.",
+        "Custom Projects: Tailored solutions with quality craftsmanship.",
       ],
     },
     {
       icon: Package,
       title: "Trash Removal/Dump Services",
       description:
-        "Our dump services provide efficient, on-demand hauling and delivery of materials, offering reliable and timely solutions for various industries and needs. With a commitment to flexibility and reliability, we provide exceptional hauling and dump services for all your material delivery needs.",
+        "Efficient on-demand hauling and delivery of materials. Reliable solutions for waste removal, dirt delivery, and material transport across various industries.",
       coreOfferings: [
-        "Trash Delivery: Hauling and delivery of waste and unwanted materials to dump sites.",
-        "Dirt, Rock, and Sand Delivery: Transporting dirt, rocks, sand, and similar materials to your specified location for disposal.",
-        "Time-Sensitive Hauling: Quick and responsive service for urgent delivery or dump tasks.",
-        "Flexible Load Sizes: Suitable for both small and large deliveries, accommodating various material volumes.",
+        "Trash Delivery: Waste and unwanted materials to dump sites.",
+        "Dirt, Rock, and Sand Delivery: Material transport to specified locations.",
+        "Time-Sensitive Hauling: Quick response for urgent delivery needs.",
+        "Flexible Load Sizes: Small to large deliveries accommodated.",
       ],
       specializedCapabilities: [
-        "Dump Services up to 10,000 lbs per Load: Capable of hauling larger loads with ease and efficiency.",
-        "Regional or Long-Distance Coverage: Flexible options for local and extended transport.",
-        "Compliance: Fully insured, adhering to all environmental and waste disposal regulations.",
-      ],
-      materials: [
-        {
-          name: "Rock",
-          description: "Durable, natural material used for construction, landscaping, and drainage. Ideal for foundations, pathways, and decorative applications.",
-        },
-        {
-          name: "Sand",
-          description: "Versatile material used in construction, landscaping, and leveling. Ideal for concrete, paving, and filling applications.",
-        },
-        {
-          name: "Dirt",
-          description: "Essential material for landscaping, gardening, and leveling. Perfect for filling, grading, and creating healthy soil bases.",
-        },
-        {
-          name: "Mulch",
-          description: "Organic or synthetic material used for landscaping and gardening. Ideal for retaining moisture, regulating soil temperature, and enhancing curb appeal.",
-        },
+        "Up to 10,000 lbs per Load: Efficient handling of larger loads.",
+        "Regional or Long-Distance Coverage: Local and extended transport options.",
+        "Compliance: Fully insured and compliant with environmental regulations.",
       ],
     },
   ];
@@ -211,21 +193,6 @@ export function Services() {
                     </div>
                   )}
 
-                  {/* Materials (for Dump Services) */}
-                  {service.materials && (
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold mb-3 text-[#0a0a0a]">Materials:</h4>
-                      <div className="space-y-4">
-                        {service.materials.map((material, idx) => (
-                          <div key={idx} className="bg-[#f7f8fa] p-4 rounded-lg border border-gray-200">
-                            <h5 className="font-semibold text-[#0a0a0a] mb-2">{material.name}</h5>
-                            <p className="text-[#1a1f2e] text-sm">{material.description}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
                   {/* Book Now Button */}
                   <div className="mt-8 pt-6 border-t border-gray-200">
                     <Link
@@ -238,6 +205,44 @@ export function Services() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Materials Section */}
+      <section className="py-20 md:py-28 bg-[#f7f8fa]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#0a0a0a]">Materials</h2>
+            <p className="text-xl text-[#4a5568] max-w-2xl mx-auto">
+              We provide a variety of materials for your construction and landscaping needs
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+              <h3 className="text-xl font-bold mb-3 text-[#0a0a0a]">Rock</h3>
+              <p className="text-[#1a1f2e] leading-relaxed">
+                Durable natural material for construction, landscaping, and drainage. Ideal for foundations, pathways, and decorative applications.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+              <h3 className="text-xl font-bold mb-3 text-[#0a0a0a]">Sand</h3>
+              <p className="text-[#1a1f2e] leading-relaxed">
+                Versatile material for construction, landscaping, and leveling. Ideal for concrete, paving, and filling applications.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+              <h3 className="text-xl font-bold mb-3 text-[#0a0a0a]">Dirt</h3>
+              <p className="text-[#1a1f2e] leading-relaxed">
+                Essential material for landscaping, gardening, and leveling. Perfect for filling, grading, and creating healthy soil bases.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+              <h3 className="text-xl font-bold mb-3 text-[#0a0a0a]">Mulch</h3>
+              <p className="text-[#1a1f2e] leading-relaxed">
+                Organic or synthetic material for landscaping and gardening. Ideal for moisture retention, soil temperature regulation, and enhanced curb appeal.
+              </p>
+            </div>
           </div>
         </div>
       </section>
