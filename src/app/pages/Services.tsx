@@ -8,48 +8,87 @@ export function Services() {
       icon: Wrench,
       title: "Mobile Welding Services",
       description:
-        "Professional on-site welding, cutting, and custom fabrication to meet your project demands.",
-      features: [
-        "On-site welding services",
-        "Cutting and fabrication",
-        "Custom metalwork",
-        "Professional quality",
+        "Mobile welding services offer on-site solutions for industries and individuals, focusing on flexibility and convenience. Mobile welding combines expertise and convenience, delivering high-quality results directly at client locations. Ideal for construction, repairs, and custom projects.",
+      techniques: [
+        {
+          name: "SMAW (Shielded Metal Arc Welding)",
+          description: "Durable, versatile for repair and construction.",
+        },
+        {
+          name: "FCAW (Flux-Cored Arc Welding)",
+          description: "High-speed and efficient, ideal for structural and heavy-duty tasks.",
+        },
+        {
+          name: "GMAW (Gas Metal Arc Welding)",
+          description: "Precision welding for fabrication and manufacturing.",
+        },
+      ],
+      additionalOfferings: [
+        "Cutting Services: Precise metal cutting for various applications.",
+        "Custom Fabrication: Tailored solutions to meet unique client specifications.",
       ],
     },
     {
       icon: Truck,
       title: "Hotshot Services",
       description:
-        "Reliable, on-demand freight transportation with flexible load capabilities, including 40' flatbed services.",
-      features: [
-        "On-demand freight transportation",
-        "40' flatbed services",
-        "Flexible load capabilities",
-        "Reliable delivery",
+        "Hotshot services provide fast, on-demand transportation for time-sensitive deliveries, catering to industries needing quick and reliable logistics. With a commitment to flexibility and reliability, we provide exceptional solutions for critical transportation needs.",
+      coreOfferings: [
+        "Freight Delivery: Transporting goods like construction materials, equipment, and supplies.",
+        "Time-Sensitive Loads: Rapid response for urgent deliveries within tight deadlines.",
+        "Small to Medium Loads: Ideal for loads that don't require a full trailer, reducing costs.",
       ],
-    },
-    {
-      icon: Package,
-      title: "Trash Removal and Dump Services",
-      description:
-        "Efficient hauling and disposal of dirt, rock, sand, and waste materials, with load capacities up to 10,000 lbs.",
-      features: [
-        "Dirt, rock, and sand removal",
-        "Waste material disposal",
-        "Up to 10,000 lbs capacity",
-        "Efficient hauling",
+      specializedCapabilities: [
+        "40' Flatbed Services: Perfect for larger, irregularly shaped, or bulky items.",
+        "Regional or Long-Distance Coverage: Flexible delivery options tailored to customer needs.",
+        "Compliance: Fully insured, adhering to all transportation regulations.",
       ],
     },
     {
       icon: Hammer,
       title: "Handyman Services",
       description:
-        "Skilled repairs, installations, and custom projects to keep your home or business in top shape.",
-      features: [
-        "Repairs and installations",
-        "Custom projects",
-        "Home and business services",
-        "Skilled craftsmanship",
+        "Our handyman services are designed to handle a wide range of projects, ensuring your property is functional, safe, and looking its best. From minor repairs to larger renovations, we offer expertise in various areas. No job is too big or small—whether you're tackling a to-do list or a major project, we're here to help. With our commitment to quality, attention to detail, and exceptional customer service, DJN Services LLC is your trusted partner for all your handyman needs.",
+      services: [
+        "General Repairs: Fixing doors, windows, cabinets, and more.",
+        "Installation Services: Installing fixtures, appliances, and other essential upgrades.",
+        "Painting and Finishing: Interior and exterior painting to refresh and enhance your spaces.",
+        "Custom Projects: Tailored solutions for unique needs, ensuring quality craftsmanship.",
+      ],
+    },
+    {
+      icon: Package,
+      title: "Trash Removal/Dump Services",
+      description:
+        "Our dump services provide efficient, on-demand hauling and delivery of materials, offering reliable and timely solutions for various industries and needs. With a commitment to flexibility and reliability, we provide exceptional hauling and dump services for all your material delivery needs.",
+      coreOfferings: [
+        "Trash Delivery: Hauling and delivery of waste and unwanted materials to dump sites.",
+        "Dirt, Rock, and Sand Delivery: Transporting dirt, rocks, sand, and similar materials to your specified location for disposal.",
+        "Time-Sensitive Hauling: Quick and responsive service for urgent delivery or dump tasks.",
+        "Flexible Load Sizes: Suitable for both small and large deliveries, accommodating various material volumes.",
+      ],
+      specializedCapabilities: [
+        "Dump Services up to 10,000 lbs per Load: Capable of hauling larger loads with ease and efficiency.",
+        "Regional or Long-Distance Coverage: Flexible options for local and extended transport.",
+        "Compliance: Fully insured, adhering to all environmental and waste disposal regulations.",
+      ],
+      materials: [
+        {
+          name: "Rock",
+          description: "Durable, natural material used for construction, landscaping, and drainage. Ideal for foundations, pathways, and decorative applications.",
+        },
+        {
+          name: "Sand",
+          description: "Versatile material used in construction, landscaping, and leveling. Ideal for concrete, paving, and filling applications.",
+        },
+        {
+          name: "Dirt",
+          description: "Essential material for landscaping, gardening, and leveling. Perfect for filling, grading, and creating healthy soil bases.",
+        },
+        {
+          name: "Mulch",
+          description: "Organic or synthetic material used for landscaping and gardening. Ideal for retaining moisture, regulating soil temperature, and enhancing curb appeal.",
+        },
       ],
     },
   ];
@@ -93,14 +132,109 @@ export function Services() {
                     </div>
                   </div>
                   <p className="text-[#4a5568] mb-6 leading-relaxed">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <span className="text-[#d4af37] mt-1.5 font-bold">•</span>
-                        <span className="text-[#1a1f2e]">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+                  {/* Welding Techniques */}
+                  {service.techniques && (
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold mb-3 text-[#0a0a0a]">Welding Techniques:</h4>
+                      <ul className="space-y-3">
+                        {service.techniques.map((technique, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold">•</span>
+                            <div>
+                              <span className="font-semibold text-[#1a1f2e]">{technique.name}: </span>
+                              <span className="text-[#1a1f2e]">{technique.description}</span>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Additional Offerings */}
+                  {service.additionalOfferings && (
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold mb-3 text-[#0a0a0a]">Additional Offerings:</h4>
+                      <ul className="space-y-3">
+                        {service.additionalOfferings.map((offering, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold">•</span>
+                            <span className="text-[#1a1f2e]">{offering}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Core Offerings */}
+                  {service.coreOfferings && (
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold mb-3 text-[#0a0a0a]">Core Offerings:</h4>
+                      <ul className="space-y-3">
+                        {service.coreOfferings.map((offering, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold">•</span>
+                            <span className="text-[#1a1f2e]">{offering}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Specialized Capabilities */}
+                  {service.specializedCapabilities && (
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold mb-3 text-[#0a0a0a]">Specialized Capabilities:</h4>
+                      <ul className="space-y-3">
+                        {service.specializedCapabilities.map((capability, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold">•</span>
+                            <span className="text-[#1a1f2e]">{capability}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Services (for Handyman) */}
+                  {service.services && (
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold mb-3 text-[#0a0a0a]">Services:</h4>
+                      <ul className="space-y-3">
+                        {service.services.map((serviceItem, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-[#d4af37] mt-1.5 font-bold">•</span>
+                            <span className="text-[#1a1f2e]">{serviceItem}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Materials (for Dump Services) */}
+                  {service.materials && (
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold mb-3 text-[#0a0a0a]">Materials:</h4>
+                      <div className="space-y-4">
+                        {service.materials.map((material, idx) => (
+                          <div key={idx} className="bg-[#f7f8fa] p-4 rounded-lg border border-gray-200">
+                            <h5 className="font-semibold text-[#0a0a0a] mb-2">{material.name}</h5>
+                            <p className="text-[#1a1f2e] text-sm">{material.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Book Now Button */}
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    <Link
+                      to="/booking"
+                      className="inline-block bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg"
+                    >
+                      Book now
+                    </Link>
+                  </div>
                 </div>
               );
             })}
