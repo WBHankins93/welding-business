@@ -6,8 +6,13 @@ const nextConfig = {
   
   // Image optimization settings
   images: {
-    // If using static export, set unoptimized to true
-    // unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
   },
   
   // Tailwind CSS is already configured via @tailwindcss/vite

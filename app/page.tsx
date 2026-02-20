@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Shield, Zap, CheckCircle, Award } from 'lucide-react'
-import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -76,11 +76,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative bg-[#0a0a0a] text-white">
         <div className="absolute inset-0 overflow-hidden">
-          <ImageWithFallback
+          <Image
             src="https://images.unsplash.com/photo-1582649831749-e2d634f55cf3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWxkaW5nJTIwc3BhcmtzJTIwbWV0YWwlMjB3b3JrfGVufDF8fHx8MTc3MTUzMzU3Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
             alt="Professional welder creating sparks during metal welding work - DJN Services LLC"
-            className="w-full h-full object-cover opacity-20"
-            loading="eager"
+            fill
+            className="object-cover opacity-20"
+            priority
+            sizes="100vw"
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32 lg:py-40">
@@ -177,11 +179,12 @@ export default function Home() {
               </div>
             </div>
             <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-2xl">
-              <ImageWithFallback
+              <Image
                 src="https://images.unsplash.com/photo-1745448797901-2a4c9d9af1c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwd2VsZGluZyUyMHdvcmtzaG9wfGVufDF8fHx8MTc3MTU1ODExOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="Modern industrial welding workshop with professional equipment - DJN Services LLC facility"
-                className="w-full h-full object-cover"
-                loading="lazy"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </div>

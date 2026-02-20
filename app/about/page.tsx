@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Award, Users, Clock, Target } from 'lucide-react'
-import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 
 export const metadata: Metadata = {
@@ -71,11 +71,13 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
-          <ImageWithFallback
+          <Image
             src="https://images.unsplash.com/photo-1762786219193-f34607f29d38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3ZWxkZXIlMjB3b3JraW5nfGVufDF8fHx8MTc3MTU1ODEyMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
             alt="Professional certified welder performing precision welding work - DJN Services LLC team member"
-            className="w-full h-full object-cover opacity-20"
-            loading="eager"
+            fill
+            className="object-cover opacity-20"
+            priority
+            sizes="100vw"
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
