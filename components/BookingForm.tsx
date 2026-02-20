@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Calendar, Clock, CheckCircle } from 'lucide-react'
+import { motion, AnimatePresence } from 'motion/react'
 
 export function BookingForm() {
   const [submitted, setSubmitted] = useState(false)
@@ -67,10 +68,20 @@ export function BookingForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white p-8 sm:p-12 rounded-lg shadow-lg text-center">
-        <div className="bg-green-100 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+        className="bg-white p-8 sm:p-12 rounded-lg shadow-lg text-center"
+      >
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.2, type: 'spring', stiffness: 200, damping: 15 }}
+          className="bg-green-100 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6"
+        >
           <CheckCircle className="size-10 sm:size-12 text-green-500" />
-        </div>
+        </motion.div>
         <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Booking Request Received!</h2>
         <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-4">
           Thank you for choosing DJN Services LLC.
@@ -79,24 +90,37 @@ export function BookingForm() {
           We've received your booking request and will contact you within 24 hours
           to confirm your appointment and discuss your project details.
         </p>
-        <div className="mt-6 sm:mt-8 p-5 sm:p-6 bg-[#fef3c7] rounded-xl border border-[#d4af37]/30">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+          className="mt-6 sm:mt-8 p-5 sm:p-6 bg-[#fef3c7] rounded-xl border border-[#d4af37]/30"
+        >
           <p className="text-gray-700 text-sm sm:text-base">
             <strong>What's next?</strong> Our team will review your request and
             reach out to confirm the date, time, and provide a detailed quote for
             your project.
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     )
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
-      {error && (
-        <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg text-center">
-          <p className="text-sm">Something went wrong. Please try again or call us directly.</p>
-        </div>
-      )}
+      <AnimatePresence>
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg text-center"
+          >
+            <p className="text-sm">Something went wrong. Please try again or call us directly.</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Personal Information */}
       <div className="border-b pb-4 sm:pb-6">

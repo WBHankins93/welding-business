@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
@@ -41,20 +42,33 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="bg-green-50 border border-green-200 text-green-800 p-4 sm:p-6 rounded-lg text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+        className="bg-green-50 border border-green-200 text-green-800 p-4 sm:p-6 rounded-lg text-center"
+      >
         <p className="text-base sm:text-lg font-medium">Thank you for your message!</p>
         <p className="mt-2 text-sm sm:text-base">We'll get back to you as soon as possible.</p>
-      </div>
+      </motion.div>
     )
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-      {error && (
-        <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg text-center">
-          <p className="text-sm">Something went wrong. Please try again or call us directly.</p>
-        </div>
-      )}
+      <AnimatePresence>
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg text-center"
+          >
+            <p className="text-sm">Something went wrong. Please try again or call us directly.</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div>
         <label htmlFor="name" className="block mb-2 font-semibold text-[#0a0a0a] text-sm sm:text-base">
           Name *
