@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Award, Users, Clock, Target } from 'lucide-react'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -81,10 +82,14 @@ export default function About() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">About DJN Services LLC</h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
-            Building trust through quality craftsmanship since day one
-          </p>
+          <ScrollReveal>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">About DJN Services LLC</h1>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+              Building trust through quality craftsmanship since day one
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -92,7 +97,9 @@ export default function About() {
       <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 text-[#0a0a0a]">Who we are</h2>
+            <ScrollReveal>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 text-[#0a0a0a]">Who we are</h2>
+            </ScrollReveal>
             <div className="space-y-4 sm:space-y-6 text-[#1a1f2e] leading-relaxed text-base sm:text-lg">
               <p>
                 100% disabled veteran-owned, <strong>DJN Services LLC</strong> is dedicated to delivering top-quality solutions with the precision, reliability, and work ethic you can trust. Serving as a one-stop resource for your construction and service needs, we take pride in offering:
@@ -137,61 +144,67 @@ export default function About() {
       {/* Stats */}
       <section className="bg-[#d4af37] text-[#0a0a0a] py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">{stat.number}</div>
-                <div className="text-[#1a1f2e] font-semibold text-sm sm:text-base md:text-lg">{stat.label}</div>
-              </div>
+              <StaggerItem key={stat.label}>
+                <div className="text-center">
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">{stat.number}</div>
+                  <div className="text-[#1a1f2e] font-semibold text-sm sm:text-base md:text-lg">{stat.label}</div>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Our Values */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-[#f7f8fa]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Our Values</h2>
-            <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
-              The principles that guide everything we do
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <ScrollReveal>
+            <div className="text-center mb-8 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Our Values</h2>
+              <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
+                The principles that guide everything we do
+              </p>
+            </div>
+          </ScrollReveal>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {values.map((value) => {
               const Icon = value.icon
               return (
-                <div
-                  key={value.title}
-                  className="bg-white p-6 sm:p-8 rounded-xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30"
-                >
-                  <div className="bg-[#fef3c7] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-md">
-                    <Icon className="size-8 sm:size-10 text-[#d4af37]" />
+                <StaggerItem key={value.title}>
+                  <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                    <div className="bg-[#fef3c7] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-md">
+                      <Icon className="size-8 sm:size-10 text-[#d4af37]" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">{value.title}</h3>
+                    <p className="text-[#4a5568] leading-relaxed text-sm sm:text-base">{value.description}</p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">{value.title}</h3>
-                  <p className="text-[#4a5568] leading-relaxed text-sm sm:text-base">{value.description}</p>
-                </div>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Certifications */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">
-              Certifications & Expertise
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
-              Our team maintains industry certifications and stays current with the
-              latest welding techniques
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
-              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Certifications</h3>
+          <ScrollReveal>
+            <div className="text-center mb-8 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">
+                Certifications & Expertise
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
+                Our team maintains industry certifications and stays current with the
+                latest welding techniques
+              </p>
+            </div>
+          </ScrollReveal>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <StaggerItem>
+              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
+                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Certifications</h3>
               <ul className="space-y-2 sm:space-y-3 text-[#1a1f2e] text-sm sm:text-base">
                 <li className="flex items-center gap-2">
                   <span className="text-[#d4af37] font-bold">•</span>
@@ -210,9 +223,11 @@ export default function About() {
                   <span>Licensed & Insured</span>
                 </li>
               </ul>
-            </div>
-            <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
-              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Specializations</h3>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
+                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Specializations</h3>
               <ul className="space-y-2 sm:space-y-3 text-[#1a1f2e] text-sm sm:text-base">
                 <li className="flex items-center gap-2">
                   <span className="text-[#d4af37] font-bold">•</span>
@@ -231,9 +246,11 @@ export default function About() {
                   <span>Exotic Metal Welding</span>
                 </li>
               </ul>
-            </div>
-            <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
-              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Equipment</h3>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
+                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Equipment</h3>
               <ul className="space-y-2 sm:space-y-3 text-[#1a1f2e] text-sm sm:text-base">
                 <li className="flex items-center gap-2">
                   <span className="text-[#d4af37] font-bold">•</span>
@@ -252,34 +269,41 @@ export default function About() {
                   <span>Fabrication Shop</span>
                 </li>
               </ul>
-            </div>
-          </div>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA */}
       <section className="bg-[#0a0a0a] text-white py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-            Ready to Work With Us?
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed px-4">
-            Experience the DJN Services LLC difference on your next project
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <Link
-              href="/booking"
-              className="bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl text-sm sm:text-base"
-            >
-              Book Now
-            </Link>
-            <Link
-              href="/contact"
-              className="border-2 border-white hover:bg-white hover:text-[#0a0a0a] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base"
-            >
-              Get in Touch
-            </Link>
-          </div>
+          <ScrollReveal>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+              Ready to Work With Us?
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed px-4">
+              Experience the DJN Services LLC difference on your next project
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+              <Link
+                href="/booking"
+                className="bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl text-sm sm:text-base"
+              >
+                Book Now
+              </Link>
+              <Link
+                href="/contact"
+                className="border-2 border-white hover:bg-white hover:text-[#0a0a0a] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base"
+              >
+                Get in Touch
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>
