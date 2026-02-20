@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/ContactForm'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -88,6 +89,18 @@ export default function Contact() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
       <div>
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumbs
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Contact' },
+            ]}
+          />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Wrench, Truck, Package, Hammer } from 'lucide-react'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -152,6 +153,18 @@ export default function Services() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesStructuredData) }}
       />
       <div>
+      {/* Breadcrumbs */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumbs
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Services' },
+            ]}
+          />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
