@@ -5,13 +5,50 @@ import { Navigation } from '@/components/Navigation'
 import '@/styles/index.css'
 
 export const metadata: Metadata = {
-  title: 'DJN Services LLC | Professional Welding, Hotshot & Handyman Services',
-  description: 'Professional mobile welding, hotshot services, trash removal, and handyman services. Certified welders with 20+ years of combined experience.',
-  keywords: 'welding services, mobile welding, hotshot services, trash removal, handyman services, metal fabrication',
+  title: {
+    default: 'DJN Services LLC | Professional Welding, Hotshot & Handyman Services',
+    template: '%s | DJN Services LLC',
+  },
+  description: 'Professional mobile welding, hotshot services, trash removal, and handyman services. Certified welders with 20+ years of combined experience. 100% disabled veteran-owned business.',
+  keywords: ['welding services', 'mobile welding', 'hotshot services', 'trash removal', 'handyman services', 'metal fabrication', 'veteran owned business'],
+  authors: [{ name: 'DJN Services LLC' }],
+  creator: 'DJN Services LLC',
+  publisher: 'DJN Services LLC',
   openGraph: {
-    title: 'DJN Services LLC',
-    description: 'Professional welding, hotshot, and handyman services',
     type: 'website',
+    locale: 'en_US',
+    url: 'https://www.djnservicesllc.com',
+    siteName: 'DJN Services LLC',
+    title: 'DJN Services LLC | Professional Welding, Hotshot & Handyman Services',
+    description: 'Professional mobile welding, hotshot services, trash removal, and handyman services. Certified welders with 20+ years of combined experience.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'DJN Services LLC',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DJN Services LLC | Professional Welding Services',
+    description: 'Professional mobile welding, hotshot services, trash removal, and handyman services.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Add Google Search Console verification when available
+    // google: 'your-verification-code',
   },
 }
 
@@ -20,8 +57,67 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'DJN Services LLC',
+    description: 'Professional mobile welding, hotshot services, trash removal, and handyman services. 100% disabled veteran-owned business.',
+    url: 'https://www.djnservicesllc.com',
+    telephone: '(555) 123-4567',
+    email: 'info@djnservicesllc.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '123 Industrial Parkway',
+      addressLocality: 'Your City',
+      addressRegion: 'ST',
+      postalCode: '12345',
+      addressCountry: 'US',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '40.7128',
+      longitude: '-74.0060',
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '09:00',
+        closes: '14:00',
+      },
+    ],
+    priceRange: '$$',
+    areaServed: {
+      '@type': 'City',
+      name: 'Greater Metropolitan Area',
+    },
+    serviceType: [
+      'Mobile Welding Services',
+      'Hotshot Services',
+      'Trash Removal/Dump Services',
+      'Handyman Services',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      reviewCount: '50',
+    },
+  }
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body className="min-h-screen bg-white">
         <Navigation />
         <main>{children}</main>
