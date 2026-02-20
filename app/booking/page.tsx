@@ -38,10 +38,10 @@ export default function Booking() {
       <section className="bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <ScrollReveal>
+            <ScrollReveal immediate>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Book Your Service</h1>
             </ScrollReveal>
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal delay={0.1} immediate>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed">
                 Schedule your welding service online. We'll contact you within 24 hours to
                 confirm your appointment.
