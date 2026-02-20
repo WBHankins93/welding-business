@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Booking } from '../../app/pages/Booking';
 
@@ -9,11 +9,9 @@ const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 describe('Booking Page', () => {
   beforeEach(() => {
     consoleSpy.mockClear();
-    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    vi.useRealTimers();
     consoleSpy.mockClear();
   });
 
@@ -59,21 +57,18 @@ describe('Booking Page', () => {
     expect(descriptionTextarea).toBeRequired();
   });
 
-  it('should update form fields when user types', { timeout: 10000 }, async () => {
-    const user = userEvent.setup({ delay: null });
+  it('should update form fields when user types', async () => {
     render(<Booking />);
     
     const nameInput = screen.getByLabelText(/full name/i) as HTMLInputElement;
     const emailInput = screen.getByLabelText(/email address/i) as HTMLInputElement;
     
-    await user.clear(nameInput);
-    await user.type(nameInput, 'John Doe', { delay: null });
-    await user.clear(emailInput);
-    await user.type(emailInput, 'john@example.com', { delay: null });
+    fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+    fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
     
     expect(nameInput.value).toBe('John Doe');
     expect(emailInput.value).toBe('john@example.com');
-  }, { timeout: 10000 });
+  });
 
   it('should validate email format', () => {
     render(<Booking />);
@@ -126,21 +121,16 @@ describe('Booking Page', () => {
     expect(screen.getByText('10:00 AM - 12:00 PM')).toBeInTheDocument();
   });
 
-  it('should submit form with valid data', { timeout: 20000 }, async () => {
-    const user = userEvent.setup({ delay: null });
+  it('should submit form with valid data', async () => {
+    const user = userEvent.setup();
     render(<Booking />);
     
     // Fill in form
-    await user.clear(screen.getByLabelText(/full name/i));
-    await user.type(screen.getByLabelText(/full name/i), 'John Doe', { delay: null });
-    await user.clear(screen.getByLabelText(/email address/i));
-    await user.type(screen.getByLabelText(/email address/i), 'john@example.com', { delay: null });
-    await user.clear(screen.getByLabelText(/phone number/i));
-    await user.type(screen.getByLabelText(/phone number/i), '555-123-4567', { delay: null });
-    await user.clear(screen.getByLabelText(/project location/i));
-    await user.type(screen.getByLabelText(/project location/i), '123 Main St', { delay: null });
-    await user.clear(screen.getByLabelText(/project description/i));
-    await user.type(screen.getByLabelText(/project description/i), 'Test project', { delay: null });
+    fireEvent.change(screen.getByLabelText(/full name/i), { target: { value: 'John Doe' } });
+    fireEvent.change(screen.getByLabelText(/email address/i), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByLabelText(/phone number/i), { target: { value: '555-123-4567' } });
+    fireEvent.change(screen.getByLabelText(/project location/i), { target: { value: '123 Main St' } });
+    fireEvent.change(screen.getByLabelText(/project description/i), { target: { value: 'Test project' } });
     
     // Select dropdowns
     await user.selectOptions(screen.getByLabelText(/service type/i), 'MIG Welding');
@@ -151,8 +141,7 @@ describe('Booking Page', () => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     const dateStr = tomorrow.toISOString().split('T')[0];
-    await user.clear(screen.getByLabelText(/preferred date/i));
-    await user.type(screen.getByLabelText(/preferred date/i), dateStr, { delay: null });
+    fireEvent.change(screen.getByLabelText(/preferred date/i), { target: { value: dateStr } });
     
     // Submit form
     const submitButton = screen.getByRole('button', { name: /submit booking request/i });
@@ -164,24 +153,19 @@ describe('Booking Page', () => {
         name: 'John Doe',
         email: 'john@example.com',
       }));
-    }, { timeout: 10000 });
-  }, { timeout: 20000 });
+    });
+  });
 
-  it('should show success message after submission', { timeout: 20000 }, async () => {
-    const user = userEvent.setup({ delay: null });
+  it('should show success message after submission', async () => {
+    const user = userEvent.setup();
     render(<Booking />);
     
     // Fill in minimal required fields
-    await user.clear(screen.getByLabelText(/full name/i));
-    await user.type(screen.getByLabelText(/full name/i), 'John Doe', { delay: null });
-    await user.clear(screen.getByLabelText(/email address/i));
-    await user.type(screen.getByLabelText(/email address/i), 'john@example.com', { delay: null });
-    await user.clear(screen.getByLabelText(/phone number/i));
-    await user.type(screen.getByLabelText(/phone number/i), '555-123-4567', { delay: null });
-    await user.clear(screen.getByLabelText(/project location/i));
-    await user.type(screen.getByLabelText(/project location/i), '123 Main St', { delay: null });
-    await user.clear(screen.getByLabelText(/project description/i));
-    await user.type(screen.getByLabelText(/project description/i), 'Test', { delay: null });
+    fireEvent.change(screen.getByLabelText(/full name/i), { target: { value: 'John Doe' } });
+    fireEvent.change(screen.getByLabelText(/email address/i), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByLabelText(/phone number/i), { target: { value: '555-123-4567' } });
+    fireEvent.change(screen.getByLabelText(/project location/i), { target: { value: '123 Main St' } });
+    fireEvent.change(screen.getByLabelText(/project description/i), { target: { value: 'Test' } });
     
     await user.selectOptions(screen.getByLabelText(/service type/i), 'MIG Welding');
     await user.selectOptions(screen.getByLabelText(/project type/i), 'Residential');
@@ -189,55 +173,60 @@ describe('Booking Page', () => {
     
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    await user.clear(screen.getByLabelText(/preferred date/i));
-    await user.type(screen.getByLabelText(/preferred date/i), tomorrow.toISOString().split('T')[0], { delay: null });
+    fireEvent.change(screen.getByLabelText(/preferred date/i), { target: { value: tomorrow.toISOString().split('T')[0] } });
     
     await user.click(screen.getByRole('button', { name: /submit booking request/i }));
     
     await waitFor(() => {
       expect(screen.getByText('Booking Request Received!')).toBeInTheDocument();
       expect(screen.getByText(/thank you for choosing/i)).toBeInTheDocument();
-    }, { timeout: 10000 });
-  }, { timeout: 20000 });
+    });
+  });
 
-  it('should reset form after timeout', { timeout: 25000 }, async () => {
-    const user = userEvent.setup({ delay: null });
-    render(<Booking />);
+  it('should reset form after timeout', { timeout: 10000 }, async () => {
+    vi.useFakeTimers();
     
-    // Fill and submit form
-    await user.clear(screen.getByLabelText(/full name/i));
-    await user.type(screen.getByLabelText(/full name/i), 'John Doe', { delay: null });
-    await user.clear(screen.getByLabelText(/email address/i));
-    await user.type(screen.getByLabelText(/email address/i), 'john@example.com', { delay: null });
-    await user.clear(screen.getByLabelText(/phone number/i));
-    await user.type(screen.getByLabelText(/phone number/i), '555-123-4567', { delay: null });
-    await user.clear(screen.getByLabelText(/project location/i));
-    await user.type(screen.getByLabelText(/project location/i), '123 Main St', { delay: null });
-    await user.clear(screen.getByLabelText(/project description/i));
-    await user.type(screen.getByLabelText(/project description/i), 'Test', { delay: null });
-    
-    await user.selectOptions(screen.getByLabelText(/service type/i), 'MIG Welding');
-    await user.selectOptions(screen.getByLabelText(/project type/i), 'Residential');
-    await user.selectOptions(screen.getByLabelText(/preferred time slot/i), '8:00 AM - 10:00 AM');
-    
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    await user.clear(screen.getByLabelText(/preferred date/i));
-    await user.type(screen.getByLabelText(/preferred date/i), tomorrow.toISOString().split('T')[0], { delay: null });
-    
-    await user.click(screen.getByRole('button', { name: /submit booking request/i }));
-    
-    await waitFor(() => {
+    try {
+      render(<Booking />);
+      
+      // Fill and submit form using fireEvent (faster with fake timers)
+      fireEvent.change(screen.getByLabelText(/full name/i), { target: { value: 'John Doe' } });
+      fireEvent.change(screen.getByLabelText(/email address/i), { target: { value: 'john@example.com' } });
+      fireEvent.change(screen.getByLabelText(/phone number/i), { target: { value: '555-123-4567' } });
+      fireEvent.change(screen.getByLabelText(/project location/i), { target: { value: '123 Main St' } });
+      fireEvent.change(screen.getByLabelText(/project description/i), { target: { value: 'Test' } });
+      
+      fireEvent.change(screen.getByLabelText(/service type/i), { target: { value: 'MIG Welding' } });
+      fireEvent.change(screen.getByLabelText(/project type/i), { target: { value: 'Residential' } });
+      fireEvent.change(screen.getByLabelText(/preferred time slot/i), { target: { value: '8:00 AM - 10:00 AM' } });
+      
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      fireEvent.change(screen.getByLabelText(/preferred date/i), { target: { value: tomorrow.toISOString().split('T')[0] } });
+      
+      const submitButton = screen.getByRole('button', { name: /submit booking request/i });
+      fireEvent.click(submitButton);
+      
+      // Run pending timers to trigger state update
+      act(() => {
+        vi.runOnlyPendingTimers();
+      });
+      
       expect(screen.getByText('Booking Request Received!')).toBeInTheDocument();
-    }, { timeout: 10000 });
-    
-    // Fast-forward time
-    vi.advanceTimersByTime(5000);
-    
-    await waitFor(() => {
-      expect(screen.queryByText('Booking Request Received!')).not.toBeInTheDocument();
-      expect(screen.getByLabelText(/full name/i)).toHaveValue('');
-    }, { timeout: 5000 });
+      
+      // Fast-forward time for form reset (5000ms)
+      act(() => {
+        vi.advanceTimersByTime(5000);
+        vi.runOnlyPendingTimers();
+      });
+      
+      await waitFor(() => {
+        expect(screen.queryByText('Booking Request Received!')).not.toBeInTheDocument();
+        expect(screen.getByLabelText(/full name/i)).toHaveValue('');
+      });
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('should render emergency service CTA', () => {

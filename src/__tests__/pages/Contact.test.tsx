@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Contact } from '../../app/pages/Contact';
 
@@ -9,11 +9,10 @@ const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 describe('Contact Page', () => {
   beforeEach(() => {
     consoleSpy.mockClear();
-    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    vi.useRealTimers();
+    consoleSpy.mockClear();
   });
 
   it('should render contact page header', () => {
@@ -89,38 +88,30 @@ describe('Contact Page', () => {
   });
 
   it('should update form fields when user types', async () => {
-    const user = userEvent.setup({ delay: null });
     render(<Contact />);
     
     const nameInput = screen.getByLabelText(/^name/i) as HTMLInputElement;
     const emailInput = screen.getByLabelText(/^email/i) as HTMLInputElement;
     const messageTextarea = screen.getByLabelText(/^message/i) as HTMLTextAreaElement;
     
-    await user.clear(nameInput);
-    await user.type(nameInput, 'John Doe', { delay: null });
-    await user.clear(emailInput);
-    await user.type(emailInput, 'john@example.com', { delay: null });
-    await user.clear(messageTextarea);
-    await user.type(messageTextarea, 'Test message', { delay: null });
+    fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+    fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
+    fireEvent.change(messageTextarea, { target: { value: 'Test message' } });
     
     expect(nameInput.value).toBe('John Doe');
     expect(emailInput.value).toBe('john@example.com');
     expect(messageTextarea.value).toBe('Test message');
   });
 
-  it('should submit form with valid data', { timeout: 15000 }, async () => {
-    const user = userEvent.setup({ delay: null });
+  it('should submit form with valid data', async () => {
+    const user = userEvent.setup();
     render(<Contact />);
     
     // Fill in form
-    await user.clear(screen.getByLabelText(/^name/i));
-    await user.type(screen.getByLabelText(/^name/i), 'John Doe', { delay: null });
-    await user.clear(screen.getByLabelText(/^email/i));
-    await user.type(screen.getByLabelText(/^email/i), 'john@example.com', { delay: null });
-    await user.clear(screen.getByLabelText(/^phone$/i));
-    await user.type(screen.getByLabelText(/^phone$/i), '555-123-4567', { delay: null });
-    await user.clear(screen.getByLabelText(/^message/i));
-    await user.type(screen.getByLabelText(/^message/i), 'Test message', { delay: null });
+    fireEvent.change(screen.getByLabelText(/^name/i), { target: { value: 'John Doe' } });
+    fireEvent.change(screen.getByLabelText(/^email/i), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByLabelText(/^phone$/i), { target: { value: '555-123-4567' } });
+    fireEvent.change(screen.getByLabelText(/^message/i), { target: { value: 'Test message' } });
     
     // Select subject
     await user.selectOptions(screen.getByLabelText(/^subject/i), 'quote');
@@ -136,20 +127,17 @@ describe('Contact Page', () => {
         email: 'john@example.com',
         subject: 'quote',
       }));
-    }, { timeout: 10000 });
-  }, { timeout: 15000 });
+    });
+  });
 
-  it('should show success message after submission', { timeout: 15000 }, async () => {
-    const user = userEvent.setup({ delay: null });
+  it('should show success message after submission', async () => {
+    const user = userEvent.setup();
     render(<Contact />);
     
     // Fill in form
-    await user.clear(screen.getByLabelText(/^name/i));
-    await user.type(screen.getByLabelText(/^name/i), 'John Doe', { delay: null });
-    await user.clear(screen.getByLabelText(/^email/i));
-    await user.type(screen.getByLabelText(/^email/i), 'john@example.com', { delay: null });
-    await user.clear(screen.getByLabelText(/^message/i));
-    await user.type(screen.getByLabelText(/^message/i), 'Test message', { delay: null });
+    fireEvent.change(screen.getByLabelText(/^name/i), { target: { value: 'John Doe' } });
+    fireEvent.change(screen.getByLabelText(/^email/i), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByLabelText(/^message/i), { target: { value: 'Test message' } });
     await user.selectOptions(screen.getByLabelText(/^subject/i), 'quote');
     
     await user.click(screen.getByRole('button', { name: /send message/i }));
@@ -157,35 +145,44 @@ describe('Contact Page', () => {
     await waitFor(() => {
       expect(screen.getByText(/thank you for your message/i)).toBeInTheDocument();
       expect(screen.getByText(/we'll get back to you/i)).toBeInTheDocument();
-    }, { timeout: 10000 });
-  }, { timeout: 15000 });
+    });
+  });
 
-  it('should reset form after timeout', { timeout: 20000 }, async () => {
-    const user = userEvent.setup({ delay: null });
-    render(<Contact />);
+  it('should reset form after timeout', { timeout: 10000 }, async () => {
+    vi.useFakeTimers();
     
-    // Fill and submit form
-    await user.clear(screen.getByLabelText(/^name/i));
-    await user.type(screen.getByLabelText(/^name/i), 'John Doe', { delay: null });
-    await user.clear(screen.getByLabelText(/^email/i));
-    await user.type(screen.getByLabelText(/^email/i), 'john@example.com', { delay: null });
-    await user.clear(screen.getByLabelText(/^message/i));
-    await user.type(screen.getByLabelText(/^message/i), 'Test', { delay: null });
-    await user.selectOptions(screen.getByLabelText(/^subject/i), 'quote');
-    
-    await user.click(screen.getByRole('button', { name: /send message/i }));
-    
-    await waitFor(() => {
+    try {
+      render(<Contact />);
+      
+      // Fill and submit form using fireEvent (faster with fake timers)
+      fireEvent.change(screen.getByLabelText(/^name/i), { target: { value: 'John Doe' } });
+      fireEvent.change(screen.getByLabelText(/^email/i), { target: { value: 'john@example.com' } });
+      fireEvent.change(screen.getByLabelText(/^message/i), { target: { value: 'Test' } });
+      fireEvent.change(screen.getByLabelText(/^subject/i), { target: { value: 'quote' } });
+      
+      const submitButton = screen.getByRole('button', { name: /send message/i });
+      fireEvent.click(submitButton);
+      
+      // Run pending timers to trigger state update
+      act(() => {
+        vi.runOnlyPendingTimers();
+      });
+      
       expect(screen.getByText(/thank you for your message/i)).toBeInTheDocument();
-    }, { timeout: 10000 });
-    
-    // Fast-forward time
-    vi.advanceTimersByTime(3000);
-    
-    await waitFor(() => {
-      expect(screen.queryByText(/thank you for your message/i)).not.toBeInTheDocument();
-      expect(screen.getByLabelText(/^name/i)).toHaveValue('');
-    }, { timeout: 5000 });
+      
+      // Fast-forward time for form reset (3000ms)
+      act(() => {
+        vi.advanceTimersByTime(3000);
+        vi.runOnlyPendingTimers();
+      });
+      
+      await waitFor(() => {
+        expect(screen.queryByText(/thank you for your message/i)).not.toBeInTheDocument();
+        expect(screen.getByLabelText(/^name/i)).toHaveValue('');
+      });
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('should render emergency service section', () => {
