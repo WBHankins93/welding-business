@@ -93,10 +93,16 @@ export default function RootLayout({
       },
     ],
     priceRange: '$$',
-    areaServed: {
-      '@type': 'City',
-      name: 'Greater Metropolitan Area',
-    },
+    areaServed: [
+      {
+        '@type': 'City',
+        name: 'Greater Metropolitan Area',
+      },
+      {
+        '@type': 'State',
+        name: 'ST',
+      },
+    ],
     serviceType: [
       'Mobile Welding Services',
       'Hotshot Services',
@@ -107,7 +113,14 @@ export default function RootLayout({
       '@type': 'AggregateRating',
       ratingValue: '5',
       reviewCount: '50',
+      bestRating: '5',
+      worstRating: '1',
     },
+    sameAs: [
+      // Add social media links when available
+      // 'https://www.facebook.com/djnservicesllc',
+      // 'https://www.linkedin.com/company/djn-services-llc',
+    ],
   }
 
   return (
@@ -129,16 +142,16 @@ export default function RootLayout({
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  <div className="bg-[#d4af37] p-2 sm:p-2.5 rounded-lg shadow-lg">
+                  <div className="bg-[#d4af37] p-2 sm:p-2.5 rounded-lg shadow-lg" aria-hidden="true">
                     <Flame className="size-5 sm:size-6 text-[#0a0a0a]" />
                   </div>
-                  <span className="text-lg sm:text-xl font-bold">DJN Services LLC</span>
+                  <h2 className="text-lg sm:text-xl font-bold">DJN Services LLC</h2>
                 </div>
                 <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                  Professional welding services for all your metal fabrication needs.
+                  Professional welding services for all your metal fabrication needs. 100% disabled veteran-owned business.
                 </p>
               </div>
-              <div>
+              <nav aria-label="Footer navigation">
                 <h3 className="font-bold mb-4 sm:mb-6 text-[#d4af37] text-base sm:text-lg">Quick Links</h3>
                 <div className="space-y-2 sm:space-y-3">
                   <Link href="/" className="block text-gray-400 hover:text-[#d4af37] transition-colors duration-200 text-sm sm:text-base">
@@ -154,15 +167,23 @@ export default function RootLayout({
                     Contact
                   </Link>
                 </div>
-              </div>
-              <div>
+              </nav>
+              <address className="not-italic">
                 <h3 className="font-bold mb-4 sm:mb-6 text-[#d4af37] text-base sm:text-lg">Contact</h3>
                 <div className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
-                  <p className="hover:text-[#d4af37] transition-colors duration-200">Phone: (555) 123-4567</p>
-                  <p className="hover:text-[#d4af37] transition-colors duration-200">Email: info@djnservicesllc.com</p>
+                  <p>
+                    <a href="tel:5551234567" className="hover:text-[#d4af37] transition-colors duration-200">
+                      Phone: (555) 123-4567
+                    </a>
+                  </p>
+                  <p>
+                    <a href="mailto:info@djnservicesllc.com" className="hover:text-[#d4af37] transition-colors duration-200">
+                      Email: info@djnservicesllc.com
+                    </a>
+                  </p>
                   <p>Hours: Mon-Fri, 8AM-6PM</p>
                 </div>
-              </div>
+              </address>
             </div>
             <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#1a1f2e]/30 text-center text-gray-500 text-sm sm:text-base">
               <p>&copy; {new Date().getFullYear()} DJN Services LLC. All rights reserved.</p>
