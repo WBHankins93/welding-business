@@ -30,10 +30,10 @@ export function Navigation() {
         <div className="flex h-16 sm:h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-            <div className="bg-[#d4af37] p-2 sm:p-2.5 rounded-lg shadow-lg group-hover:bg-[#fbbf24] transition-colors">
+            <div className="bg-[#FF6A00] p-2 sm:p-2.5 rounded-lg shadow-lg group-hover:bg-[#e66000] transition-colors">
               <Flame className="size-5 sm:size-6 text-[#0a0a0a]" />
             </div>
-            <span className="text-lg sm:text-xl font-bold tracking-tight">DJN Services LLC</span>
+            <span className="text-lg sm:text-xl font-bold tracking-tight font-heading uppercase">DJN Services LLC</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -44,25 +44,25 @@ export function Navigation() {
                 href={item.href}
                 className={`text-sm font-medium transition-all duration-200 ${
                   isActive(item.href)
-                    ? 'text-[#d4af37] border-b-2 border-[#d4af37] pb-1'
-                    : 'text-gray-300 hover:text-[#d4af37]'
+                    ? 'text-[#FF6A00] border-b-2 border-[#FF6A00] pb-1'
+                    : 'text-gray-300 hover:text-[#FF6A00]'
                 }`}
               >
                 {item.name}
               </Link>
             ))}
-            <Link
-              href="/booking"
-              className="bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-5 lg:px-6 py-2 sm:py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl text-sm"
+            <a
+              href="tel:5551234567"
+              className="bg-[#FF6A00] hover:bg-[#e66000] text-[#0a0a0a] px-5 lg:px-6 py-2 sm:py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl text-sm"
             >
-              Book Now
-            </Link>
+              Call Now
+            </a>
           </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-white hover:text-[#d4af37] transition-colors"
+            className="md:hidden p-2 text-white hover:text-[#FF6A00] transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -96,8 +96,8 @@ export function Navigation() {
                       onClick={() => setMobileMenuOpen(false)}
                       className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
                         isActive(item.href)
-                          ? 'bg-[#d4af37] text-[#0a0a0a] font-semibold'
-                          : 'text-gray-300 hover:bg-[#1a1f2e] hover:text-[#d4af37]'
+                          ? 'bg-[#FF6A00] text-[#0a0a0a] font-semibold'
+                          : 'text-gray-300 hover:bg-[#1a1f2e] hover:text-[#FF6A00]'
                       }`}
                     >
                       {item.name}
@@ -109,13 +109,13 @@ export function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navigation.length * 0.1, duration: 0.3 }}
                 >
-                  <Link
-                    href="/booking"
+                  <a
+                    href="tel:5551234567"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-4 py-3 rounded-lg transition-colors text-center font-semibold shadow-lg"
+                    className="block bg-[#FF6A00] hover:bg-[#e66000] text-[#0a0a0a] px-4 py-3 rounded-lg transition-colors text-center font-semibold shadow-lg"
                   >
-                    Book Now
-                  </Link>
+                    Call Now
+                  </a>
                 </motion.div>
               </div>
             </motion.div>
