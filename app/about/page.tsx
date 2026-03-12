@@ -7,7 +7,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animat
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: '100% disabled veteran-owned business delivering top-quality welding, hotshot, trash removal, and handyman services with precision and reliability. 20+ years of combined experience, AWS certified welders.',
+  description: '100% disabled veteran-owned business delivering top-quality welding, trash removal, and handyman services with precision and reliability. 20+ years of combined experience, AWS certified welders.',
   keywords: ['veteran owned business', 'disabled veteran owned', 'welding company', 'certified welders', 'AWS certified'],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/about',
@@ -109,12 +109,6 @@ export default function About() {
                   <span className="text-[#d4af37] font-bold mt-1 flex-shrink-0">•</span>
                   <div className="text-sm sm:text-base">
                     <strong className="text-[#0a0a0a]">Mobile Welding Services:</strong> Professional on-site welding, cutting, and custom fabrication to meet your project demands.
-                  </div>
-                </li>
-                <li className="flex items-start gap-2 sm:gap-3">
-                  <span className="text-[#d4af37] font-bold mt-1 flex-shrink-0">•</span>
-                  <div className="text-sm sm:text-base">
-                    <strong className="text-[#0a0a0a]">Hotshot Services:</strong> Reliable, on-demand freight transportation with flexible load capabilities, including 40' flatbed services.
                   </div>
                 </li>
                 <li className="flex items-start gap-2 sm:gap-3">

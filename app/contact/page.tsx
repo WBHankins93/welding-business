@@ -6,14 +6,14 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animat
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, hotshot, trash removal, or handyman project. Available 24/7 for emergency services. We respond within 24 hours.',
+  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, trash removal, or handyman project. Available 24/7 for emergency services. We respond within 24 hours.',
   keywords: ['contact welding services', 'welding quote', 'emergency welding', 'welding consultation'],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/contact',
   },
   openGraph: {
     title: 'Contact DJN Services LLC | Free Quote Available',
-    description: 'Get in touch for a free quote or to discuss your welding, hotshot, trash removal, or handyman project. Available 24/7 for emergencies.',
+    description: 'Get in touch for a free quote or to discuss your welding, trash removal, or handyman project. Available 24/7 for emergencies.',
     url: 'https://www.djnservicesllc.com/contact',
     type: 'website',
   },
@@ -61,7 +61,7 @@ export default function Contact() {
         name: 'What areas do you serve?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'We serve the greater metropolitan area and offer mobile services within 50 miles of our location.',
+          text: 'We serve the Gulf Coast region: Mississippi, Alabama, Florida, and South Georgia. Contact us to confirm we serve your location.',
         },
       },
       {
@@ -150,18 +150,9 @@ export default function Contact() {
               </div>
             </ScrollReveal>
 
-            {/* Map Placeholder & Additional Info */}
+            {/* Additional Info */}
             <ScrollReveal direction="left" delay={0.1}>
               <div className="space-y-6 sm:space-y-8">
-                <div className="bg-[#f7f8fa] rounded-xl overflow-hidden h-64 sm:h-80 flex items-center justify-center border border-gray-200">
-                  <div className="text-center text-[#4a5568]">
-                    <MapPin className="size-10 sm:size-12 mx-auto mb-2 sm:mb-3 text-[#d4af37]" />
-                    <p className="font-semibold text-[#0a0a0a] text-sm sm:text-base">Map Location</p>
-                    <p className="text-xs sm:text-sm mt-1">123 Industrial Parkway</p>
-                    <p className="text-xs sm:text-sm">Your City, ST 12345</p>
-                  </div>
-                </div>
-
                 <div className="bg-[#fef3c7] p-6 sm:p-8 rounded-xl border border-[#d4af37]/30 shadow-md">
                   <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#0a0a0a]">Emergency Service</h3>
                   <p className="text-[#1a1f2e] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
@@ -179,9 +170,7 @@ export default function Contact() {
                 <div className="bg-[#f7f8fa] p-6 sm:p-8 rounded-xl border border-gray-100 shadow-md">
                   <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#0a0a0a]">Service Area</h3>
                   <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
-                    We proudly serve the greater metropolitan area and surrounding
-                    counties. Mobile welding services available within 50 miles. Contact
-                    us to confirm we serve your location.
+                    Gulf coast region: MS, AL, FL, South GA. Contact us to confirm we serve your location.
                   </p>
                 </div>
               </div>
@@ -212,8 +201,7 @@ export default function Contact() {
               <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#d4af37]/30 transition-all duration-300">
                 <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">What areas do you serve?</h3>
                 <p className="text-[#4a5568] leading-relaxed">
-                  We serve the greater metropolitan area and offer mobile services within
-                  50 miles of our location.
+                  We serve the Gulf Coast region: Mississippi, Alabama, Florida, and South Georgia. Contact us to confirm we serve your location.
                 </p>
               </div>
             </StaggerItem>

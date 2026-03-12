@@ -6,14 +6,14 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animat
 
 export const metadata: Metadata = {
   title: 'Book Your Service',
-  description: 'Schedule your welding, hotshot, trash removal, or handyman service online. We\'ll contact you within 24 hours to confirm your appointment. Free estimates included with all bookings.',
+  description: 'Schedule your welding, trash removal, or handyman service online. We\'ll contact you within 24 hours to confirm your appointment. Free estimates included with all bookings.',
   keywords: ['book welding service', 'schedule welding', 'welding appointment', 'online booking'],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/booking',
   },
   openGraph: {
     title: 'Book Your Service | DJN Services LLC',
-    description: 'Schedule your welding, hotshot, trash removal, or handyman service online. Free estimates included.',
+    description: 'Schedule your welding, trash removal, or handyman service online. Free estimates included.',
     url: 'https://www.djnservicesllc.com/booking',
     type: 'website',
   },

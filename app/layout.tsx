@@ -7,11 +7,11 @@ import '@/styles/index.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'DJN Services LLC | Professional Welding, Hotshot & Handyman Services',
+    default: 'DJN Services LLC | Professional Welding & Handyman Services',
     template: '%s | DJN Services LLC',
   },
-  description: 'Professional mobile welding, hotshot services, trash removal, and handyman services. Certified welders with 20+ years of combined experience. 100% disabled veteran-owned business.',
-  keywords: ['welding services', 'mobile welding', 'hotshot services', 'trash removal', 'handyman services', 'metal fabrication', 'veteran owned business'],
+  description: 'Professional mobile welding, trash removal, and handyman services. Certified welders with 20+ years of combined experience. 100% disabled veteran-owned business.',
+  keywords: ['welding services', 'mobile welding', 'trash removal', 'handyman services', 'metal fabrication', 'veteran owned business'],
   authors: [{ name: 'DJN Services LLC' }],
   creator: 'DJN Services LLC',
   publisher: 'DJN Services LLC',
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.djnservicesllc.com',
     siteName: 'DJN Services LLC',
-    title: 'DJN Services LLC | Professional Welding, Hotshot & Handyman Services',
-    description: 'Professional mobile welding, hotshot services, trash removal, and handyman services. Certified welders with 20+ years of combined experience.',
+    title: 'DJN Services LLC | Professional Welding & Handyman Services',
+    description: 'Professional mobile welding, trash removal, and handyman services. Certified welders with 20+ years of combined experience.',
     images: [
       {
         url: '/og-image.jpg',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'DJN Services LLC | Professional Welding Services',
-    description: 'Professional mobile welding, hotshot services, trash removal, and handyman services.',
+    description: 'Professional mobile welding, trash removal, and handyman services.',
   },
   robots: {
     index: true,
@@ -62,7 +62,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'DJN Services LLC',
-    description: 'Professional mobile welding, hotshot services, trash removal, and handyman services. 100% disabled veteran-owned business.',
+    description: 'Professional mobile welding, trash removal, and handyman services. 100% disabled veteran-owned business.',
     url: 'https://www.djnservicesllc.com',
     telephone: '(555) 123-4567',
     email: 'info@djnservicesllc.com',
@@ -95,18 +95,13 @@ export default function RootLayout({
     ],
     priceRange: '$$',
     areaServed: [
-      {
-        '@type': 'City',
-        name: 'Greater Metropolitan Area',
-      },
-      {
-        '@type': 'State',
-        name: 'ST',
-      },
+      { '@type': 'State', name: 'Mississippi' },
+      { '@type': 'State', name: 'Alabama' },
+      { '@type': 'State', name: 'Florida' },
+      { '@type': 'Place', name: 'South Georgia' },
     ],
     serviceType: [
       'Mobile Welding Services',
-      'Hotshot Services',
       'Trash Removal/Dump Services',
       'Handyman Services',
     ],

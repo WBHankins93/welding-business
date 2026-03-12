@@ -1,20 +1,20 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Wrench, Truck, Package, Hammer } from 'lucide-react'
+import { Wrench, Package, Hammer } from 'lucide-react'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
 
 export const metadata: Metadata = {
   title: 'Services',
-  description: 'Mobile welding, hotshot services, trash removal, and handyman services. Professional on-site solutions for construction, repairs, and custom projects. Certified welders with expertise in SMAW, FCAW, and GMAW techniques.',
-  keywords: ['mobile welding', 'hotshot services', 'trash removal', 'dump services', 'handyman services', 'welding techniques', 'SMAW', 'FCAW', 'GMAW'],
+  description: 'Mobile welding, trash removal, and handyman services. Professional on-site solutions for construction, repairs, and custom projects. Certified welders with expertise in SMAW, FCAW, and GMAW techniques.',
+  keywords: ['mobile welding', 'trash removal', 'dump services', 'handyman services', 'welding techniques', 'SMAW', 'FCAW', 'GMAW'],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/services',
   },
   openGraph: {
     title: 'Our Services | DJN Services LLC',
-    description: 'Professional mobile welding, hotshot, trash removal, and handyman services. On-site solutions for construction, repairs, and custom projects.',
+    description: 'Professional mobile welding, trash removal, and handyman services. On-site solutions for construction, repairs, and custom projects.',
     url: 'https://www.djnservicesllc.com/services',
     type: 'website',
   },
@@ -44,22 +44,6 @@ export default function Services() {
       additionalOfferings: [
         'Cutting Services: Precise metal cutting for various applications.',
         'Custom Fabrication: Tailored solutions to meet unique specifications.',
-      ],
-    },
-    {
-      icon: Truck,
-      title: 'Hotshot Services',
-      description:
-        'Fast, on-demand transportation for time-sensitive deliveries. Reliable logistics solutions for industries requiring quick response times.',
-      coreOfferings: [
-        'Freight Delivery: Construction materials, equipment, and supplies.',
-        'Time-Sensitive Loads: Rapid response for urgent deliveries.',
-        'Small to Medium Loads: Cost-effective solutions for partial loads.',
-      ],
-      specializedCapabilities: [
-        "40' Flatbed Services: Large, irregularly shaped, or bulky items.",
-        'Regional or Long-Distance Coverage: Flexible delivery options.',
-        'Compliance: Fully insured and DOT compliant.',
       ],
     },
     {
@@ -104,8 +88,8 @@ export default function Services() {
       url: 'https://www.djnservicesllc.com',
     },
     areaServed: {
-      '@type': 'City',
-      name: 'Greater Metropolitan Area',
+      '@type': 'Place',
+      name: 'Gulf Coast region: Mississippi, Alabama, Florida, South Georgia',
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -117,14 +101,6 @@ export default function Services() {
             '@type': 'Service',
             name: 'Mobile Welding Services',
             description: 'Professional on-site welding services with SMAW, FCAW, and GMAW techniques.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Hotshot Services',
-            description: 'Fast, on-demand transportation for time-sensitive deliveries with 40\' flatbed services.',
           },
         },
         {
@@ -184,7 +160,7 @@ export default function Services() {
           </ScrollReveal>
           <ScrollReveal delay={0.1} immediate>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
-              Welding, Hotshot, and Dump Services - Your one-stop resource for construction and service needs
+              Welding and Dump Services - Your one-stop resource for construction and service needs
             </p>
           </ScrollReveal>
         </div>

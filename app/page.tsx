@@ -135,12 +135,10 @@ const testimonials: Testimonial[] = [
 ]
 
 const serviceAreas = [
-  'Downtown',
-  'North Side',
-  'South Side',
-  'West End',
-  'East Metro',
-  'Nearby Rural Areas',
+  'Mississippi',
+  'Alabama',
+  'Florida',
+  'South Georgia',
 ]
 
 function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
@@ -350,8 +348,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Service Area"
-            title="Serving the Local Area"
-            description="We provide welding, hauling, and removal services across the metro and surrounding communities."
+            title="Serving the Gulf Coast"
+            description="We provide welding, hauling, and removal across the Gulf Coast: Mississippi, Alabama, Florida, and South Georgia."
           />
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {serviceAreas.map((area) => (
