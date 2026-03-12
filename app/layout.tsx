@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Menu, X, Flame } from 'lucide-react'
+import { Flame } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import '@/styles/index.css'
+
 
 export const metadata: Metadata = {
   title: {
@@ -128,7 +129,7 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href="https://www.djnservicesllc.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#d4af37" />
+        <meta name="theme-color" content="#FF6A00" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -142,7 +143,7 @@ export default function RootLayout({
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  <div className="bg-[#d4af37] p-2 sm:p-2.5 rounded-lg shadow-lg" aria-hidden="true">
+                  <div className="bg-[#FF6A00] p-2 sm:p-2.5 rounded-lg shadow-lg" aria-hidden="true">
                     <Flame className="size-5 sm:size-6 text-[#0a0a0a]" />
                   </div>
                   <h2 className="text-lg sm:text-xl font-bold">DJN Services LLC</h2>
@@ -152,32 +153,32 @@ export default function RootLayout({
                 </p>
               </div>
               <nav aria-label="Footer navigation">
-                <h3 className="font-bold mb-4 sm:mb-6 text-[#d4af37] text-base sm:text-lg">Quick Links</h3>
+                <h3 className="font-bold mb-4 sm:mb-6 text-[#FF6A00] text-base sm:text-lg">Quick Links</h3>
                 <div className="space-y-2 sm:space-y-3">
-                  <Link href="/" className="block text-gray-400 hover:text-[#d4af37] transition-colors duration-200 text-sm sm:text-base">
+                  <Link href="/" className="block text-gray-400 hover:text-[#FF6A00] transition-colors duration-200 text-sm sm:text-base">
                     Home
                   </Link>
-                  <Link href="/services" className="block text-gray-400 hover:text-[#d4af37] transition-colors duration-200 text-sm sm:text-base">
+                  <Link href="/services" className="block text-gray-400 hover:text-[#FF6A00] transition-colors duration-200 text-sm sm:text-base">
                     Services
                   </Link>
-                  <Link href="/about" className="block text-gray-400 hover:text-[#d4af37] transition-colors duration-200 text-sm sm:text-base">
+                  <Link href="/about" className="block text-gray-400 hover:text-[#FF6A00] transition-colors duration-200 text-sm sm:text-base">
                     About
                   </Link>
-                  <Link href="/contact" className="block text-gray-400 hover:text-[#d4af37] transition-colors duration-200 text-sm sm:text-base">
+                  <Link href="/contact" className="block text-gray-400 hover:text-[#FF6A00] transition-colors duration-200 text-sm sm:text-base">
                     Contact
                   </Link>
                 </div>
               </nav>
               <address className="not-italic">
-                <h3 className="font-bold mb-4 sm:mb-6 text-[#d4af37] text-base sm:text-lg">Contact</h3>
+                <h3 className="font-bold mb-4 sm:mb-6 text-[#FF6A00] text-base sm:text-lg">Contact</h3>
                 <div className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
                   <p>
-                    <a href="tel:5551234567" className="hover:text-[#d4af37] transition-colors duration-200">
+                    <a href="tel:5551234567" className="hover:text-[#FF6A00] transition-colors duration-200">
                       Phone: (555) 123-4567
                     </a>
                   </p>
                   <p>
-                    <a href="mailto:info@djnservicesllc.com" className="hover:text-[#d4af37] transition-colors duration-200">
+                    <a href="mailto:info@djnservicesllc.com" className="hover:text-[#FF6A00] transition-colors duration-200">
                       Email: info@djnservicesllc.com
                     </a>
                   </p>
