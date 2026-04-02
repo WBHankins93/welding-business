@@ -93,10 +93,10 @@ export default function Contact() {
       <div>
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2">
           <Breadcrumbs
             items={[
-              { label: 'Home', href: '/' },
+              { label: 'DJN Services LLC', href: '/' },
               { label: 'Contact' },
             ]}
           />
@@ -108,10 +108,10 @@ export default function Contact() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="glass-panel-dark max-w-4xl rounded-[32px] p-8 sm:p-10">
             <ScrollReveal immediate>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Contact Us</h1>
+              <h1 className="page-hero-title mb-4 sm:mb-6">Contact Us</h1>
             </ScrollReveal>
             <ScrollReveal delay={0.1} immediate>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+              <p className="page-hero-subtitle max-w-3xl">
                 Get in touch with us for a free quote or to discuss your welding project
               </p>
             </ScrollReveal>
@@ -131,9 +131,9 @@ export default function Contact() {
                     <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#fef3c7]/90 shadow-md sm:mb-6 sm:h-20 sm:w-20">
                       <Icon className="size-8 sm:size-10 text-[#d4af37]" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">{info.title}</h3>
+                    <h3 className="card-title mb-2 sm:mb-3">{info.title}</h3>
                     {info.details.map((detail, index) => (
-                      <p key={index} className="text-[#4a5568] mb-1 text-sm sm:text-base">
+                      <p key={index} className="card-text mb-1">
                         {detail}
                       </p>
                     ))}
@@ -148,7 +148,7 @@ export default function Contact() {
             {/* Contact form */}
             <ScrollReveal direction="right">
               <div id="contact-form" className="glass-panel-light rounded-[32px] p-6 shadow-lg sm:p-8 md:p-10">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-[#0a0a0a]">Send Us a Message</h2>
+                <h2 className="section-title mb-6 text-2xl sm:mb-8 sm:text-3xl md:text-4xl">Send Us a Message</h2>
                 <ContactForm />
               </div>
             </ScrollReveal>
@@ -157,8 +157,8 @@ export default function Contact() {
             <ScrollReveal direction="left" delay={0.1}>
               <div className="space-y-6 sm:space-y-8">
                 <div className="glass-panel-light rounded-[28px] p-6 sm:p-8">
-                  <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#0a0a0a]">Emergency Service</h3>
-                  <p className="text-[#1a1f2e] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+                  <h3 className="card-title mb-3 sm:mb-4">Emergency Service</h3>
+                  <p className="card-text mb-4 sm:mb-6 text-[#1a1f2e]">
                     Need urgent welding repairs? We offer 24/7 emergency service for
                     critical situations.
                   </p>
@@ -177,8 +177,8 @@ export default function Contact() {
                 </div>
 
                 <div className="glass-panel-light rounded-[28px] p-6 sm:p-8">
-                  <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#0a0a0a]">Service Area</h3>
-                  <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                  <h3 className="card-title mb-3 sm:mb-4">Service Area</h3>
+                  <p className="card-text text-[#1a1f2e]">
                     Gulf coast region: MS, AL, FL, South GA. Contact us to confirm we serve your location.
                   </p>
                 </div>
@@ -192,15 +192,15 @@ export default function Contact() {
       <section className="bg-[#f7f8fa] py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-[#0a0a0a]">
+            <h2 className="section-title mb-10 text-center sm:mb-12">
               Frequently Asked Questions
             </h2>
           </ScrollReveal>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <StaggerItem>
               <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
-                <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">Do you offer free estimates?</h3>
-                <p className="text-[#4a5568] leading-relaxed">
+                <h3 className="card-title mb-3">Do you offer free estimates?</h3>
+                <p className="card-text">
                   Yes! We provide free, no-obligation quotes for all welding and
                   fabrication projects.
                 </p>
@@ -208,16 +208,16 @@ export default function Contact() {
             </StaggerItem>
             <StaggerItem>
               <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
-                <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">What areas do you serve?</h3>
-                <p className="text-[#4a5568] leading-relaxed">
+                <h3 className="card-title mb-3">What areas do you serve?</h3>
+                <p className="card-text">
                   We serve the Gulf Coast region: Mississippi, Alabama, Florida, and South Georgia. Contact us to confirm we serve your location.
                 </p>
               </div>
             </StaggerItem>
             <StaggerItem>
               <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
-                <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">How quickly can you start?</h3>
-                <p className="text-[#4a5568] leading-relaxed">
+                <h3 className="card-title mb-3">How quickly can you start?</h3>
+                <p className="card-text">
                   Most projects can be scheduled within a few days. Emergency services
                   are available 24/7.
                 </p>
@@ -225,8 +225,8 @@ export default function Contact() {
             </StaggerItem>
             <StaggerItem>
               <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
-                <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">Are you licensed and insured?</h3>
-                <p className="text-[#4a5568] leading-relaxed">
+                <h3 className="card-title mb-3">Are you licensed and insured?</h3>
+                <p className="card-text">
                   Yes, we are fully licensed, insured, and our welders are AWS certified.
                 </p>
               </div>
