@@ -17,6 +17,11 @@ import {
   Truck,
   Wrench,
 } from 'lucide-react'
+import { FadeIn } from '@/components/animations/FadeIn'
+import { FloatingOrbs } from '@/components/animations/FloatingOrbs'
+import { HoverLift } from '@/components/animations/HoverLift'
+import { ScrollReveal } from '@/components/animations/ScrollReveal'
+import { StaggerContainer, StaggerItem } from '@/components/animations/StaggerContainer'
 
 const phoneNumber = '(555) 123-4567'
 const phoneHref = 'tel:5551234567'
@@ -168,6 +173,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageStructuredData) }} />
 
       <section className="relative isolate overflow-hidden bg-[#1C1C1C] text-white">
+        <FloatingOrbs />
         <Image
           src="/images/services/mobile-welding.webp"
           alt="DJN Services mobile welding crew at work"
@@ -178,7 +184,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45" aria-hidden="true" />
         <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 sm:py-24 lg:grid-cols-[1.3fr_0.7fr] lg:px-8 lg:py-32">
-          <div>
+          <ScrollReveal direction="up">
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#FF6A00]">Welding • Hauling • Removal</p>
             <h1 className="mt-4 max-w-4xl text-5xl font-heading font-bold uppercase leading-[0.95] tracking-wide sm:text-6xl lg:text-7xl">
               Reliable Work.
@@ -191,7 +197,7 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/booking"
-                className="inline-flex items-center justify-center gap-2 bg-[#FF6A00] px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition hover:bg-[#e66000]"
+                className="inline-flex items-center justify-center gap-2 bg-[#FF6A00] px-8 py-4 text-base font-semibold uppercase tracking-wide text-white shadow-[0_0_30px_rgba(255,106,0,0.35)] transition hover:bg-[#e66000]"
               >
                 Get a Quote <ArrowRight className="size-4" />
               </Link>
@@ -202,9 +208,9 @@ export default function Home() {
                 <Phone className="size-4" /> Call Now
               </a>
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className="self-end rounded-sm border border-white/20 bg-black/45 p-6 backdrop-blur-sm">
+          <FadeIn delay={0.2} className="self-end rounded-sm border border-white/20 bg-black/45 p-6 backdrop-blur-sm">
             <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Fast Response</p>
             <div className="mt-4 space-y-4 text-sm text-gray-200">
               <p className="flex items-center gap-2">
@@ -223,18 +229,22 @@ export default function Home() {
             >
               <Phone className="size-4" /> {phoneNumber}
             </a>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       <section className="border-y border-black/10 bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2 px-4 py-6 sm:grid-cols-3 sm:px-6 lg:grid-cols-5 lg:px-8">
-          {trustPoints.map((point) => (
-            <div key={point} className="flex items-center justify-center gap-2 border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-wider text-[#1C1C1C] sm:text-sm">
-              <CheckCircle2 className="size-4 text-[#FF6A00]" aria-hidden="true" />
-              <span>{point}</span>
-            </div>
-          ))}
+          <StaggerContainer className="contents" immediate>
+            {trustPoints.map((point) => (
+              <StaggerItem key={point}>
+                <div className="flex items-center justify-center gap-2 border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-wider text-[#1C1C1C] sm:text-sm">
+                  <CheckCircle2 className="size-4 text-[#FF6A00]" aria-hidden="true" />
+                  <span>{point}</span>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
@@ -245,23 +255,27 @@ export default function Home() {
             title="Hard-Working Services for Hard Jobs"
             description="From mobile welding to hauling and cleanup, we handle the tough work with dependable turnaround and practical solutions."
           />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-3">
             {services.map((service) => {
               const Icon = service.icon
               return (
-                <article key={service.title} className="flex h-full flex-col border border-black/10 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                  <div className="mb-5 inline-flex size-12 items-center justify-center bg-[#1C1C1C] text-[#FF6A00]">
-                    <Icon className="size-6" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-2xl font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{service.title}</h3>
-                  <p className="mt-4 text-[#4A4A4A]">{service.description}</p>
-                  <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C] transition hover:text-[#FF6A00]">
-                    Learn More <ArrowRight className="size-4" />
-                  </Link>
-                </article>
+                <StaggerItem key={service.title}>
+                  <HoverLift className="h-full">
+                    <article className="flex h-full flex-col border border-black/10 bg-white p-6 shadow-sm transition hover:shadow-lg">
+                      <div className="mb-5 inline-flex size-12 items-center justify-center bg-[#1C1C1C] text-[#FF6A00]">
+                        <Icon className="size-6" aria-hidden="true" />
+                      </div>
+                      <h3 className="text-2xl font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{service.title}</h3>
+                      <p className="mt-4 text-[#4A4A4A]">{service.description}</p>
+                      <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C] transition hover:text-[#FF6A00]">
+                        Learn More <ArrowRight className="size-4" />
+                      </Link>
+                    </article>
+                  </HoverLift>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -304,19 +318,23 @@ export default function Home() {
             title="Recent Projects"
             description="A few examples of welding, hauling, and repair work handled by DJN Services. This layout is ready for before/after additions as your project gallery grows."
           />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-3">
             {projects.map((project) => (
-              <article key={project.title} className="overflow-hidden border border-black/10 bg-[#F4F4F4]">
-                <div className="relative h-56">
-                  <Image src={project.image} alt={project.alt} fill className="object-cover grayscale" sizes="(max-width: 768px) 100vw, 33vw" />
-                </div>
-                <div className="p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">{project.type}</p>
-                  <h3 className="mt-2 text-xl font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{project.title}</h3>
-                </div>
-              </article>
+              <StaggerItem key={project.title}>
+                <HoverLift>
+                  <article className="overflow-hidden border border-black/10 bg-[#F4F4F4]">
+                    <div className="relative h-56">
+                      <Image src={project.image} alt={project.alt} fill className="object-cover grayscale transition duration-500 hover:scale-105 hover:grayscale-0" sizes="(max-width: 768px) 100vw, 33vw" />
+                    </div>
+                    <div className="p-5">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">{project.type}</p>
+                      <h3 className="mt-2 text-xl font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{project.title}</h3>
+                    </div>
+                  </article>
+                </HoverLift>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -327,17 +345,19 @@ export default function Home() {
             title="Trusted by Local Clients"
             description="No fluff—just real feedback from homeowners, managers, and crews who needed the job done right."
           />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-3">
             {testimonials.map((testimonial) => (
-              <figure key={testimonial.name} className="flex h-full flex-col justify-between border border-black/10 bg-white p-6">
-                <blockquote className="text-[#1C1C1C]">“{testimonial.quote}”</blockquote>
-                <figcaption className="mt-6 border-t border-black/10 pt-4">
-                  <p className="font-bold uppercase tracking-wide text-[#1C1C1C]">{testimonial.name}</p>
-                  <p className="text-sm text-[#4A4A4A]">{testimonial.role}</p>
-                </figcaption>
-              </figure>
+              <StaggerItem key={testimonial.name}>
+                <figure className="flex h-full flex-col justify-between border border-black/10 bg-white p-6">
+                  <blockquote className="text-[#1C1C1C]">“{testimonial.quote}”</blockquote>
+                  <figcaption className="mt-6 border-t border-black/10 pt-4">
+                    <p className="font-bold uppercase tracking-wide text-[#1C1C1C]">{testimonial.name}</p>
+                    <p className="text-sm text-[#4A4A4A]">{testimonial.role}</p>
+                  </figcaption>
+                </figure>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
