@@ -197,20 +197,26 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/booking"
-                className="inline-flex items-center justify-center gap-2 bg-[#FF6A00] px-8 py-4 text-base font-semibold uppercase tracking-wide text-white shadow-[0_0_30px_rgba(255,106,0,0.35)] transition hover:bg-[#e66000]"
+                className="glass-button-primary gap-2 px-8 py-4 text-base tracking-wide shadow-[0_0_30px_rgba(255,106,0,0.35)]"
               >
                 Get a Quote <ArrowRight className="size-4" />
               </Link>
+              <Link
+                href="/contact"
+                className="glass-button-secondary hidden gap-2 px-8 py-4 text-base tracking-wide sm:inline-flex"
+              >
+                <ArrowRight className="size-4" /> Contact
+              </Link>
               <a
                 href={phoneHref}
-                className="inline-flex items-center justify-center gap-2 border border-white/60 px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition hover:border-[#FF6A00] hover:text-[#FF6A00]"
+                className="glass-button-secondary gap-2 px-8 py-4 text-base tracking-wide sm:hidden"
               >
                 <Phone className="size-4" /> Call Now
               </a>
             </div>
           </ScrollReveal>
 
-          <FadeIn delay={0.2} className="self-end rounded-sm border border-white/20 bg-black/45 p-6 backdrop-blur-sm">
+          <FadeIn delay={0.2} className="glass-panel-dark self-end rounded-[28px] p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Fast Response</p>
             <div className="mt-4 space-y-4 text-sm text-gray-200">
               <p className="flex items-center gap-2">
@@ -223,9 +229,15 @@ export default function Home() {
                 <Building2 className="size-4 text-[#FF6A00]" /> Residential, commercial, and job-site work
               </p>
             </div>
+            <Link
+              href="/contact"
+              className="glass-button-primary mt-6 hidden w-full gap-2 px-5 py-3 text-sm tracking-wide sm:inline-flex"
+            >
+              <ArrowRight className="size-4" /> Contact
+            </Link>
             <a
               href={phoneHref}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 border border-[#FF6A00] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-[#FF6A00] transition hover:bg-[#FF6A00] hover:text-white"
+              className="glass-button-primary mt-6 inline-flex w-full gap-2 px-5 py-3 text-sm tracking-wide sm:hidden"
             >
               <Phone className="size-4" /> {phoneNumber}
             </a>
@@ -261,13 +273,13 @@ export default function Home() {
               return (
                 <StaggerItem key={service.title}>
                   <HoverLift className="h-full">
-                    <article className="flex h-full flex-col border border-black/10 bg-white p-6 shadow-sm transition hover:shadow-lg">
-                      <div className="mb-5 inline-flex size-12 items-center justify-center bg-[#1C1C1C] text-[#FF6A00]">
+                    <article className="glass-panel-light flex h-full flex-col rounded-[28px] p-6 transition hover:shadow-xl">
+                      <div className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-[#1C1C1C] text-[#FF6A00]">
                         <Icon className="size-6" aria-hidden="true" />
                       </div>
                       <h3 className="text-2xl font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{service.title}</h3>
                       <p className="mt-4 text-[#4A4A4A]">{service.description}</p>
-                      <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C] transition hover:text-[#FF6A00]">
+                      <Link href="/services" className="glass-button-dark mt-6 w-full gap-2 text-xs tracking-wide sm:w-fit">
                         Learn More <ArrowRight className="size-4" />
                       </Link>
                     </article>
@@ -289,7 +301,7 @@ export default function Home() {
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {reasons.map((reason) => (
-                <li key={reason} className="flex gap-3 border border-white/15 bg-white/5 p-4 text-sm sm:text-base">
+                <li key={reason} className="glass-panel-dark flex gap-3 rounded-[24px] p-4 text-sm sm:text-base">
                   <Star className="mt-0.5 size-4 shrink-0 text-[#FF6A00]" aria-hidden="true" />
                   <span>{reason}</span>
                 </li>
@@ -297,13 +309,25 @@ export default function Home() {
             </ul>
           </div>
           <div className="grid gap-4 self-end">
-            <div className="border border-[#FF6A00]/50 bg-black/40 p-5">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Call for Priority Scheduling</p>
-              <a href={phoneHref} className="mt-2 block text-3xl font-heading font-bold tracking-wide text-white transition hover:text-[#FF6A00] sm:text-4xl">
-                {phoneNumber}
+            <div className="glass-panel-dark rounded-[28px] p-5">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Priority Scheduling</p>
+              <p className="mt-2 text-2xl font-heading font-bold tracking-wide text-white sm:text-3xl">
+                Fast communication for urgent work.
+              </p>
+              <Link
+                href="/contact"
+                className="glass-button-primary mt-5 hidden w-full gap-2 text-xs tracking-wide sm:inline-flex"
+              >
+                <ArrowRight className="size-4" /> Contact
+              </Link>
+              <a
+                href={phoneHref}
+                className="glass-button-primary mt-5 inline-flex w-full gap-2 text-xs tracking-wide sm:hidden"
+              >
+                <Phone className="size-4" /> Call Now
               </a>
             </div>
-            <div className="border border-white/15 bg-white/5 p-5 text-sm text-gray-200">
+            <div className="glass-panel-dark rounded-[28px] p-5 text-sm text-gray-200">
               <p className="font-semibold uppercase tracking-wider text-white">Built for:</p>
               <p className="mt-2">Homes • Commercial Properties • Construction Sites • Equipment Yards</p>
             </div>
@@ -322,7 +346,7 @@ export default function Home() {
             {projects.map((project) => (
               <StaggerItem key={project.title}>
                 <HoverLift>
-                  <article className="overflow-hidden border border-black/10 bg-[#F4F4F4]">
+                  <article className="glass-panel-light overflow-hidden rounded-[28px]">
                     <div className="relative h-56">
                       <Image src={project.image} alt={project.alt} fill className="object-cover grayscale transition duration-500 hover:scale-105 hover:grayscale-0" sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
@@ -348,7 +372,7 @@ export default function Home() {
           <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-3">
             {testimonials.map((testimonial) => (
               <StaggerItem key={testimonial.name}>
-                <figure className="flex h-full flex-col justify-between border border-black/10 bg-white p-6">
+                <figure className="glass-panel-light flex h-full flex-col justify-between rounded-[28px] p-6">
                   <blockquote className="text-[#1C1C1C]">“{testimonial.quote}”</blockquote>
                   <figcaption className="mt-6 border-t border-black/10 pt-4">
                     <p className="font-bold uppercase tracking-wide text-[#1C1C1C]">{testimonial.name}</p>
@@ -370,7 +394,7 @@ export default function Home() {
           />
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {serviceAreas.map((area) => (
-              <div key={area} className="flex items-center justify-center gap-2 border border-black/10 bg-[#F4F4F4] px-4 py-3 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C]">
+              <div key={area} className="glass-panel-light flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C]">
                 <HomeIcon className="size-4 text-[#FF6A00]" aria-hidden="true" />
                 {area}
               </div>
@@ -384,18 +408,24 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">Ready to Get Started?</p>
           <h2 className="mt-3 text-4xl font-heading font-bold uppercase tracking-wide sm:text-5xl">Get Your Quote Today</h2>
           <p className="mx-auto mt-5 max-w-2xl text-gray-300 sm:text-lg">
-            Need welding, hauling, or removal done fast? Call now for priority response or send a quote request and we’ll follow up quickly.
+            Need welding, hauling, or removal done fast? Reach out for priority response or send a quote request and we’ll follow up quickly.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/booking"
-              className="inline-flex items-center justify-center gap-2 bg-[#FF6A00] px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition hover:bg-[#e66000]"
+              className="glass-button-primary gap-2 px-8 py-4 text-base tracking-wide"
             >
               <CalendarClock className="size-4" /> Get a Quote
             </Link>
+            <Link
+              href="/contact"
+              className="glass-button-secondary hidden gap-2 px-8 py-4 text-base tracking-wide sm:inline-flex"
+            >
+              <ArrowRight className="size-4" /> Contact
+            </Link>
             <a
               href={phoneHref}
-              className="inline-flex items-center justify-center gap-2 border border-white/60 px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition hover:border-[#FF6A00] hover:text-[#FF6A00]"
+              className="glass-button-secondary gap-2 px-8 py-4 text-base tracking-wide sm:hidden"
             >
               <Phone className="size-4" /> Call {phoneNumber}
             </a>
