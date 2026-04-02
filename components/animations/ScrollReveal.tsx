@@ -36,8 +36,8 @@ export function ScrollReveal({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y, x }}
-      animate={shouldAnimate ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, y, x }}
+      initial={{ opacity: 1, y: 0, x: 0 }}
+      animate={shouldAnimate ? { opacity: 1, y: 0, x: 0 } : { opacity: 1, y: 0, x: 0 }}
       transition={{
         duration,
         delay,

@@ -83,10 +83,10 @@ export default function About() {
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal immediate>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">About DJN Services LLC</h1>
+            <h1 className="page-hero-title mb-4 sm:mb-6">About DJN Services LLC</h1>
           </ScrollReveal>
           <ScrollReveal delay={0.1} immediate>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+            <p className="page-hero-subtitle max-w-3xl">
               Building trust through quality craftsmanship since day one
             </p>
           </ScrollReveal>
@@ -98,7 +98,7 @@ export default function About() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <ScrollReveal>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 text-[#0a0a0a]">Who we are</h2>
+              <h2 className="section-title mb-6 sm:mb-8">Who we are</h2>
             </ScrollReveal>
             <div className="space-y-4 sm:space-y-6 text-[#1a1f2e] leading-relaxed text-base sm:text-lg">
               <p>
@@ -156,8 +156,8 @@ export default function About() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-8 sm:mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Our Values</h2>
-              <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
+              <h2 className="section-title mb-4 sm:mb-6">Our Values</h2>
+              <p className="section-subtitle max-w-2xl mx-auto px-4">
                 The principles that guide everything we do
               </p>
             </div>
@@ -171,8 +171,8 @@ export default function About() {
                     <div className="bg-[#fef3c7] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-md">
                       <Icon className="size-8 sm:size-10 text-[#d4af37]" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">{value.title}</h3>
-                    <p className="text-[#4a5568] leading-relaxed text-sm sm:text-base">{value.description}</p>
+                    <h3 className="card-title mb-2 sm:mb-3">{value.title}</h3>
+                    <p className="card-text">{value.description}</p>
                   </div>
                 </StaggerItem>
               )
@@ -186,10 +186,10 @@ export default function About() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-8 sm:mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">
+              <h2 className="section-title mb-4 sm:mb-6">
                 Certifications & Expertise
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
+              <p className="section-subtitle max-w-2xl mx-auto px-4">
                 Our team maintains industry certifications and stays current with the
                 latest welding techniques
               </p>
@@ -285,10 +285,10 @@ export default function About() {
           <ScrollReveal delay={0.2}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
               <Link
-                href="/booking"
+                href="/contact#contact-form"
                 className="bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl text-sm sm:text-base"
               >
-                Book Now
+                Get a Quote
               </Link>
               <Link
                 href="/contact"

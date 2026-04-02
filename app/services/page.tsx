@@ -161,10 +161,10 @@ export default function Services() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="glass-panel-dark max-w-4xl rounded-[32px] p-8 sm:p-10">
             <ScrollReveal immediate>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Our Services</h1>
+              <h1 className="page-hero-title mb-4 sm:mb-6">Our Services</h1>
             </ScrollReveal>
             <ScrollReveal delay={0.1} immediate>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
+              <p className="page-hero-subtitle max-w-3xl">
                 Welding and dump services built for hard jobs, fast scheduling, and dependable execution.
               </p>
             </ScrollReveal>
@@ -198,15 +198,15 @@ export default function Services() {
                       <Icon className="size-6 sm:size-7 md:size-8 text-[#d4af37]" />
                     </div>
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-[#0a0a0a]">{service.title}</h3>
+                      <h3 className="card-title mb-2 sm:text-2xl">{service.title}</h3>
                     </div>
                   </div>
-                  <p className="text-[#4a5568] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{service.description}</p>
+                  <p className="card-text mb-4 sm:mb-6">{service.description}</p>
 
                   {/* Welding Techniques */}
                   {service.techniques && (
                     <div className="mb-4 sm:mb-6">
-                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Welding Techniques:</h4>
+                      <h4 className="card-title mb-2 text-base sm:mb-3 sm:text-lg">Welding Techniques:</h4>
                       <ul className="space-y-2 sm:space-y-3">
                         {service.techniques.map((technique, idx) => (
                           <li key={idx} className="flex items-start gap-2 sm:gap-3">
@@ -224,7 +224,7 @@ export default function Services() {
                   {/* Additional Offerings */}
                   {service.additionalOfferings && (
                     <div className="mb-4 sm:mb-6">
-                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Additional Offerings:</h4>
+                      <h4 className="card-title mb-2 text-base sm:mb-3 sm:text-lg">Additional Offerings:</h4>
                       <ul className="space-y-2 sm:space-y-3">
                         {service.additionalOfferings.map((offering, idx) => (
                           <li key={idx} className="flex items-start gap-2 sm:gap-3">
@@ -239,7 +239,7 @@ export default function Services() {
                   {/* Core Offerings */}
                   {service.coreOfferings && (
                     <div className="mb-4 sm:mb-6">
-                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Core Offerings:</h4>
+                      <h4 className="card-title mb-2 text-base sm:mb-3 sm:text-lg">Core Offerings:</h4>
                       <ul className="space-y-2 sm:space-y-3">
                         {service.coreOfferings.map((offering, idx) => (
                           <li key={idx} className="flex items-start gap-2 sm:gap-3">
@@ -254,7 +254,7 @@ export default function Services() {
                   {/* Specialized Capabilities */}
                   {service.specializedCapabilities && (
                     <div className="mb-4 sm:mb-6">
-                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Specialized Capabilities:</h4>
+                      <h4 className="card-title mb-2 text-base sm:mb-3 sm:text-lg">Specialized Capabilities:</h4>
                       <ul className="space-y-2 sm:space-y-3">
                         {service.specializedCapabilities.map((capability, idx) => (
                           <li key={idx} className="flex items-start gap-2 sm:gap-3">
@@ -269,7 +269,7 @@ export default function Services() {
                   {/* Services (for Handyman) */}
                   {service.services && (
                     <div className="mb-4 sm:mb-6">
-                      <h4 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 text-[#0a0a0a]">Services:</h4>
+                      <h4 className="card-title mb-2 text-base sm:mb-3 sm:text-lg">Services:</h4>
                       <ul className="space-y-2 sm:space-y-3">
                         {service.services.map((serviceItem, idx) => (
                           <li key={idx} className="flex items-start gap-2 sm:gap-3">
@@ -281,13 +281,13 @@ export default function Services() {
                     </div>
                   )}
 
-                  {/* Book Now Button */}
+                  {/* Get a Quote Button */}
                   <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
                     <Link
-                      href="/booking"
+                      href="/contact#contact-form"
                       className="glass-button-dark w-full text-center text-xs tracking-wide sm:w-auto"
                     >
-                      Book now
+                      Get a quote
                     </Link>
                   </div>
                   </div>
@@ -303,8 +303,8 @@ export default function Services() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-8 sm:mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Materials</h2>
-              <p className="text-base sm:text-lg md:text-xl text-[#4a5568] max-w-2xl mx-auto px-4">
+              <h2 className="section-title mb-4 sm:mb-6">Materials</h2>
+              <p className="section-subtitle max-w-2xl mx-auto px-4">
                 We provide a variety of materials for your construction and landscaping needs
               </p>
             </div>
@@ -403,10 +403,10 @@ export default function Services() {
             <ScrollReveal delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
                 <Link
-                  href="/booking"
+                  href="/contact#contact-form"
                   className="glass-button-primary"
                 >
-                  Schedule Service
+                  Get a Quote
                 </Link>
                 <Link
                   href="/contact"
