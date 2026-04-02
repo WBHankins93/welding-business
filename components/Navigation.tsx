@@ -1,8 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Flame } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 
@@ -30,10 +31,17 @@ export function Navigation() {
         <div className="flex h-16 sm:h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-            <div className="bg-[#FF6A00] p-2 sm:p-2.5 rounded-lg shadow-lg group-hover:bg-[#e66000] transition-colors">
-              <Flame className="size-5 sm:size-6 text-[#0a0a0a]" />
+            <div className="overflow-hidden rounded-lg bg-white/95 p-1 shadow-lg ring-1 ring-white/15 transition-transform duration-200 group-hover:scale-[1.02]">
+              <Image
+                src="/images/brand/djn-logo.webp"
+                alt="DJN Services LLC"
+                width={144}
+                height={48}
+                priority
+                className="h-10 w-auto sm:h-12"
+              />
             </div>
-            <span className="text-lg sm:text-xl font-bold tracking-tight font-heading uppercase">DJN Services LLC</span>
+            <span className="sr-only">DJN Services LLC</span>
           </Link>
 
           {/* Desktop Navigation */}

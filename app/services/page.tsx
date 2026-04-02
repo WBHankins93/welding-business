@@ -25,6 +25,8 @@ export default function Services() {
     {
       icon: Wrench,
       title: 'Mobile Welding Services',
+      image: '/images/services/mobile-welding.webp',
+      alt: 'DJN Services mobile welding service',
       description:
         'Professional on-site welding services delivering high-quality results directly at your location. Ideal for construction, repairs, and custom fabrication projects.',
       techniques: [
@@ -61,6 +63,8 @@ export default function Services() {
     {
       icon: Package,
       title: 'Trash Removal/Dump Services',
+      image: '/images/services/trash-removal-djn.webp',
+      alt: 'DJN Services trash removal and dump service',
       description:
         'Efficient on-demand hauling and delivery of materials. Reliable solutions for waste removal, dirt delivery, and material transport across various industries.',
       coreOfferings: [
@@ -146,10 +150,10 @@ export default function Services() {
       <section className="relative bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1681407979977-ea6060c802f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXRhbCUyMGZhYnJpY2F0aW9uJTIwc3RlZWx8ZW58MXx8fHwxNzcxNTU4MTIwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            src="/images/services/mobile-welding.webp"
             alt="Professional metal fabrication and welding services - DJN Services LLC"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-30"
             priority
             sizes="100vw"
           />
@@ -175,6 +179,18 @@ export default function Services() {
               return (
                 <StaggerItem key={service.title}>
                   <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                  {service.image && (
+                    <div className="relative mb-5 overflow-hidden rounded-xl">
+                      <Image
+                        src={service.image}
+                        alt={service.alt}
+                        width={1200}
+                        height={700}
+                        className="h-52 w-full object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  )}
                   <div className="flex items-start gap-4 sm:gap-5 mb-4 sm:mb-6">
                     <div className="bg-[#fef3c7] p-3 sm:p-4 rounded-xl flex-shrink-0 shadow-md">
                       <Icon className="size-6 sm:size-7 md:size-8 text-[#d4af37]" />
@@ -294,6 +310,16 @@ export default function Services() {
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <StaggerItem>
               <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                <div className="relative mb-4 overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/materials/rock-djn.webp"
+                    alt="Rock material available for hauling and delivery"
+                    width={900}
+                    height={600}
+                    className="h-40 w-full object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Rock</h3>
                 <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
                   Durable natural material for construction, landscaping, and drainage. Ideal for foundations, pathways, and decorative applications.
@@ -302,6 +328,16 @@ export default function Services() {
             </StaggerItem>
             <StaggerItem>
               <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                <div className="relative mb-4 overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/materials/sand-djn.webp"
+                    alt="Sand material available for delivery"
+                    width={900}
+                    height={600}
+                    className="h-40 w-full object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Sand</h3>
                 <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
                   Versatile material for construction, landscaping, and leveling. Ideal for concrete, paving, and filling applications.
@@ -310,6 +346,16 @@ export default function Services() {
             </StaggerItem>
             <StaggerItem>
               <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                <div className="relative mb-4 overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/materials/dirt.webp"
+                    alt="Dirt material available for grading and fill delivery"
+                    width={900}
+                    height={600}
+                    className="h-40 w-full object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Dirt</h3>
                 <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
                   Essential material for landscaping, gardening, and leveling. Perfect for filling, grading, and creating healthy soil bases.
@@ -318,6 +364,16 @@ export default function Services() {
             </StaggerItem>
             <StaggerItem>
               <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
+                <div className="relative mb-4 overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/materials/mulch.webp"
+                    alt="Mulch material available for landscaping delivery"
+                    width={900}
+                    height={600}
+                    className="h-40 w-full object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">Mulch</h3>
                 <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
                   Organic or synthetic material for landscaping and gardening. Ideal for moisture retention, soil temperature regulation, and enhanced curb appeal.

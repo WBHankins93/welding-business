@@ -91,25 +91,22 @@ const reasons = [
 
 const projects: Project[] = [
   {
-    title: 'Trailer Frame Reinforcement',
+    title: 'Mobile Welding Repair',
     type: 'Mobile Welding',
-    image:
-      'https://images.unsplash.com/photo-1615833400276-295fbc76f19e?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Welder repairing a heavy-duty trailer frame',
+    image: '/images/services/mobile-welding.webp',
+    alt: 'DJN Services mobile welding work in progress',
   },
   {
     title: 'Property Cleanout Haul',
     type: 'Removal & Hauling',
-    image:
-      'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Heavy truck hauling debris away from a property',
+    image: '/images/services/trash-removal-djn.webp',
+    alt: 'DJN Services trash removal and hauling project',
   },
   {
-    title: 'Steel Gate Repair',
-    type: 'Welding Repair',
-    image:
-      'https://images.unsplash.com/photo-1651573582903-7b0fdb391cb6?auto=format&fit=crop&w=1400&q=80',
-    alt: 'Metal gate fabrication and welding in progress',
+    title: 'Rock Material Delivery',
+    type: 'Material Hauling',
+    image: '/images/materials/rock-djn.webp',
+    alt: 'Rock material ready for hauling and delivery',
   },
 ]
 
@@ -172,11 +169,11 @@ export default function Home() {
 
       <section className="relative isolate overflow-hidden bg-[#1C1C1C] text-white">
         <Image
-          src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=2000&q=80"
-          alt="Worker welding steel with industrial sparks"
+          src="/images/services/mobile-welding.webp"
+          alt="DJN Services mobile welding crew at work"
           fill
           priority
-          className="object-cover opacity-30 grayscale"
+          className="object-cover opacity-35"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45" aria-hidden="true" />

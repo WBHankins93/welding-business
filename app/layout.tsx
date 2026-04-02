@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
-import { Flame } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import '@/styles/index.css'
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.djnservicesllc.com'),
   title: {
     default: 'DJN Services LLC | Professional Welding & Handyman Services',
     template: '%s | DJN Services LLC',
@@ -24,10 +25,8 @@ export const metadata: Metadata = {
     description: 'Professional mobile welding, trash removal, and handyman services. Certified welders with 20+ years of combined experience.',
     images: [
       {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'DJN Services LLC',
+        url: '/images/services/mobile-welding.webp',
+        alt: 'DJN Services LLC mobile welding service',
       },
     ],
   },
@@ -138,10 +137,15 @@ export default function RootLayout({
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  <div className="bg-[#FF6A00] p-2 sm:p-2.5 rounded-lg shadow-lg" aria-hidden="true">
-                    <Flame className="size-5 sm:size-6 text-[#0a0a0a]" />
+                  <div className="overflow-hidden rounded-lg bg-white/95 p-1 shadow-lg ring-1 ring-white/15">
+                    <Image
+                      src="/images/brand/djn-logo.webp"
+                      alt="DJN Services LLC"
+                      width={168}
+                      height={56}
+                      className="h-11 w-auto sm:h-12"
+                    />
                   </div>
-                  <h2 className="text-lg sm:text-xl font-bold">DJN Services LLC</h2>
                 </div>
                 <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
                   Professional welding services for all your metal fabrication needs. 100% disabled veteran-owned business.
