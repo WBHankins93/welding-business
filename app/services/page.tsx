@@ -136,10 +136,10 @@ export default function Services() {
       <div>
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2">
           <Breadcrumbs
             items={[
-              { label: 'Home', href: '/' },
+              { label: 'DJN Services LLC', href: '/' },
               { label: 'Services' },
             ]}
           />

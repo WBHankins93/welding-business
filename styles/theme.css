@@ -268,6 +268,31 @@
     @apply text-sm leading-relaxed text-[#4a5568] sm:text-base;
   }
 
+  .type-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-[#FF6A00];
+    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', sans-serif;
+  }
+
+  .type-heading {
+    @apply font-bold uppercase tracking-wide text-[#1C1C1C];
+    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', sans-serif;
+  }
+
+  .type-subheading {
+    @apply text-lg font-semibold text-[#1a1f2e] sm:text-xl;
+    font-family: Montserrat, Inter, 'Segoe UI', sans-serif;
+  }
+
+  .type-body {
+    @apply text-base leading-relaxed text-[#4A4A4A] sm:text-lg;
+    font-family: Inter, 'Segoe UI', sans-serif;
+  }
+
+  .type-note {
+    @apply text-sm italic text-[#374151];
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
   .glass-shell {
     background:
       linear-gradient(135deg, rgba(14, 16, 24, 0.84), rgba(10, 10, 10, 0.64));

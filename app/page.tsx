@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowRight,
+  Building2,
   CheckCircle2,
   Hammer,
   Home as HomeIcon,
@@ -142,14 +143,14 @@ const serviceAreas = [
 function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
   return (
     <div className="max-w-3xl">
-      <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">
+      <p className="type-kicker mb-3 inline-flex items-center gap-2">
         <Sparkles className="size-3.5" aria-hidden="true" />
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-heading font-bold uppercase leading-tight tracking-wide text-[#1C1C1C] sm:text-4xl md:text-5xl">
+      <h2 className="type-heading text-3xl leading-tight sm:text-4xl md:text-5xl">
         {title}
       </h2>
-      <p className="mt-4 text-base text-[#4A4A4A] sm:text-lg">{description}</p>
+      <p className="type-body mt-4">{description}</p>
     </div>
   )
 }
@@ -209,12 +210,12 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <Link
-              href="/contact#contact-form"
-              className="glass-button-primary mt-6 hidden w-full gap-2 px-5 py-3 text-sm tracking-wide sm:inline-flex"
-            >
-              <ArrowRight className="size-4" /> Get A Quote
-            </Link>
+            <div className="mt-6 hidden w-full rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-center text-sm font-semibold tracking-[0.14em] text-white sm:block">
+              (555) 123-4567
+            </div>
+            <a href={phoneHref} className="glass-button-primary mt-6 inline-flex w-full gap-2 px-5 py-3 text-sm tracking-wide sm:hidden">
+              <Phone className="size-4" /> {phoneNumber}
+            </a>
           </FadeIn>
         </div>
       </section>
@@ -292,7 +293,7 @@ export default function Home() {
                 href="/contact"
                 className="glass-button-primary mt-5 hidden w-full gap-2 text-xs tracking-wide sm:inline-flex"
               >
-                <ArrowRight className="size-4" /> Contact
+                <ArrowRight className="size-4" /> Complete A Form
               </Link>
               <a
                 href={phoneHref}
