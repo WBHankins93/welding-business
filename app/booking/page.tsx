@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Calendar, Clock } from 'lucide-react'
 import { BookingForm } from '@/components/BookingForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
@@ -40,10 +39,10 @@ export default function Booking() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="glass-panel-dark max-w-3xl rounded-[32px] p-8 sm:p-10">
             <ScrollReveal immediate>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Book Your Service</h1>
+              <h1 className="page-hero-title mb-4 sm:mb-6">Book Your Service</h1>
             </ScrollReveal>
             <ScrollReveal delay={0.1} immediate>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed">
+              <p className="page-hero-subtitle max-w-3xl">
                 Schedule your welding service online. We'll contact you within 24 hours to
                 confirm your appointment.
               </p>
@@ -57,7 +56,7 @@ export default function Booking() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="glass-panel-light rounded-[32px] p-6 shadow-xl sm:p-8 md:p-10 lg:p-14">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-[#0a0a0a]">Schedule Your Service</h2>
+              <h2 className="section-title mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl">Schedule Your Service</h2>
               <BookingForm />
             </div>
           </ScrollReveal>
@@ -66,24 +65,24 @@ export default function Booking() {
           <StaggerContainer className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             <StaggerItem>
               <div className="glass-panel-light rounded-[28px] p-6 sm:p-8">
-                <h3 className="font-bold mb-2 text-sm sm:text-base">Quick Response</h3>
-                <p className="text-xs sm:text-sm text-gray-600">
+                <h3 className="card-title mb-2">Quick Response</h3>
+                <p className="card-text">
                   We'll contact you within 24 hours to confirm your appointment.
                 </p>
               </div>
             </StaggerItem>
             <StaggerItem>
               <div className="glass-panel-light rounded-[28px] p-6 sm:p-8">
-                <h3 className="font-bold mb-2 text-sm sm:text-base">Free Estimates</h3>
-                <p className="text-xs sm:text-sm text-gray-600">
+                <h3 className="card-title mb-2">Free Estimates</h3>
+                <p className="card-text">
                   All bookings include a free, no-obligation quote.
                 </p>
               </div>
             </StaggerItem>
             <StaggerItem>
               <div className="glass-panel-light rounded-[28px] p-6 sm:p-8">
-                <h3 className="font-bold mb-2 text-sm sm:text-base">Flexible Scheduling</h3>
-                <p className="text-xs sm:text-sm text-gray-600">
+                <h3 className="card-title mb-2">Flexible Scheduling</h3>
+                <p className="card-text">
                   We work around your schedule to minimize disruption.
                 </p>
               </div>
@@ -97,7 +96,7 @@ export default function Booking() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="glass-panel-light rounded-[32px] px-6 py-10 sm:px-10">
             <ScrollReveal>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Need Emergency Service?</h2>
+              <h2 className="section-title mb-3 text-2xl sm:mb-4 sm:text-3xl md:text-4xl">Need Emergency Service?</h2>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <p className="text-base sm:text-lg mb-6 sm:mb-8 text-[#1a1f2e] px-4">
