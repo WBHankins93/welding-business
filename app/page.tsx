@@ -6,11 +6,9 @@ import {
   ArrowRight,
   Building2,
   CheckCircle2,
-  Clock3,
   Hammer,
   Home as HomeIcon,
   Phone,
-  ShieldCheck,
   Sparkles,
   Star,
   Truck,
@@ -205,16 +203,12 @@ export default function Home() {
 
           <FadeIn delay={0.2} className="glass-panel-dark self-end rounded-[28px] p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Fast Response</p>
-            <div className="mt-4 space-y-4 text-sm text-gray-200">
-              <p className="flex items-center gap-2">
-                <Clock3 className="size-4 text-[#FF6A00]" /> Same-day scheduling when available
-              </p>
-              <p className="flex items-center gap-2">
-                <ShieldCheck className="size-4 text-[#FF6A00]" /> Honest scope and clear pricing
-              </p>
-              <p className="flex items-center gap-2">
-                <Building2 className="size-4 text-[#FF6A00]" /> Residential, commercial, and job-site work
-              </p>
+            <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-gray-100">
+              {['Same-day scheduling', 'Honest scope', 'Clear pricing', 'Residential', 'Commercial', 'Job-site service'].map((item) => (
+                <div key={item} className="glass-panel-light flex min-h-14 items-center justify-center rounded-2xl px-3 py-2 text-center text-xs font-semibold uppercase tracking-wide text-[#1C1C1C]">
+                  {item}
+                </div>
+              ))}
             </div>
             <div className="mt-6 hidden w-full rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-center text-sm font-semibold tracking-[0.14em] text-white sm:block">
               (555) 123-4567
