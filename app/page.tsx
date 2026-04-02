@@ -4,14 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowRight,
-  Building2,
-  CalendarClock,
   CheckCircle2,
-  Clock3,
   Hammer,
   Home as HomeIcon,
   Phone,
-  ShieldCheck,
   Sparkles,
   Star,
   Truck,
@@ -172,7 +168,7 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageStructuredData) }} />
 
-      <section className="relative isolate overflow-hidden bg-[#1C1C1C] text-white">
+      <section className="relative isolate -mt-24 overflow-hidden bg-[#1C1C1C] pt-24 text-white sm:-mt-28 sm:pt-28">
         <FloatingOrbs />
         <Image
           src="/images/services/mobile-welding.webp"
@@ -192,55 +188,33 @@ export default function Home() {
               Built to Last.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-gray-200 sm:text-xl">
-              Heavy-duty help for homes, businesses, and job sites. Fast response, fair estimates, and serious workmanship from a local crew.
+              <span className="font-semibold italic text-white">Welcome to DJN Services.</span> Heavy-duty help for homes, businesses, and job sites. Fast response, fair estimates, and serious workmanship from a local crew.
             </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-10 flex">
               <Link
-                href="/booking"
+                href="/contact#contact-form"
                 className="glass-button-primary gap-2 px-8 py-4 text-base tracking-wide shadow-[0_0_30px_rgba(255,106,0,0.35)]"
               >
-                Get a Quote <ArrowRight className="size-4" />
+                Get A Quote <ArrowRight className="size-4" />
               </Link>
-              <Link
-                href="/contact"
-                className="glass-button-secondary hidden gap-2 px-8 py-4 text-base tracking-wide sm:inline-flex"
-              >
-                <ArrowRight className="size-4" /> Contact
-              </Link>
-              <a
-                href={phoneHref}
-                className="glass-button-secondary gap-2 px-8 py-4 text-base tracking-wide sm:hidden"
-              >
-                <Phone className="size-4" /> Call Now
-              </a>
             </div>
           </ScrollReveal>
 
           <FadeIn delay={0.2} className="glass-panel-dark self-end rounded-[28px] p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Fast Response</p>
-            <div className="mt-4 space-y-4 text-sm text-gray-200">
-              <p className="flex items-center gap-2">
-                <Clock3 className="size-4 text-[#FF6A00]" /> Same-day scheduling when available
-              </p>
-              <p className="flex items-center gap-2">
-                <ShieldCheck className="size-4 text-[#FF6A00]" /> Honest scope and clear pricing
-              </p>
-              <p className="flex items-center gap-2">
-                <Building2 className="size-4 text-[#FF6A00]" /> Residential, commercial, and job-site work
-              </p>
+            <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-gray-100">
+              {['Same-day scheduling', 'Honest scope', 'Clear pricing', 'Residential', 'Commercial', 'Job-site service'].map((item) => (
+                <div key={item} className="glass-panel-light flex min-h-14 items-center justify-center rounded-2xl px-3 py-2 text-center text-xs font-semibold uppercase tracking-wide text-[#1C1C1C]">
+                  {item}
+                </div>
+              ))}
             </div>
             <Link
-              href="/contact"
+              href="/contact#contact-form"
               className="glass-button-primary mt-6 hidden w-full gap-2 px-5 py-3 text-sm tracking-wide sm:inline-flex"
             >
-              <ArrowRight className="size-4" /> Contact
+              <ArrowRight className="size-4" /> Get A Quote
             </Link>
-            <a
-              href={phoneHref}
-              className="glass-button-primary mt-6 inline-flex w-full gap-2 px-5 py-3 text-sm tracking-wide sm:hidden"
-            >
-              <Phone className="size-4" /> {phoneNumber}
-            </a>
           </FadeIn>
         </div>
       </section>
@@ -410,25 +384,13 @@ export default function Home() {
           <p className="mx-auto mt-5 max-w-2xl text-gray-300 sm:text-lg">
             Need welding, hauling, or removal done fast? Reach out for priority response or send a quote request and we’ll follow up quickly.
           </p>
-          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="mt-9 flex justify-center">
             <Link
-              href="/booking"
+              href="/contact#contact-form"
               className="glass-button-primary gap-2 px-8 py-4 text-base tracking-wide"
             >
-              <CalendarClock className="size-4" /> Get a Quote
+              Get A Quote <ArrowRight className="size-4" />
             </Link>
-            <Link
-              href="/contact"
-              className="glass-button-secondary hidden gap-2 px-8 py-4 text-base tracking-wide sm:inline-flex"
-            >
-              <ArrowRight className="size-4" /> Contact
-            </Link>
-            <a
-              href={phoneHref}
-              className="glass-button-secondary gap-2 px-8 py-4 text-base tracking-wide sm:hidden"
-            >
-              <Phone className="size-4" /> Call {phoneNumber}
-            </a>
           </div>
         </div>
       </section>

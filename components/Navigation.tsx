@@ -26,8 +26,8 @@ export function Navigation() {
   }
 
   return (
-    <header className="sticky top-0 z-50 px-3 pt-3 text-white sm:px-5 lg:px-8">
-      <nav className="glass-shell mx-auto max-w-5xl rounded-[30px] px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 px-3 pt-0 text-white sm:px-5 lg:px-8">
+      <nav className="glass-shell mx-auto mt-3 max-w-5xl rounded-[30px] px-4 sm:px-6 lg:px-8">
         <div className="flex min-h-20 items-center justify-between gap-4 sm:min-h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">

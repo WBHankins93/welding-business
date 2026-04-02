@@ -281,13 +281,13 @@ export default function Services() {
                     </div>
                   )}
 
-                  {/* Book Now Button */}
+                  {/* Get a Quote Button */}
                   <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
                     <Link
-                      href="/booking"
+                      href="/contact#contact-form"
                       className="glass-button-dark w-full text-center text-xs tracking-wide sm:w-auto"
                     >
-                      Book now
+                      Get a quote
                     </Link>
                   </div>
                   </div>
@@ -403,10 +403,10 @@ export default function Services() {
             <ScrollReveal delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
                 <Link
-                  href="/booking"
+                  href="/contact#contact-form"
                   className="glass-button-primary"
                 >
-                  Schedule Service
+                  Get a Quote
                 </Link>
                 <Link
                   href="/contact"

@@ -285,10 +285,10 @@ export default function About() {
           <ScrollReveal delay={0.2}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
               <Link
-                href="/booking"
+                href="/contact#contact-form"
                 className="bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl text-sm sm:text-base"
               >
-                Book Now
+                Get a Quote
               </Link>
               <Link
                 href="/contact"
