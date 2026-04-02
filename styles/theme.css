@@ -240,6 +240,34 @@
 }
 
 @layer components {
+  .page-hero-title {
+    @apply text-4xl font-bold uppercase leading-[0.96] tracking-wide sm:text-5xl md:text-6xl;
+    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  .page-hero-subtitle {
+    @apply text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold uppercase leading-tight tracking-wide text-[#0a0a0a] sm:text-4xl md:text-5xl;
+    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  .section-subtitle {
+    @apply text-base leading-relaxed text-[#4a5568] sm:text-lg;
+  }
+
+  .card-title {
+    @apply text-lg font-semibold text-[#0a0a0a] sm:text-xl;
+  }
+
+  .card-text {
+    @apply text-sm leading-relaxed text-[#4a5568] sm:text-base;
+  }
+
   .glass-shell {
     background:
       linear-gradient(135deg, rgba(14, 16, 24, 0.84), rgba(10, 10, 10, 0.64));

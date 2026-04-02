@@ -63,12 +63,6 @@ export function Navigation() {
                 {item.name}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="glass-button-primary px-5 lg:px-6 py-2.5 text-xs"
-            >
-              Contact
-            </Link>
           </div>
 
           {/* Mobile menu button */}
