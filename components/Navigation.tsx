@@ -13,10 +13,9 @@ export function Navigation() {
   const isHome = pathname === '/'
 
   const navigation = [
-    { name: 'DJN Services LLC', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
-    { name: 'Complete A Form', href: '/contact' },
+    { name: 'Get A Quote', href: '/contact#contact-form' },
   ]
 
   const isActive = (path: string) => {
@@ -43,7 +42,7 @@ export function Navigation() {
                 width={340}
                 height={114}
                 priority
-                className={`relative w-auto brightness-110 contrast-125 saturate-110 ${isHome ? 'h-16 drop-shadow-[0_0_18px_rgba(255,106,0,0.4)] sm:h-20 lg:h-24' : 'h-10 sm:h-11'}`}
+                className={`relative w-auto brightness-110 contrast-125 saturate-110 ${isHome ? 'h-20 drop-shadow-[0_0_18px_rgba(255,106,0,0.4)] sm:h-24 lg:h-28' : 'h-14 sm:h-16'}`}
               />
             </div>
             <span className="sr-only">DJN Services LLC</span>
