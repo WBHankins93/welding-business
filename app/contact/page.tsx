@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/ContactForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
@@ -26,7 +25,7 @@ export default function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      details: businessPhones.map((phone) => `${phone.label}: ${phone.display}`),
+      details: [],
     },
     {
       icon: Mail,
@@ -133,11 +132,21 @@ export default function Contact() {
                       <Icon className="size-8 sm:size-10 text-[#d4af37]" />
                     </div>
                     <h3 className="card-title mb-2 sm:mb-3">{info.title}</h3>
-                    {info.details.map((detail, index) => (
-                      <p key={index} className="card-text mb-1">
-                        {detail}
-                      </p>
-                    ))}
+                    {info.title === 'Phone'
+                      ? businessPhones.map((phone) => (
+                        <a
+                          key={phone.href}
+                          href={phone.href}
+                          className="card-text mb-1 block hover:text-[#FF6A00] transition-colors duration-200"
+                        >
+                          {phone.label}: {phone.display}
+                        </a>
+                      ))
+                      : info.details.map((detail, index) => (
+                        <p key={index} className="card-text mb-1">
+                          {detail}
+                        </p>
+                      ))}
                   </div>
                 </StaggerItem>
               )
@@ -162,17 +171,11 @@ export default function Contact() {
                   <p className="text-[#1a1f2e] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                     Need urgent welding repairs? Call for priority scheduling during operating hours.
                   </p>
-                  <Link
-                    href="#contact-form"
-                    className="glass-button-dark hidden w-full sm:inline-flex"
-                  >
-                    Send Emergency Details
-                  </Link>
                   <a
-                    href={businessPhones[0].href}
+                    href={businessPhones[1].href}
                     className="block bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] text-center py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base"
                   >
-                    Call Now: {businessPhones[0].display}
+                    Call Now: {businessPhones[1].display}
                   </a>
                 </div>
 
