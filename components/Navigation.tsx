@@ -48,13 +48,40 @@ export function Navigation() {
             <span className="sr-only">DJN Services LLC</span>
           </Link>
 
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="hidden md:flex items-center gap-5 lg:gap-7">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`rounded-full px-4 py-2 text-sm font-medium uppercase tracking-[0.16em] transition-all duration-200 ${
+                  isActive(item.href)
+                    ? isHome
+                      ? 'bg-white/12 text-[#FF6A00] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]'
+                      : 'bg-[#1a1f2e]/8 text-[#FF6A00]'
+                    : isHome
+                      ? 'text-gray-300 hover:bg-white/8 hover:text-white'
+                      : 'text-[#4a5568] hover:bg-[#1a1f2e]/6 hover:text-[#1a1f2e]'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
             <a
               href="tel:5551234567"
               className={`inline-flex items-center justify-center rounded-full p-3 transition-all duration-200 ${isHome ? 'bg-[#FF6A00] text-white shadow-[0_0_24px_rgba(255,106,0,0.45)] hover:scale-105' : 'bg-[#FF6A00] text-white hover:bg-[#e45f00]'}`}
               aria-label="Call DJN Services"
             >
               <Phone className="size-6 sm:size-7" />
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3 md:hidden">
+            <a
+              href="tel:5551234567"
+              className={`inline-flex items-center justify-center rounded-full p-2.5 transition-all duration-200 ${isHome ? 'bg-[#FF6A00] text-white shadow-[0_0_18px_rgba(255,106,0,0.42)]' : 'bg-[#FF6A00] text-white'}`}
+              aria-label="Call DJN Services"
+            >
+              <Phone className="size-5" />
             </a>
 
             {/* Mobile menu button */}

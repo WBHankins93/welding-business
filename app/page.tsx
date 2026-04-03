@@ -168,7 +168,7 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageStructuredData) }} />
 
-      <section className="relative isolate -mt-24 overflow-hidden bg-[#1C1C1C] pt-24 text-white sm:-mt-28 sm:pt-28">
+      <section className="relative isolate overflow-hidden bg-[#1C1C1C] text-white">
         <FloatingOrbs />
         <Image
           src="/images/services/mobile-welding.webp"
@@ -192,15 +192,15 @@ export default function Home() {
             </p>
             <div className="mt-10 flex">
               <Link
-                href="/contact#contact-form"
-                className="glass-button-primary gap-2 px-8 py-4 text-base tracking-wide shadow-[0_0_30px_rgba(255,106,0,0.35)]"
+                href="/booking"
+                className="inline-flex items-center justify-center gap-2 bg-[#FF6A00] px-8 py-4 text-base font-semibold uppercase tracking-wide text-white shadow-[0_0_30px_rgba(255,106,0,0.35)] transition hover:bg-[#e66000]"
               >
                 Get A Quote <ArrowRight className="size-4" />
               </Link>
             </div>
           </ScrollReveal>
 
-          <FadeIn delay={0.2} className="glass-panel-dark self-end rounded-[28px] p-6">
+          <FadeIn delay={0.2} className="self-end rounded-sm border border-white/20 bg-black/45 p-6 backdrop-blur-sm">
             <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Fast Response</p>
             <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-gray-100">
               {['Same-day scheduling', 'Honest scope', 'Clear pricing', 'Residential', 'Commercial', 'Job-site service'].map((item) => (
@@ -221,9 +221,9 @@ export default function Home() {
           <StaggerContainer className="contents" immediate>
             {trustPoints.map((point) => (
               <StaggerItem key={point}>
-                <div className="flex items-center justify-center gap-2 rounded-2xl border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1f2e] sm:text-sm">
+                <div className="flex items-center justify-center gap-2 rounded-2xl border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#1C1C1C] sm:text-sm">
                   <CheckCircle2 className="size-4 shrink-0 text-[#FF6A00]" aria-hidden="true" />
-                  {point}
+                  <span>{point}</span>
                 </div>
               </StaggerItem>
             ))}
@@ -244,13 +244,13 @@ export default function Home() {
               return (
                 <StaggerItem key={service.title}>
                   <HoverLift className="h-full">
-                    <article className="glass-panel-light flex h-full flex-col rounded-[28px] p-6 transition hover:shadow-xl">
-                      <div className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-[#1C1C1C] text-[#FF6A00]">
+                    <article className="flex h-full flex-col border border-black/10 bg-white p-6 shadow-sm transition hover:shadow-lg">
+                      <div className="mb-5 inline-flex size-12 items-center justify-center bg-[#1C1C1C] text-[#FF6A00]">
                         <Icon className="size-6" aria-hidden="true" />
                       </div>
                       <h3 className="text-2xl font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{service.title}</h3>
                       <p className="mt-4 text-[#4A4A4A]">{service.description}</p>
-                      <Link href="/services" className="glass-button-dark mt-6 w-full gap-2 text-xs tracking-wide sm:w-fit">
+                      <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C] transition hover:text-[#FF6A00]">
                         Learn More <ArrowRight className="size-4" />
                       </Link>
                     </article>
@@ -317,9 +317,9 @@ export default function Home() {
             {projects.map((project) => (
               <StaggerItem key={project.title}>
                 <HoverLift>
-                  <article className="glass-panel-light overflow-hidden rounded-[28px]">
+                  <article className="overflow-hidden border border-black/10 bg-[#F4F4F4]">
                     <div className="relative h-56">
-                      <Image src={project.image} alt={project.alt} fill className="object-cover transition duration-500 hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src={project.image} alt={project.alt} fill className="object-cover grayscale transition duration-500 hover:scale-105 hover:grayscale-0" sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className="p-5">
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">{project.type}</p>
@@ -343,7 +343,7 @@ export default function Home() {
           <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-3">
             {testimonials.map((testimonial) => (
               <StaggerItem key={testimonial.name}>
-                <figure className="glass-panel-light flex h-full flex-col justify-between rounded-[28px] p-6">
+                <figure className="flex h-full flex-col justify-between border border-black/10 bg-white p-6">
                   <blockquote className="text-[#1C1C1C]">“{testimonial.quote}”</blockquote>
                   <figcaption className="mt-6 border-t border-black/10 pt-4">
                     <p className="font-bold uppercase tracking-wide text-[#1C1C1C]">{testimonial.name}</p>

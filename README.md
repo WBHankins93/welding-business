@@ -34,10 +34,10 @@ npm install
 
 ### 🔐 Environment Variables
 
-Create a `.env.local` file in the project root:
+Copy `.env.example` to `.env.local` and fill in your Formspree IDs:
 
 ```bash
-NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL=https://script.google.com/macros/s/your-script-id/exec
+cp .env.example .env.local
 ```
 
 > Forms post to a Google Apps Script web app, which can email you and log inquiries to a Google Sheet.
