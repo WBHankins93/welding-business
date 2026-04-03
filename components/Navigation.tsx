@@ -3,19 +3,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { Menu, Phone, X } from 'lucide-react'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const isHome = pathname === '/'
 
   const navigation = [
-    { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Get A Quote', href: '/contact#contact-form' },
   ]
 
   const isActive = (path: string) => {
@@ -26,34 +26,41 @@ export function Navigation() {
   }
 
   return (
-    <header className="bg-[#0a0a0a] text-white sticky top-0 z-50 shadow-xl border-b border-[#1a1f2e]/20">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 sm:h-20 items-center justify-between">
+    <header className={`sticky top-0 z-50 ${isHome ? 'px-3 text-white sm:px-5 lg:px-8' : 'border-b border-gray-200 bg-white/95 text-[#1a1f2e] backdrop-blur-sm'}`}>
+      <nav className={`${isHome ? 'glass-shell mx-auto max-w-5xl rounded-[30px] px-4 sm:px-6 lg:px-8' : 'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'}`}>
+        <div className={`flex items-center justify-between gap-4 ${isHome ? 'min-h-20 sm:min-h-24' : 'min-h-14 sm:min-h-16'}`}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-            <div className="overflow-hidden rounded-lg bg-white/95 p-1 shadow-lg ring-1 ring-white/15 transition-transform duration-200 group-hover:scale-[1.02]">
+            <div className="relative px-1 py-1 transition-transform duration-200 group-hover:scale-[1.03]">
+              <div
+                aria-hidden="true"
+                className="absolute inset-1 rounded-full bg-[#FF6A00]/20 blur-xl transition-opacity duration-200 group-hover:opacity-100"
+              />
               <Image
                 src="/images/brand/djn-logo.webp"
                 alt="DJN Services LLC"
-                width={144}
-                height={48}
+                width={340}
+                height={114}
                 priority
-                className="h-10 w-auto sm:h-12"
+                className={`relative w-auto brightness-110 contrast-125 saturate-110 ${isHome ? 'h-20 drop-shadow-[0_0_18px_rgba(255,106,0,0.4)] sm:h-24 lg:h-28' : 'h-14 sm:h-16'}`}
               />
             </div>
             <span className="sr-only">DJN Services LLC</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-10">
+          <div className="hidden md:flex items-center gap-5 lg:gap-7">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-medium transition-all duration-200 ${
+                className={`rounded-full px-4 py-2 text-sm font-medium uppercase tracking-[0.16em] transition-all duration-200 ${
                   isActive(item.href)
-                    ? 'text-[#FF6A00] border-b-2 border-[#FF6A00] pb-1'
-                    : 'text-gray-300 hover:text-[#FF6A00]'
+                    ? isHome
+                      ? 'bg-white/12 text-[#FF6A00] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]'
+                      : 'bg-[#1a1f2e]/8 text-[#FF6A00]'
+                    : isHome
+                      ? 'text-gray-300 hover:bg-white/8 hover:text-white'
+                      : 'text-[#4a5568] hover:bg-[#1a1f2e]/6 hover:text-[#1a1f2e]'
                 }`}
               >
                 {item.name}
@@ -61,24 +68,35 @@ export function Navigation() {
             ))}
             <a
               href="tel:5551234567"
-              className="bg-[#FF6A00] hover:bg-[#e66000] text-[#0a0a0a] px-5 lg:px-6 py-2 sm:py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl text-sm"
+              className={`inline-flex items-center justify-center rounded-full p-3 transition-all duration-200 ${isHome ? 'bg-[#FF6A00] text-white shadow-[0_0_24px_rgba(255,106,0,0.45)] hover:scale-105' : 'bg-[#FF6A00] text-white hover:bg-[#e45f00]'}`}
+              aria-label="Call DJN Services"
             >
-              Call Now
+              <Phone className="size-6 sm:size-7" />
             </a>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-white hover:text-[#FF6A00] transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="size-6" />
-            ) : (
-              <Menu className="size-6" />
-            )}
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <a
+              href="tel:5551234567"
+              className={`inline-flex items-center justify-center rounded-full p-2.5 transition-all duration-200 ${isHome ? 'bg-[#FF6A00] text-white shadow-[0_0_18px_rgba(255,106,0,0.42)]' : 'bg-[#FF6A00] text-white'}`}
+              aria-label="Call DJN Services"
+            >
+              <Phone className="size-5" />
+            </a>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`md:hidden rounded-full p-2 transition-colors hover:text-[#FF6A00] ${isHome ? 'border border-white/12 bg-white/6 text-white' : 'border border-black/10 bg-white text-[#1a1f2e]'}`}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="size-6" />
+              ) : (
+                <Menu className="size-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -89,7 +107,7 @@ export function Navigation() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="md:hidden overflow-hidden border-t border-[#1a1f2e]/30"
+              className={`md:hidden overflow-hidden ${isHome ? 'border-t border-white/10' : 'border-t border-black/10'}`}
             >
               <div className="py-4 space-y-2">
                 {navigation.map((item, index) => (
@@ -102,10 +120,14 @@ export function Navigation() {
                     <Link
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
+                      className={`block rounded-2xl px-4 py-3 transition-all duration-200 ${
                         isActive(item.href)
-                          ? 'bg-[#FF6A00] text-[#0a0a0a] font-semibold'
-                          : 'text-gray-300 hover:bg-[#1a1f2e] hover:text-[#FF6A00]'
+                          ? isHome
+                            ? 'glass-button-primary text-center'
+                            : 'bg-[#1a1f2e] text-white text-center'
+                          : isHome
+                            ? 'glass-panel-dark text-gray-200 hover:text-[#FF6A00]'
+                            : 'bg-gray-100 text-[#1a1f2e] hover:text-[#FF6A00]'
                       }`}
                     >
                       {item.name}
@@ -120,7 +142,7 @@ export function Navigation() {
                   <a
                     href="tel:5551234567"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block bg-[#FF6A00] hover:bg-[#e66000] text-[#0a0a0a] px-4 py-3 rounded-lg transition-colors text-center font-semibold shadow-lg"
+                    className={`flex w-full justify-center rounded-2xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] ${isHome ? 'glass-button-primary' : 'bg-[#1a1f2e] text-white'}`}
                   >
                     Call Now
                   </a>

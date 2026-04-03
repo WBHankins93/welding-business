@@ -137,13 +137,17 @@ export default function RootLayout({
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  <div className="overflow-hidden rounded-lg bg-white/95 p-1 shadow-lg ring-1 ring-white/15">
+                  <div className="relative px-1 py-1">
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-1 rounded-full bg-[#FF6A00]/20 blur-xl"
+                    />
                     <Image
                       src="/images/brand/djn-logo.webp"
                       alt="DJN Services LLC"
-                      width={168}
-                      height={56}
-                      className="h-11 w-auto sm:h-12"
+                      width={360}
+                      height={120}
+                      className="relative h-24 w-auto brightness-110 contrast-125 saturate-110 drop-shadow-[0_0_18px_rgba(255,106,0,0.35)] sm:h-28"
                     />
                   </div>
                 </div>

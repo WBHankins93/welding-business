@@ -19,7 +19,7 @@
 | **UI**         | React 18, TypeScript |
 | **Styling**    | Tailwind CSS |
 | **Components** | Radix UI |
-| **Forms**      | Formspree |
+| **Forms**      | Google Apps Script + Gmail |
 | **Testing**    | Vitest |
 
 ---
@@ -40,7 +40,7 @@ Copy `.env.example` to `.env.local` and fill in your Formspree IDs:
 cp .env.example .env.local
 ```
 
-> 📎 Get your Formspree form IDs at [formspree.io](https://formspree.io/forms).
+> Forms post to a Google Apps Script web app, which can email you and log inquiries to a Google Sheet.
 
 ### 💻 Development
 
@@ -78,7 +78,7 @@ This project is set up for **Vercel**:
 
 1. Push your code to GitHub
 2. Import the repo in Vercel
-3. Add the environment variables in the Vercel dashboard
+3. Add the environment variable in the Vercel dashboard
 4. Deploy!
 
 The `vercel.json` file is already configured for Next.js.
@@ -91,7 +91,7 @@ The `vercel.json` file is already configured for Next.js.
 |--------|-------------|
 | 🎯 **SEO** | Server-side rendering and comprehensive metadata (JSON-LD) |
 | 📱 **Responsive** | Works on all screen sizes |
-| 📬 **Forms** | Formspree for contact and booking |
+| 📬 **Forms** | Contact and booking forms routed through Google Apps Script |
 | 🎨 **Design** | Gold/black color scheme |
 | ♿ **Accessible** | Radix UI components |
 
