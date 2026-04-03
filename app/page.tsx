@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowRight,
+  CheckCircle2,
   Hammer,
   Home as HomeIcon,
   Phone,
@@ -74,7 +75,7 @@ const services: Service[] = [
   },
 ]
 
-const tickerItems = [
+const trustPoints = [
   'MOBILE WELDING',
   'TRASH & JUNK REMOVAL',
   'HANDYMAN SERVICES',
@@ -215,16 +216,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden border-y border-black/10 bg-white py-3 sm:py-4">
-        <div className="stock-ticker-track flex min-w-max items-center gap-3 px-3 sm:gap-4 sm:px-4">
-          {[...tickerItems, ...tickerItems].map((item, idx) => (
-            <div
-              key={`${item}-${idx}`}
-              className="rounded-full border border-black/10 bg-[#f7f7f7] px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1f2e] sm:px-5 sm:text-sm"
-            >
-              {item}
-            </div>
-          ))}
+      <section className="border-y border-black/10 bg-white">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2 px-4 py-6 sm:grid-cols-3 sm:px-6 lg:grid-cols-5 lg:px-8">
+          <StaggerContainer className="contents" immediate>
+            {trustPoints.map((point) => (
+              <StaggerItem key={point}>
+                <div className="flex items-center justify-center gap-2 rounded-2xl border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1f2e] sm:text-sm">
+                  <CheckCircle2 className="size-4 shrink-0 text-[#FF6A00]" aria-hidden="true" />
+                  {point}
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
