@@ -18,9 +18,10 @@ import { FloatingOrbs } from '@/components/animations/FloatingOrbs'
 import { HoverLift } from '@/components/animations/HoverLift'
 import { ScrollReveal } from '@/components/animations/ScrollReveal'
 import { StaggerContainer, StaggerItem } from '@/components/animations/StaggerContainer'
+import { primaryPhone } from '@/lib/contact-info'
 
-const phoneNumber = '(555) 123-4567'
-const phoneHref = 'tel:5551234567'
+const phoneNumber = primaryPhone.display
+const phoneHref = primaryPhone.href
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -221,8 +222,8 @@ export default function Home() {
           <StaggerContainer className="contents" immediate>
             {trustPoints.map((point) => (
               <StaggerItem key={point}>
-                <div className="flex items-center justify-center gap-2 rounded-2xl border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#1C1C1C] sm:text-sm">
-                  <CheckCircle2 className="size-4 shrink-0 text-[#FF6A00]" aria-hidden="true" />
+                <div className="flex items-center justify-center gap-2 border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-wider text-[#1C1C1C] sm:text-sm">
+                  <CheckCircle2 className="size-4 text-[#FF6A00]" aria-hidden="true" />
                   <span>{point}</span>
                 </div>
               </StaggerItem>
