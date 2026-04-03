@@ -3,6 +3,7 @@ import { Calendar, Clock } from 'lucide-react'
 import { BookingForm } from '@/components/BookingForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
+import { primaryPhone } from '@/lib/contact-info'
 
 export const metadata: Metadata = {
   title: 'Book Your Service',
@@ -99,12 +100,12 @@ export default function Booking() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-base sm:text-lg mb-6 sm:mb-8 text-[#1a1f2e] px-4">
-              For urgent welding repairs, call us directly at (555) 123-4567
+              For urgent welding repairs, call us directly at {primaryPhone.display}
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <a
-              href="tel:5551234567"
+              href={primaryPhone.href}
               className="inline-block bg-[#0a0a0a] text-[#d4af37] hover:bg-[#1a1f2e] px-8 sm:px-10 py-3 sm:py-4 rounded-lg transition-all duration-200 font-semibold shadow-xl hover:shadow-2xl text-sm sm:text-base"
             >
               Call Now
