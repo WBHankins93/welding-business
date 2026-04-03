@@ -1,19 +1,20 @@
 import type { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
-import { ContactFormPlaceholder } from '@/components/ContactFormPlaceholder'
+import { ContactForm } from '@/components/ContactForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
+import { businessAddress, businessEmail, businessPhones } from '@/lib/contact-info'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, trash removal, or handyman project. Available 24/7 for emergency services. We respond within 24 hours.',
+  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, trash removal, or handyman project. Business hours are Monday through Saturday, 8AM to 6PM. We respond within 24 hours.',
   keywords: ['contact welding services', 'welding quote', 'emergency welding', 'welding consultation'],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/contact',
   },
   openGraph: {
     title: 'Contact DJN Services LLC | Free Quote Available',
-    description: 'Get in touch for a free quote or to discuss your welding, trash removal, or handyman project. Available 24/7 for emergencies.',
+    description: 'Get in touch for a free quote or to discuss your welding, trash removal, or handyman project.',
     url: 'https://www.djnservicesllc.com/contact',
     type: 'website',
   },
@@ -24,22 +25,22 @@ export default function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['(555) 123-4567', 'Available 24/7 for emergencies'],
+      details: businessPhones.map((phone) => `${phone.label}: ${phone.display}`),
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@djnservicesllc.com', 'We respond within 24 hours'],
+      details: [businessEmail, 'We respond within 24 hours'],
     },
     {
       icon: MapPin,
       title: 'Location',
-      details: ['123 Industrial Parkway', 'Your City, ST 12345'],
+      details: [businessAddress.street, businessAddress.cityStateZip],
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      details: ['Monday - Friday: 8AM - 6PM', 'Saturday: 9AM - 2PM'],
+      details: ['Monday - Saturday: 8AM - 6PM'],
     },
   ]
 
@@ -69,7 +70,7 @@ export default function Contact() {
         name: 'How quickly can you start?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Most projects can be scheduled within a few days. Emergency services are available 24/7.',
+          text: 'Most projects can be scheduled within a few days based on availability during business hours.',
         },
       },
       {
@@ -142,11 +143,11 @@ export default function Contact() {
 
           {/* Contact Form & Map */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
-            {/* Form (placeholder for client demo; swap to ContactForm when Formspree is ready) */}
+            {/* Form */}
             <ScrollReveal direction="right">
               <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-[#0a0a0a]">Send Us a Message</h2>
-                <ContactFormPlaceholder />
+                <ContactForm />
               </div>
             </ScrollReveal>
 
@@ -156,14 +157,13 @@ export default function Contact() {
                 <div className="bg-[#fef3c7] p-6 sm:p-8 rounded-xl border border-[#d4af37]/30 shadow-md">
                   <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#0a0a0a]">Emergency Service</h3>
                   <p className="text-[#1a1f2e] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                    Need urgent welding repairs? We offer 24/7 emergency service for
-                    critical situations.
+                    Need urgent welding repairs? Call for priority scheduling during operating hours.
                   </p>
                   <a
-                    href="tel:5551234567"
+                    href={businessPhones[0].href}
                     className="block bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] text-center py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base"
                   >
-                    Call Now: (555) 123-4567
+                    Call Now: {businessPhones[0].display}
                   </a>
                 </div>
 
@@ -209,8 +209,7 @@ export default function Contact() {
               <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#d4af37]/30 transition-all duration-300">
                 <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">How quickly can you start?</h3>
                 <p className="text-[#4a5568] leading-relaxed">
-                  Most projects can be scheduled within a few days. Emergency services
-                  are available 24/7.
+                  Most projects can be scheduled within a few days based on availability.
                 </p>
               </div>
             </StaggerItem>

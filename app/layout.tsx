@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Navigation } from '@/components/Navigation'
+import { businessAddress, businessEmail, businessHoursLabel, businessPhones, primaryPhone } from '@/lib/contact-info'
 import '@/styles/index.css'
 
 
@@ -63,33 +64,27 @@ export default function RootLayout({
     name: 'DJN Services LLC',
     description: 'Professional mobile welding, trash removal, and handyman services. 100% disabled veteran-owned business.',
     url: 'https://www.djnservicesllc.com',
-    telephone: '(555) 123-4567',
-    email: 'info@djnservicesllc.com',
+    telephone: primaryPhone.display,
+    email: businessEmail,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '123 Industrial Parkway',
-      addressLocality: 'Your City',
-      addressRegion: 'ST',
-      postalCode: '12345',
-      addressCountry: 'US',
+      streetAddress: businessAddress.street,
+      addressLocality: businessAddress.locality,
+      addressRegion: businessAddress.region,
+      postalCode: businessAddress.postalCode,
+      addressCountry: businessAddress.country,
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '40.7128',
-      longitude: '-74.0060',
+      latitude: '30.4144',
+      longitude: '-87.5983',
     },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         opens: '08:00',
         closes: '18:00',
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: 'Saturday',
-        opens: '09:00',
-        closes: '14:00',
       },
     ],
     priceRange: '$$',
@@ -172,16 +167,19 @@ export default function RootLayout({
                 <h3 className="font-bold mb-4 sm:mb-6 text-[#FF6A00] text-base sm:text-lg">Contact</h3>
                 <div className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
                   <p>
-                    <a href="tel:5551234567" className="hover:text-[#FF6A00] transition-colors duration-200">
-                      Phone: (555) 123-4567
-                    </a>
+                    {businessPhones.map((phone) => (
+                      <a key={phone.href} href={phone.href} className="block hover:text-[#FF6A00] transition-colors duration-200">
+                        {phone.label}: {phone.display}
+                      </a>
+                    ))}
                   </p>
                   <p>
-                    <a href="mailto:info@djnservicesllc.com" className="hover:text-[#FF6A00] transition-colors duration-200">
-                      Email: info@djnservicesllc.com
+                    <a href={`mailto:${businessEmail}`} className="hover:text-[#FF6A00] transition-colors duration-200">
+                      Email: {businessEmail}
                     </a>
                   </p>
-                  <p>Hours: Mon-Fri, 8AM-6PM</p>
+                  <p>Address: {businessAddress.street}, {businessAddress.cityStateZip}</p>
+                  <p>Hours: {businessHoursLabel}</p>
                 </div>
               </address>
             </div>

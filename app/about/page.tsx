@@ -52,7 +52,7 @@ export default function About() {
     { number: '20+', label: 'Years Experience' },
     { number: '500+', label: 'Projects Completed' },
     { number: '100%', label: 'Quality Guaranteed' },
-    { number: '24/7', label: 'Emergency Service' },
+    { number: 'Mon-Sat', label: 'Service Hours' },
   ]
 
   return (

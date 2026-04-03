@@ -34,11 +34,10 @@ npm install
 
 ### 🔐 Environment Variables
 
-Create a `.env.local` file in the project root:
+Copy `.env.example` to `.env.local` and fill in your Formspree IDs:
 
 ```bash
-NEXT_PUBLIC_FORMSPREE_CONTACT_ID=your_contact_form_id
-NEXT_PUBLIC_FORMSPREE_BOOKING_ID=your_booking_form_id
+cp .env.example .env.local
 ```
 
 > 📎 Get your Formspree form IDs at [formspree.io](https://formspree.io/forms).
@@ -95,6 +94,14 @@ The `vercel.json` file is already configured for Next.js.
 | 📬 **Forms** | Formspree for contact and booking |
 | 🎨 **Design** | Gold/black color scheme |
 | ♿ **Accessible** | Radix UI components |
+
+---
+
+## 📈 SEO Operations
+
+For a low-maintenance local growth cadence, see the 180-day operating plan:
+
+- `docs/seo-180-day-system.md`
 
 ---
 

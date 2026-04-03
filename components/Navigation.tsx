@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import { primaryPhone } from '@/lib/contact-info'
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -60,7 +61,7 @@ export function Navigation() {
               </Link>
             ))}
             <a
-              href="tel:5551234567"
+              href={primaryPhone.href}
               className="bg-[#FF6A00] hover:bg-[#e66000] text-[#0a0a0a] px-5 lg:px-6 py-2 sm:py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl text-sm"
             >
               Call Now
@@ -118,7 +119,7 @@ export function Navigation() {
                   transition={{ delay: navigation.length * 0.1, duration: 0.3 }}
                 >
                   <a
-                    href="tel:5551234567"
+                    href={primaryPhone.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className="block bg-[#FF6A00] hover:bg-[#e66000] text-[#0a0a0a] px-4 py-3 rounded-lg transition-colors text-center font-semibold shadow-lg"
                   >
