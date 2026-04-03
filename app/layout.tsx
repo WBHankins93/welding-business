@@ -145,9 +145,9 @@ export default function RootLayout({
                     <Image
                       src="/images/brand/djn-logo.webp"
                       alt="DJN Services LLC"
-                      width={240}
-                      height={80}
-                      className="relative h-16 w-auto brightness-110 contrast-125 saturate-110 drop-shadow-[0_0_18px_rgba(255,106,0,0.35)] sm:h-[4.5rem]"
+                      width={360}
+                      height={120}
+                      className="relative h-24 w-auto brightness-110 contrast-125 saturate-110 drop-shadow-[0_0_18px_rgba(255,106,0,0.35)] sm:h-28"
                     />
                   </div>
                 </div>

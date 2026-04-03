@@ -293,7 +293,7 @@ export default function Home() {
                 href="/contact"
                 className="glass-button-primary mt-5 hidden w-full gap-2 text-xs tracking-wide sm:inline-flex"
               >
-                <ArrowRight className="size-4" /> Complete A Form
+                <ArrowRight className="size-4" /> Get A Quote
               </Link>
               <a
                 href={phoneHref}
@@ -323,7 +323,7 @@ export default function Home() {
                 <HoverLift>
                   <article className="glass-panel-light overflow-hidden rounded-[28px]">
                     <div className="relative h-56">
-                      <Image src={project.image} alt={project.alt} fill className="object-cover grayscale transition duration-500 hover:scale-105 hover:grayscale-0" sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src={project.image} alt={project.alt} fill className="object-cover transition duration-500 hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className="p-5">
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">{project.type}</p>
