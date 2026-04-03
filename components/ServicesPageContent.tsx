@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Wrench, Package, Hammer } from 'lucide-react'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
+import { primaryPhone } from '@/lib/contact-info'
 
 const serviceTabs = [
   { id: 'mobile-welding', label: 'Mobile Welding', icon: Wrench },
@@ -93,10 +94,11 @@ const materials = [
 
 export function ServicesPageContent() {
   const [activeService, setActiveService] = useState(services[0].id)
+  const activeServiceDetails = services.find((service) => service.id === activeService) ?? services[0]
+  const ActiveServiceIcon = activeServiceDetails.icon
 
   const jumpToService = (id: string) => {
     setActiveService(id)
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   const onMaterialMove = (event: MouseEvent<HTMLDivElement>) => {
@@ -168,65 +170,56 @@ export function ServicesPageContent() {
       <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <StaggerContainer className="space-y-8 sm:space-y-10">
-            {services.map((service) => {
-              const Icon = service.icon
-              return (
-                <StaggerItem key={service.title}>
-                  <article
-                    id={service.id}
-                    className={`rounded-[30px] border p-6 sm:p-8 md:p-10 transition-all duration-300 ${
-                      activeService === service.id
-                        ? 'border-[#FF6A00]/45 bg-gradient-to-br from-[#fff8ef] via-white to-[#fff2de] shadow-[0_26px_50px_rgba(255,106,0,0.16)]'
-                        : 'border-black/10 bg-gradient-to-br from-[#fafafa] to-white shadow-[0_16px_32px_rgba(0,0,0,0.08)]'
-                    }`}
-                  >
-                    <div className="mb-5 flex items-center gap-3">
-                      <div className="rounded-2xl bg-[#1a1f2e] p-3 text-[#FF6A00]">
-                        <Icon className="size-6" />
-                      </div>
-                      <h2 className="text-2xl font-bold uppercase tracking-wide text-[#0a0a0a] sm:text-3xl">{service.title}</h2>
-                    </div>
-                    <div className="relative mb-6 overflow-hidden rounded-2xl border border-black/10">
-                      {service.id === 'handyman' ? (
-                        <img
-                          src={service.image}
-                          alt={service.alt}
-                          className="h-64 w-full object-cover sm:h-72"
-                        />
-                      ) : (
-                        <Image
-                          src={service.image}
-                          alt={service.alt}
-                          width={1200}
-                          height={700}
-                          className="h-64 w-full object-cover sm:h-72"
-                          sizes="100vw"
-                        />
-                      )}
-                    </div>
-                    <p className="card-text">{service.description}</p>
-                    <div className="my-5 rounded-2xl border border-[#FF6A00]/35 bg-white px-5 py-4">
-                      <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[#8c6a00]">Ideal for</p>
-                      <p className="mt-2 text-[#1a1f2e]">{service.highlight.replace('Ideal for: ', '')}</p>
-                    </div>
+            <StaggerItem key={activeServiceDetails.title}>
+              <article
+                id={activeServiceDetails.id}
+                className="rounded-[30px] border border-[#FF6A00]/45 bg-gradient-to-br from-[#fff8ef] via-white to-[#fff2de] p-6 shadow-[0_26px_50px_rgba(255,106,0,0.16)] transition-all duration-300 sm:p-8 md:p-10"
+              >
+                <div className="mb-5 flex items-center gap-3">
+                  <div className="rounded-2xl bg-[#1a1f2e] p-3 text-[#FF6A00]">
+                    <ActiveServiceIcon className="size-6" />
+                  </div>
+                  <h2 className="text-2xl font-bold uppercase tracking-wide text-[#0a0a0a] sm:text-3xl">{activeServiceDetails.title}</h2>
+                </div>
+                <div className="relative mb-6 overflow-hidden rounded-2xl border border-black/10">
+                  {activeServiceDetails.id === 'handyman' ? (
+                    <img
+                      src={activeServiceDetails.image}
+                      alt={activeServiceDetails.alt}
+                      className="h-64 w-full object-cover sm:h-72"
+                    />
+                  ) : (
+                    <Image
+                      src={activeServiceDetails.image}
+                      alt={activeServiceDetails.alt}
+                      width={1200}
+                      height={700}
+                      className="h-64 w-full object-cover sm:h-72"
+                      sizes="100vw"
+                    />
+                  )}
+                </div>
+                <p className="card-text">{activeServiceDetails.description}</p>
+                <div className="my-5 rounded-2xl border border-[#FF6A00]/35 bg-white px-5 py-4">
+                  <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[#8c6a00]">Ideal for</p>
+                  <p className="mt-2 text-[#1a1f2e]">{activeServiceDetails.highlight.replace('Ideal for: ', '')}</p>
+                </div>
 
-                    <ul className="space-y-3">
-                      {(service.techniques ?? service.list ?? []).map((item, idx) => (
-                        <li key={idx} className="rounded-xl border border-black/10 bg-white px-4 py-3 text-[#1a1f2e]">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                <ul className="space-y-3">
+                  {(activeServiceDetails.techniques ?? activeServiceDetails.list ?? []).map((item, idx) => (
+                    <li key={idx} className="rounded-xl border border-black/10 bg-white px-4 py-3 text-[#1a1f2e]">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
-                    <div className="mt-7 border-t border-black/10 pt-6">
-                      <Link href="/contact#contact-form" className="glass-button-primary w-full sm:w-auto">
-                        Get A Quote
-                      </Link>
-                    </div>
-                  </article>
-                </StaggerItem>
-              )
-            })}
+                <div className="mt-7 border-t border-black/10 pt-6">
+                  <Link href="/booking" className="glass-button-primary w-full sm:w-auto">
+                    Get A Quote
+                  </Link>
+                </div>
+              </article>
+            </StaggerItem>
           </StaggerContainer>
         </div>
       </section>
@@ -283,11 +276,11 @@ export function ServicesPageContent() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-                <Link href="/contact#contact-form" className="glass-button-primary">
+                <Link href="/booking" className="glass-button-primary">
                   Get A Quote
                 </Link>
-                <a href="tel:5551234567" className="glass-button-dark">
-                  Call (555) 123-4567
+                <a href={primaryPhone.href} className="glass-button-dark">
+                  Call {primaryPhone.display}
                 </a>
               </div>
             </ScrollReveal>
