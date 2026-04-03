@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { Menu, Phone, X } from 'lucide-react'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 
@@ -26,8 +26,8 @@ export function Navigation() {
   }
 
   return (
-    <header className={`sticky top-0 z-50 ${isHome ? 'px-3 pt-0 text-white sm:px-5 lg:px-8' : 'border-b border-gray-200 bg-white/95 text-[#1a1f2e] backdrop-blur-sm'}`}>
-      <nav className={`${isHome ? 'glass-shell mx-auto mt-3 max-w-5xl rounded-[30px] px-4 sm:px-6 lg:px-8' : 'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'}`}>
+    <header className={`sticky top-0 z-50 ${isHome ? 'px-3 text-white sm:px-5 lg:px-8' : 'border-b border-gray-200 bg-white/95 text-[#1a1f2e] backdrop-blur-sm'}`}>
+      <nav className={`${isHome ? 'glass-shell mx-auto max-w-5xl rounded-[30px] px-4 sm:px-6 lg:px-8' : 'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'}`}>
         <div className={`flex items-center justify-between gap-4 ${isHome ? 'min-h-20 sm:min-h-24' : 'min-h-14 sm:min-h-16'}`}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
@@ -48,39 +48,28 @@ export function Navigation() {
             <span className="sr-only">DJN Services LLC</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium uppercase tracking-[0.16em] transition-all duration-200 ${
-                  isActive(item.href)
-                    ? isHome
-                      ? 'bg-white/12 text-[#FF6A00] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]'
-                      : 'bg-[#1a1f2e]/8 text-[#FF6A00]'
-                    : isHome
-                      ? 'text-gray-300 hover:bg-white/8 hover:text-white'
-                      : 'text-[#4a5568] hover:bg-[#1a1f2e]/6 hover:text-[#1a1f2e]'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+          <div className="flex items-center gap-3 sm:gap-4">
+            <a
+              href="tel:5551234567"
+              className={`inline-flex items-center justify-center rounded-full p-3 transition-all duration-200 ${isHome ? 'bg-[#FF6A00] text-white shadow-[0_0_24px_rgba(255,106,0,0.45)] hover:scale-105' : 'bg-[#FF6A00] text-white hover:bg-[#e45f00]'}`}
+              aria-label="Call DJN Services"
+            >
+              <Phone className="size-6 sm:size-7" />
+            </a>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden rounded-full p-2 transition-colors hover:text-[#FF6A00] ${isHome ? 'border border-white/12 bg-white/6 text-white' : 'border border-black/10 bg-white text-[#1a1f2e]'}`}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="size-6" />
-            ) : (
-              <Menu className="size-6" />
-            )}
-          </button>
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`md:hidden rounded-full p-2 transition-colors hover:text-[#FF6A00] ${isHome ? 'border border-white/12 bg-white/6 text-white' : 'border border-black/10 bg-white text-[#1a1f2e]'}`}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="size-6" />
+              ) : (
+                <Menu className="size-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

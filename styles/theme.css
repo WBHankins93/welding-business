@@ -400,4 +400,23 @@
       0 10px 30px rgba(15, 23, 42, 0.08);
     outline: none;
   }
+
+  .stock-ticker-track {
+    animation: stock-ticker-scroll 26s linear infinite;
+  }
+
+  @media (max-width: 767px) {
+    .stock-ticker-track {
+      animation-duration: 18s;
+    }
+  }
+
+  @keyframes stock-ticker-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }
