@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { Menu, Phone, X } from 'lucide-react'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 
@@ -13,10 +13,9 @@ export function Navigation() {
   const isHome = pathname === '/'
 
   const navigation = [
-    { name: 'DJN Services LLC', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
-    { name: 'Complete A Form', href: '/contact' },
+    { name: 'Get A Quote', href: '/contact#contact-form' },
   ]
 
   const isActive = (path: string) => {
@@ -27,8 +26,8 @@ export function Navigation() {
   }
 
   return (
-    <header className={`sticky top-0 z-50 ${isHome ? 'px-3 pt-0 text-white sm:px-5 lg:px-8' : 'border-b border-gray-200 bg-white/95 text-[#1a1f2e] backdrop-blur-sm'}`}>
-      <nav className={`${isHome ? 'glass-shell mx-auto mt-3 max-w-5xl rounded-[30px] px-4 sm:px-6 lg:px-8' : 'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'}`}>
+    <header className={`sticky top-0 z-50 ${isHome ? 'px-3 text-white sm:px-5 lg:px-8' : 'border-b border-gray-200 bg-white/95 text-[#1a1f2e] backdrop-blur-sm'}`}>
+      <nav className={`${isHome ? 'glass-shell mx-auto max-w-5xl rounded-[30px] px-4 sm:px-6 lg:px-8' : 'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'}`}>
         <div className={`flex items-center justify-between gap-4 ${isHome ? 'min-h-20 sm:min-h-24' : 'min-h-14 sm:min-h-16'}`}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
@@ -43,14 +42,13 @@ export function Navigation() {
                 width={340}
                 height={114}
                 priority
-                className={`relative w-auto brightness-110 contrast-125 saturate-110 ${isHome ? 'h-16 drop-shadow-[0_0_18px_rgba(255,106,0,0.4)] sm:h-20 lg:h-24' : 'h-10 sm:h-11'}`}
+                className={`relative w-auto brightness-110 contrast-125 saturate-110 ${isHome ? 'h-20 drop-shadow-[0_0_18px_rgba(255,106,0,0.4)] sm:h-24 lg:h-28' : 'h-14 sm:h-16'}`}
               />
             </div>
             <span className="sr-only">DJN Services LLC</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <div className="hidden md:flex items-center gap-5 lg:gap-7">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -68,20 +66,37 @@ export function Navigation() {
                 {item.name}
               </Link>
             ))}
+            <a
+              href="tel:5551234567"
+              className={`inline-flex items-center justify-center rounded-full p-3 transition-all duration-200 ${isHome ? 'bg-[#FF6A00] text-white shadow-[0_0_24px_rgba(255,106,0,0.45)] hover:scale-105' : 'bg-[#FF6A00] text-white hover:bg-[#e45f00]'}`}
+              aria-label="Call DJN Services"
+            >
+              <Phone className="size-6 sm:size-7" />
+            </a>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden rounded-full p-2 transition-colors hover:text-[#FF6A00] ${isHome ? 'border border-white/12 bg-white/6 text-white' : 'border border-black/10 bg-white text-[#1a1f2e]'}`}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="size-6" />
-            ) : (
-              <Menu className="size-6" />
-            )}
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <a
+              href="tel:5551234567"
+              className={`inline-flex items-center justify-center rounded-full p-2.5 transition-all duration-200 ${isHome ? 'bg-[#FF6A00] text-white shadow-[0_0_18px_rgba(255,106,0,0.42)]' : 'bg-[#FF6A00] text-white'}`}
+              aria-label="Call DJN Services"
+            >
+              <Phone className="size-5" />
+            </a>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`md:hidden rounded-full p-2 transition-colors hover:text-[#FF6A00] ${isHome ? 'border border-white/12 bg-white/6 text-white' : 'border border-black/10 bg-white text-[#1a1f2e]'}`}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="size-6" />
+              ) : (
+                <Menu className="size-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
