@@ -4,14 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowRight,
-  Building2,
-  CalendarClock,
   CheckCircle2,
-  Clock3,
   Hammer,
   Home as HomeIcon,
   Phone,
-  ShieldCheck,
   Sparkles,
   Star,
   Truck,
@@ -81,11 +77,11 @@ const services: Service[] = [
 ]
 
 const trustPoints = [
-  'Locally Owned',
-  'Free Estimates',
-  'Fast Response',
-  'Reliable Service',
-  'Residential + Commercial',
+  'MOBILE WELDING',
+  'TRASH & JUNK REMOVAL',
+  'HANDYMAN SERVICES',
+  'FAST RESPONSE',
+  'RESIDENTIAL + COMMERCIAL',
 ]
 
 const reasons = [
@@ -147,14 +143,14 @@ const serviceAreas = [
 function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
   return (
     <div className="max-w-3xl">
-      <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">
+      <p className="type-kicker mb-3 inline-flex items-center gap-2">
         <Sparkles className="size-3.5" aria-hidden="true" />
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-heading font-bold uppercase leading-tight tracking-wide text-[#1C1C1C] sm:text-4xl md:text-5xl">
+      <h2 className="type-heading text-3xl leading-tight sm:text-4xl md:text-5xl">
         {title}
       </h2>
-      <p className="mt-4 text-base text-[#4A4A4A] sm:text-lg">{description}</p>
+      <p className="type-body mt-4">{description}</p>
     </div>
   )
 }
@@ -193,41 +189,28 @@ export default function Home() {
               Built to Last.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-gray-200 sm:text-xl">
-              Heavy-duty help for homes, businesses, and job sites. Fast response, fair estimates, and serious workmanship from a local crew.
+              <span className="font-semibold italic text-white">Welcome to DJN Services.</span> Heavy-duty help for homes, businesses, and job sites. Fast response, fair estimates, and serious workmanship from a local crew.
             </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-10 flex">
               <Link
                 href="/booking"
                 className="inline-flex items-center justify-center gap-2 bg-[#FF6A00] px-8 py-4 text-base font-semibold uppercase tracking-wide text-white shadow-[0_0_30px_rgba(255,106,0,0.35)] transition hover:bg-[#e66000]"
               >
-                Get a Quote <ArrowRight className="size-4" />
+                Get A Quote <ArrowRight className="size-4" />
               </Link>
-              <a
-                href={phoneHref}
-                className="inline-flex items-center justify-center gap-2 border border-white/60 px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition hover:border-[#FF6A00] hover:text-[#FF6A00]"
-              >
-                <Phone className="size-4" /> Call Now
-              </a>
             </div>
           </ScrollReveal>
 
           <FadeIn delay={0.2} className="self-end rounded-sm border border-white/20 bg-black/45 p-6 backdrop-blur-sm">
             <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Fast Response</p>
-            <div className="mt-4 space-y-4 text-sm text-gray-200">
-              <p className="flex items-center gap-2">
-                <Clock3 className="size-4 text-[#FF6A00]" /> Same-day scheduling when available
-              </p>
-              <p className="flex items-center gap-2">
-                <ShieldCheck className="size-4 text-[#FF6A00]" /> Honest scope and clear pricing
-              </p>
-              <p className="flex items-center gap-2">
-                <Building2 className="size-4 text-[#FF6A00]" /> Residential, commercial, and job-site work
-              </p>
+            <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-gray-100">
+              {['Same-day scheduling', 'Honest scope', 'Clear pricing', 'Residential', 'Commercial', 'Job-site service'].map((item) => (
+                <div key={item} className="glass-panel-light flex min-h-14 items-center justify-center rounded-2xl px-3 py-2 text-center text-xs font-semibold uppercase tracking-wide text-[#1C1C1C]">
+                  {item}
+                </div>
+              ))}
             </div>
-            <a
-              href={phoneHref}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 border border-[#FF6A00] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-[#FF6A00] transition hover:bg-[#FF6A00] hover:text-white"
-            >
+            <a href={phoneHref} className="glass-button-primary mt-6 inline-flex w-full gap-2 px-5 py-3 text-sm tracking-wide">
               <Phone className="size-4" /> {phoneNumber}
             </a>
           </FadeIn>
@@ -290,7 +273,7 @@ export default function Home() {
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {reasons.map((reason) => (
-                <li key={reason} className="flex gap-3 border border-white/15 bg-white/5 p-4 text-sm sm:text-base">
+                <li key={reason} className="glass-panel-dark flex gap-3 rounded-[24px] p-4 text-sm sm:text-base">
                   <Star className="mt-0.5 size-4 shrink-0 text-[#FF6A00]" aria-hidden="true" />
                   <span>{reason}</span>
                 </li>
@@ -298,13 +281,25 @@ export default function Home() {
             </ul>
           </div>
           <div className="grid gap-4 self-end">
-            <div className="border border-[#FF6A00]/50 bg-black/40 p-5">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Call for Priority Scheduling</p>
-              <a href={phoneHref} className="mt-2 block text-3xl font-heading font-bold tracking-wide text-white transition hover:text-[#FF6A00] sm:text-4xl">
-                {phoneNumber}
+            <div className="glass-panel-dark rounded-[28px] p-5">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Priority Scheduling</p>
+              <p className="mt-2 text-2xl font-heading font-bold tracking-wide text-white sm:text-3xl">
+                Fast communication for urgent work.
+              </p>
+              <Link
+                href="/contact"
+                className="glass-button-primary mt-5 hidden w-full gap-2 text-xs tracking-wide sm:inline-flex"
+              >
+                <ArrowRight className="size-4" /> Get A Quote
+              </Link>
+              <a
+                href={phoneHref}
+                className="glass-button-primary mt-5 inline-flex w-full gap-2 text-xs tracking-wide sm:hidden"
+              >
+                <Phone className="size-4" /> Call Now
               </a>
             </div>
-            <div className="border border-white/15 bg-white/5 p-5 text-sm text-gray-200">
+            <div className="glass-panel-dark rounded-[28px] p-5 text-sm text-gray-200">
               <p className="font-semibold uppercase tracking-wider text-white">Built for:</p>
               <p className="mt-2">Homes • Commercial Properties • Construction Sites • Equipment Yards</p>
             </div>
@@ -371,7 +366,7 @@ export default function Home() {
           />
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {serviceAreas.map((area) => (
-              <div key={area} className="flex items-center justify-center gap-2 border border-black/10 bg-[#F4F4F4] px-4 py-3 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C]">
+              <div key={area} className="glass-panel-light flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C]">
                 <HomeIcon className="size-4 text-[#FF6A00]" aria-hidden="true" />
                 {area}
               </div>
@@ -385,21 +380,15 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">Ready to Get Started?</p>
           <h2 className="mt-3 text-4xl font-heading font-bold uppercase tracking-wide sm:text-5xl">Get Your Quote Today</h2>
           <p className="mx-auto mt-5 max-w-2xl text-gray-300 sm:text-lg">
-            Need welding, hauling, or removal done fast? Call now for priority response or send a quote request and we’ll follow up quickly.
+            Need welding, hauling, or removal done fast? Reach out for priority response or send a quote request and we’ll follow up quickly.
           </p>
-          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="mt-9 flex justify-center">
             <Link
-              href="/booking"
-              className="inline-flex items-center justify-center gap-2 bg-[#FF6A00] px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition hover:bg-[#e66000]"
+              href="/contact#contact-form"
+              className="glass-button-primary gap-2 px-8 py-4 text-base tracking-wide"
             >
-              <CalendarClock className="size-4" /> Get a Quote
+              Get A Quote <ArrowRight className="size-4" />
             </Link>
-            <a
-              href={phoneHref}
-              className="inline-flex items-center justify-center gap-2 border border-white/60 px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition hover:border-[#FF6A00] hover:text-[#FF6A00]"
-            >
-              <Phone className="size-4" /> Call {phoneNumber}
-            </a>
           </div>
         </div>
       </section>

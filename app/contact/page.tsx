@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/ContactForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
@@ -93,10 +94,10 @@ export default function Contact() {
       <div>
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2">
           <Breadcrumbs
             items={[
-              { label: 'Home', href: '/' },
+              { label: 'DJN Services LLC', href: '/' },
               { label: 'Contact' },
             ]}
           />
@@ -106,14 +107,16 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal immediate>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Contact Us</h1>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1} immediate>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
-              Get in touch with us for a free quote or to discuss your welding project
-            </p>
-          </ScrollReveal>
+          <div className="glass-panel-dark max-w-4xl rounded-[32px] p-8 sm:p-10">
+            <ScrollReveal immediate>
+              <h1 className="page-hero-title mb-4 sm:mb-6">Contact Us</h1>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1} immediate>
+              <p className="page-hero-subtitle max-w-3xl">
+                Get in touch with us for a free quote or to discuss your welding project
+              </p>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -125,13 +128,13 @@ export default function Contact() {
               const Icon = info.icon
               return (
                 <StaggerItem key={info.title}>
-                  <div className="text-center">
-                    <div className="bg-[#fef3c7] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-md">
+                  <div className="glass-panel-light rounded-[28px] p-6 text-center">
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#fef3c7]/90 shadow-md sm:mb-6 sm:h-20 sm:w-20">
                       <Icon className="size-8 sm:size-10 text-[#d4af37]" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">{info.title}</h3>
+                    <h3 className="card-title mb-2 sm:mb-3">{info.title}</h3>
                     {info.details.map((detail, index) => (
-                      <p key={index} className="text-[#4a5568] mb-1 text-sm sm:text-base">
+                      <p key={index} className="card-text mb-1">
                         {detail}
                       </p>
                     ))}
@@ -159,6 +162,12 @@ export default function Contact() {
                   <p className="text-[#1a1f2e] mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                     Need urgent welding repairs? Call for priority scheduling during operating hours.
                   </p>
+                  <Link
+                    href="#contact-form"
+                    className="glass-button-dark hidden w-full sm:inline-flex"
+                  >
+                    Send Emergency Details
+                  </Link>
                   <a
                     href={businessPhones[0].href}
                     className="block bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] text-center py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base"
@@ -167,9 +176,9 @@ export default function Contact() {
                   </a>
                 </div>
 
-                <div className="bg-[#f7f8fa] p-6 sm:p-8 rounded-xl border border-gray-100 shadow-md">
-                  <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-[#0a0a0a]">Service Area</h3>
-                  <p className="text-[#1a1f2e] leading-relaxed text-sm sm:text-base">
+                <div className="glass-panel-light rounded-[28px] p-6 sm:p-8">
+                  <h3 className="card-title mb-3 sm:mb-4">Service Area</h3>
+                  <p className="card-text text-[#1a1f2e]">
                     Gulf coast region: MS, AL, FL, South GA. Contact us to confirm we serve your location.
                   </p>
                 </div>
@@ -183,41 +192,41 @@ export default function Contact() {
       <section className="bg-[#f7f8fa] py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-[#0a0a0a]">
+            <h2 className="section-title mb-10 text-center sm:mb-12">
               Frequently Asked Questions
             </h2>
           </ScrollReveal>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <StaggerItem>
-              <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#d4af37]/30 transition-all duration-300">
-                <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">Do you offer free estimates?</h3>
-                <p className="text-[#4a5568] leading-relaxed">
+              <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
+                <h3 className="card-title mb-3">Do you offer free estimates?</h3>
+                <p className="card-text">
                   Yes! We provide free, no-obligation quotes for all welding and
                   fabrication projects.
                 </p>
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#d4af37]/30 transition-all duration-300">
-                <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">What areas do you serve?</h3>
-                <p className="text-[#4a5568] leading-relaxed">
+              <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
+                <h3 className="card-title mb-3">What areas do you serve?</h3>
+                <p className="card-text">
                   We serve the Gulf Coast region: Mississippi, Alabama, Florida, and South Georgia. Contact us to confirm we serve your location.
                 </p>
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#d4af37]/30 transition-all duration-300">
-                <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">How quickly can you start?</h3>
-                <p className="text-[#4a5568] leading-relaxed">
+              <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
+                <h3 className="card-title mb-3">How quickly can you start?</h3>
+                <p className="card-text">
                   Most projects can be scheduled within a few days. Emergency services
                   are available 24/7.
                 </p>
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#d4af37]/30 transition-all duration-300">
-                <h3 className="font-bold mb-3 text-[#0a0a0a] text-lg">Are you licensed and insured?</h3>
-                <p className="text-[#4a5568] leading-relaxed">
+              <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
+                <h3 className="card-title mb-3">Are you licensed and insured?</h3>
+                <p className="card-text">
                   Yes, we are fully licensed, insured, and our welders are AWS certified.
                 </p>
               </div>

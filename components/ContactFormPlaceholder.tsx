@@ -2,7 +2,7 @@
 
 /**
  * Static placeholder form for client demos. Does not submit anywhere.
- * Swap to ContactForm when Formspree is configured.
+ * Swap to ContactForm when the live form endpoint is configured.
  */
 export function ContactFormPlaceholder() {
   return (

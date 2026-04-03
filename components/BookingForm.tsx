@@ -3,13 +3,11 @@
 import { useState } from 'react'
 import { Calendar, Clock, CheckCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
+import { submitInquiryToGoogle } from '@/lib/googleAppsScript'
 
 export function BookingForm() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
-
-  // Replace with your Formspree form ID
-  const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_BOOKING_ID || 'YOUR_FORMSPREE_BOOKING_ID'
 
   const services = [
     'MIG Welding',
@@ -47,21 +45,10 @@ export function BookingForm() {
     const formData = new FormData(form)
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ENDPOINT}`, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-        },
-      })
-
-      if (response.ok) {
-        setSubmitted(true)
-        form.reset()
-      } else {
-        setError(true)
-      }
-    } catch (err) {
+      await submitInquiryToGoogle(formData, 'booking')
+      setSubmitted(true)
+      form.reset()
+    } catch {
       setError(true)
     }
   }
@@ -72,13 +59,13 @@ export function BookingForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-        className="bg-white p-8 sm:p-12 rounded-lg shadow-lg text-center"
+        className="glass-panel-light rounded-[32px] p-8 text-center sm:p-12"
       >
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: 'spring', stiffness: 200, damping: 15 }}
-          className="bg-green-100 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6"
+          className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 sm:mb-6 sm:h-20 sm:w-20"
         >
           <CheckCircle className="size-10 sm:size-12 text-green-500" />
         </motion.div>
@@ -94,7 +81,7 @@ export function BookingForm() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="mt-6 sm:mt-8 p-5 sm:p-6 bg-[#fef3c7] rounded-xl border border-[#d4af37]/30"
+          className="glass-panel-light mt-6 rounded-[28px] p-5 sm:mt-8 sm:p-6"
         >
           <p className="text-gray-700 text-sm sm:text-base">
             <strong>What's next?</strong> Our team will review your request and
@@ -115,7 +102,7 @@ export function BookingForm() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg text-center"
+            className="rounded-2xl border border-red-200/80 bg-red-50/80 p-4 text-center text-red-800 backdrop-blur-md"
           >
             <p className="text-sm">Something went wrong. Please try again or call us directly.</p>
           </motion.div>
@@ -135,7 +122,7 @@ export function BookingForm() {
               id="name"
               name="name"
               required
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] transition-all text-sm sm:text-base"
+              className="glass-input"
               placeholder="John Doe"
             />
           </div>
@@ -148,7 +135,7 @@ export function BookingForm() {
               id="email"
               name="email"
               required
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] transition-all text-sm sm:text-base"
+              className="glass-input"
               placeholder="john@example.com"
             />
           </div>
@@ -180,7 +167,7 @@ export function BookingForm() {
               id="serviceType"
               name="serviceType"
               required
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] transition-all text-sm sm:text-base"
+              className="glass-input"
             >
               <option value="">Select a service</option>
               {services.map((service) => (
@@ -198,7 +185,7 @@ export function BookingForm() {
               id="projectType"
               name="projectType"
               required
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] transition-all text-sm sm:text-base"
+              className="glass-input"
             >
               <option value="">Select project type</option>
               {projectTypes.map((type) => (
@@ -218,7 +205,7 @@ export function BookingForm() {
             id="location"
             name="location"
             required
-            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] transition-all text-sm sm:text-base"
+            className="glass-input"
             placeholder="Address or location description"
           />
         </div>
@@ -239,7 +226,7 @@ export function BookingForm() {
               name="date"
               required
               min={new Date().toISOString().split('T')[0]}
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] transition-all text-sm sm:text-base"
+              className="glass-input"
             />
           </div>
           <div>
@@ -251,7 +238,7 @@ export function BookingForm() {
               id="time"
               name="time"
               required
-              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] transition-all text-sm sm:text-base"
+              className="glass-input"
             >
               <option value="">Select time slot</option>
               {timeSlots.map((slot) => (
@@ -278,7 +265,7 @@ export function BookingForm() {
           name="description"
           required
           rows={5}
-          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:border-[#d4af37] transition-all text-sm sm:text-base"
+          className="glass-input min-h-36"
           placeholder="Please describe your welding project, including materials, dimensions, and any specific requirements..."
         ></textarea>
       </div>
@@ -286,7 +273,7 @@ export function BookingForm() {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] py-3 sm:py-4 rounded-lg transition-all duration-200 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
+        className="glass-button-primary flex w-full text-base sm:text-lg"
       >
         Submit Booking Request
       </button>
