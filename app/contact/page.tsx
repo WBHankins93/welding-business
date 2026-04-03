@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
-import { ContactFormPlaceholder } from '@/components/ContactFormPlaceholder'
+import { ContactForm } from '@/components/ContactForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
 
@@ -142,11 +142,11 @@ export default function Contact() {
 
           {/* Contact Form & Map */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
-            {/* Form (placeholder for client demo; swap to ContactForm when Formspree is ready) */}
+            {/* Form */}
             <ScrollReveal direction="right">
               <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-[#0a0a0a]">Send Us a Message</h2>
-                <ContactFormPlaceholder />
+                <ContactForm />
               </div>
             </ScrollReveal>
 

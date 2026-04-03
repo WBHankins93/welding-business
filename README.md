@@ -34,11 +34,10 @@ npm install
 
 ### 🔐 Environment Variables
 
-Create a `.env.local` file in the project root:
+Copy `.env.example` to `.env.local` and fill in your Formspree IDs:
 
 ```bash
-NEXT_PUBLIC_FORMSPREE_CONTACT_ID=your_contact_form_id
-NEXT_PUBLIC_FORMSPREE_BOOKING_ID=your_booking_form_id
+cp .env.example .env.local
 ```
 
 > 📎 Get your Formspree form IDs at [formspree.io](https://formspree.io/forms).
