@@ -4,8 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowRight,
-  Building2,
-  CheckCircle2,
   Hammer,
   Home as HomeIcon,
   Phone,
@@ -76,12 +74,12 @@ const services: Service[] = [
   },
 ]
 
-const trustPoints = [
-  'Locally Owned',
-  'Free Estimates',
-  'Fast Response',
-  'Reliable Service',
-  'Residential + Commercial',
+const tickerItems = [
+  'MOBILE WELDING',
+  'TRASH & JUNK REMOVAL',
+  'HANDYMAN SERVICES',
+  'FAST RESPONSE',
+  'RESIDENTIAL + COMMERCIAL',
 ]
 
 const reasons = [
@@ -210,28 +208,23 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="mt-6 hidden w-full rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-center text-sm font-semibold tracking-[0.14em] text-white sm:block">
-              (555) 123-4567
-            </div>
-            <a href={phoneHref} className="glass-button-primary mt-6 inline-flex w-full gap-2 px-5 py-3 text-sm tracking-wide sm:hidden">
+            <a href={phoneHref} className="glass-button-primary mt-6 inline-flex w-full gap-2 px-5 py-3 text-sm tracking-wide">
               <Phone className="size-4" /> {phoneNumber}
             </a>
           </FadeIn>
         </div>
       </section>
 
-      <section className="border-y border-black/10 bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2 px-4 py-6 sm:grid-cols-3 sm:px-6 lg:grid-cols-5 lg:px-8">
-          <StaggerContainer className="contents" immediate>
-            {trustPoints.map((point) => (
-              <StaggerItem key={point}>
-                <div className="flex items-center justify-center gap-2 border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-wider text-[#1C1C1C] sm:text-sm">
-                  <CheckCircle2 className="size-4 text-[#FF6A00]" aria-hidden="true" />
-                  <span>{point}</span>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+      <section className="overflow-hidden border-y border-black/10 bg-white py-3 sm:py-4">
+        <div className="stock-ticker-track flex min-w-max items-center gap-3 px-3 sm:gap-4 sm:px-4">
+          {[...tickerItems, ...tickerItems].map((item, idx) => (
+            <div
+              key={`${item}-${idx}`}
+              className="rounded-full border border-black/10 bg-[#f7f7f7] px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1f2e] sm:px-5 sm:text-sm"
+            >
+              {item}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -293,7 +286,7 @@ export default function Home() {
                 href="/contact"
                 className="glass-button-primary mt-5 hidden w-full gap-2 text-xs tracking-wide sm:inline-flex"
               >
-                <ArrowRight className="size-4" /> Complete A Form
+                <ArrowRight className="size-4" /> Get A Quote
               </Link>
               <a
                 href={phoneHref}
@@ -323,7 +316,7 @@ export default function Home() {
                 <HoverLift>
                   <article className="glass-panel-light overflow-hidden rounded-[28px]">
                     <div className="relative h-56">
-                      <Image src={project.image} alt={project.alt} fill className="object-cover grayscale transition duration-500 hover:scale-105 hover:grayscale-0" sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src={project.image} alt={project.alt} fill className="object-cover transition duration-500 hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className="p-5">
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">{project.type}</p>
