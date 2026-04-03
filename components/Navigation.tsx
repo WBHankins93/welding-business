@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation'
 import { Menu, Phone, X } from 'lucide-react'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { primaryPhone } from '@/lib/contact-info'
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -16,7 +15,7 @@ export function Navigation() {
   const navigation = [
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
-    { name: 'Get A Quote', href: '/contact#contact-form' },
+    { name: 'Get A Quote', href: '/booking' },
   ]
 
   const isActive = (path: string) => {
@@ -67,22 +66,23 @@ export function Navigation() {
                 {item.name}
               </Link>
             ))}
-            <a
-              href={primaryPhone.href}
+            <Link
+              href="/contact"
               className="bg-[#FF6A00] hover:bg-[#e66000] text-[#0a0a0a] px-5 lg:px-6 py-2 sm:py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl text-sm"
+              aria-label="Contact DJN Services"
             >
               <Phone className="size-6 sm:size-7" />
-            </a>
+            </Link>
           </div>
 
           <div className="flex items-center gap-3 md:hidden">
-            <a
-              href="tel:5551234567"
+            <Link
+              href="/contact"
               className={`inline-flex items-center justify-center rounded-full p-2.5 transition-all duration-200 ${isHome ? 'bg-[#FF6A00] text-white shadow-[0_0_18px_rgba(255,106,0,0.42)]' : 'bg-[#FF6A00] text-white'}`}
-              aria-label="Call DJN Services"
+              aria-label="Contact DJN Services"
             >
               <Phone className="size-5" />
-            </a>
+            </Link>
 
             {/* Mobile menu button */}
             <button
@@ -139,13 +139,13 @@ export function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navigation.length * 0.1, duration: 0.3 }}
                 >
-                  <a
-                    href={primaryPhone.href}
+                  <Link
+                    href="/contact"
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex w-full justify-center rounded-2xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] ${isHome ? 'glass-button-primary' : 'bg-[#1a1f2e] text-white'}`}
                   >
                     Call Now
-                  </a>
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>

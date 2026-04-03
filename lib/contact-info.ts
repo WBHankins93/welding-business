@@ -5,7 +5,7 @@ export const businessPhones = [
     href: 'tel:2566656754',
   },
   {
-    label: 'Father',
+    label: 'David',
     display: '(256) 929-9234',
     href: 'tel:2569299234',
   },
