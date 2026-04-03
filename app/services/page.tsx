@@ -29,6 +29,7 @@ export default function Services() {
       alt: 'DJN Services mobile welding service',
       description:
         'Professional on-site welding services delivering high-quality results directly at your location. Ideal for construction, repairs, and custom fabrication projects.',
+      highlight: 'Most requested for structural repair and custom metal work.',
       techniques: [
         {
           name: 'SMAW (Shielded Metal Arc Welding)',
@@ -53,6 +54,7 @@ export default function Services() {
       title: 'Handyman Services',
       description:
         'Comprehensive handyman services for residential and commercial properties. From minor repairs to major renovations, we handle projects of all sizes with quality craftsmanship.',
+      highlight: 'Best for property upkeep, punch lists, and small renovations.',
       services: [
         'General Repairs: Doors, windows, cabinets, and fixtures.',
         'Installation Services: Fixtures, appliances, and essential upgrades.',
@@ -67,6 +69,7 @@ export default function Services() {
       alt: 'DJN Services trash removal and dump service',
       description:
         'Efficient on-demand hauling and delivery of materials. Reliable solutions for waste removal, dirt delivery, and material transport across various industries.',
+      highlight: 'Best for fast cleanups and scheduled site material hauling.',
       coreOfferings: [
         'Trash Delivery: Waste and unwanted materials to dump sites.',
         'Dirt, Rock, and Sand Delivery: Material transport to specified locations.',
@@ -175,21 +178,43 @@ export default function Services() {
       {/* Services Grid */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
-            {services.map((service) => {
+          <ScrollReveal>
+            <div className="mb-8 sm:mb-10 md:mb-12">
+              <p className="text-sm font-semibold tracking-[0.14em] uppercase text-[#8c6a00] mb-3">
+                Compare Services
+              </p>
+              <h2 className="section-title mb-4">Pick the right crew for the job</h2>
+              <p className="section-subtitle max-w-3xl">
+                We organized services by typical project flow: fabrication and repairs first, hauling and dump support second, and finishing/property work third.
+              </p>
+            </div>
+          </ScrollReveal>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8 md:gap-10">
+            {services.map((service, index) => {
               const Icon = service.icon
+              const isFeatured = index === 0
               return (
-                <StaggerItem key={service.title}>
-                  <div className="glass-panel-light rounded-[30px] p-6 sm:p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                <StaggerItem key={service.title} className={isFeatured ? 'md:col-span-6' : 'md:col-span-3'}>
+                  <div className={`glass-panel-light rounded-[30px] p-6 sm:p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl h-full ${isFeatured ? 'ring-1 ring-[#d4af37]/40' : ''}`}>
+                  <div className="mb-4 flex flex-wrap items-center gap-3 sm:mb-5">
+                    <span className="inline-flex items-center rounded-full border border-[#d4af37]/40 bg-[#fff8dc] px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-[#7a5d00]">
+                      Service {index + 1}
+                    </span>
+                    {isFeatured && (
+                      <span className="inline-flex items-center rounded-full border border-[#1f2937]/20 bg-[#111827] px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-white">
+                        Featured
+                      </span>
+                    )}
+                  </div>
                   {service.image && (
-                    <div className="relative mb-5 overflow-hidden rounded-xl">
+                    <div className={`relative mb-5 overflow-hidden rounded-xl ${isFeatured ? 'lg:mb-7' : ''}`}>
                       <Image
                         src={service.image}
                         alt={service.alt}
                         width={1200}
                         height={700}
-                        className="h-52 w-full object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className={`w-full object-cover ${isFeatured ? 'h-56 sm:h-64 md:h-72' : 'h-52'}`}
+                        sizes={isFeatured ? '(max-width: 768px) 100vw, 100vw' : '(max-width: 768px) 100vw, 50vw'}
                       />
                     </div>
                   )}
@@ -202,6 +227,9 @@ export default function Services() {
                     </div>
                   </div>
                   <p className="card-text mb-4 sm:mb-6">{service.description}</p>
+                  <p className="mb-4 rounded-2xl border border-[#d4af37]/35 bg-[#fffbea] px-4 py-3 text-sm font-medium text-[#5c4600] sm:mb-6 sm:text-base">
+                    {service.highlight}
+                  </p>
 
                   {/* Welding Techniques */}
                   {service.techniques && (
@@ -285,7 +313,7 @@ export default function Services() {
                   <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
                     <Link
                       href="/contact#contact-form"
-                      className="glass-button-dark w-full text-center text-xs tracking-wide sm:w-auto"
+                      className={`glass-button-dark w-full text-center text-xs tracking-wide ${isFeatured ? 'sm:w-full md:w-auto' : 'sm:w-auto'}`}
                     >
                       Get a quote
                     </Link>
