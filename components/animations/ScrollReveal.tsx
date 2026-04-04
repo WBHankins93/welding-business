@@ -21,14 +21,14 @@ export function ScrollReveal({
   immediate = false,
 }: ScrollRevealProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-50%' })
+  const isInView = useInView(ref, { once: true, margin: '-15%' })
   const shouldAnimate = immediate || isInView
 
   const directionMap = {
-    up: { y: 20, x: 0 },
-    down: { y: -20, x: 0 },
-    left: { y: 0, x: 20 },
-    right: { y: 0, x: -20 },
+    up: { y: 30, x: 0 },
+    down: { y: -30, x: 0 },
+    left: { y: 0, x: 30 },
+    right: { y: 0, x: -30 },
   }
 
   const { y, x } = directionMap[direction]
@@ -36,8 +36,8 @@ export function ScrollReveal({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 1, y: 0, x: 0 }}
-      animate={shouldAnimate ? { opacity: 1, y: 0, x: 0 } : { opacity: 1, y: 0, x: 0 }}
+      initial={{ opacity: 0, y, x }}
+      animate={shouldAnimate ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, y, x }}
       transition={{
         duration,
         delay,

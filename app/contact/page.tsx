@@ -4,6 +4,7 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/ContactForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
+import { businessPhones, businessEmail, businessAddress, businessHoursLabel } from '@/lib/contact-info'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -25,22 +26,22 @@ export default function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['(555) 123-4567', 'Available 24/7 for emergencies'],
+      details: businessPhones.map((p) => `${p.label}: ${p.display}`),
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@djnservicesllc.com', 'We respond within 24 hours'],
+      details: [businessEmail, 'We respond within 24 hours'],
     },
     {
       icon: MapPin,
       title: 'Location',
-      details: ['123 Industrial Parkway', 'Your City, ST 12345'],
+      details: [businessAddress.street, businessAddress.cityStateZip],
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      details: ['Monday - Friday: 8AM - 6PM', 'Saturday: 9AM - 2PM'],
+      details: [businessHoursLabel],
     },
   ]
 
@@ -106,7 +107,7 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="glass-panel-dark max-w-4xl rounded-[32px] p-8 sm:p-10">
+          <div className="glass-panel-dark max-w-4xl rounded-2xl p-8 sm:p-10">
             <ScrollReveal immediate>
               <h1 className="page-hero-title mb-4 sm:mb-6">Contact Us</h1>
             </ScrollReveal>
@@ -127,9 +128,9 @@ export default function Contact() {
               const Icon = info.icon
               return (
                 <StaggerItem key={info.title}>
-                  <div className="glass-panel-light rounded-[28px] p-6 text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#fef3c7]/90 shadow-md sm:mb-6 sm:h-20 sm:w-20">
-                      <Icon className="size-8 sm:size-10 text-[#d4af37]" />
+                  <div className="border border-black/10 bg-white p-6 text-center">
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center bg-[#1C1C1C] sm:mb-6 sm:h-16 sm:w-16">
+                      <Icon className="size-7 sm:size-8 text-[#FF6A00]" />
                     </div>
                     <h3 className="card-title mb-2 sm:mb-3">{info.title}</h3>
                     {info.details.map((detail, index) => (
@@ -147,8 +148,8 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
             {/* Form */}
             <ScrollReveal direction="right">
-              <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-gray-100">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-[#0a0a0a]">Send Us a Message</h2>
+              <div className="bg-white p-6 sm:p-8 md:p-10 border border-black/10">
+                <h2 className="section-title text-2xl sm:text-3xl mb-6 sm:mb-8">Send Us a Message</h2>
                 <ContactForm />
               </div>
             </ScrollReveal>
@@ -156,27 +157,21 @@ export default function Contact() {
             {/* Additional Info */}
             <ScrollReveal direction="left" delay={0.1}>
               <div className="space-y-6 sm:space-y-8">
-                <div className="glass-panel-light rounded-[28px] p-6 sm:p-8">
+                <div className="border border-black/10 bg-white p-6 sm:p-8">
                   <h3 className="card-title mb-3 sm:mb-4">Emergency Service</h3>
                   <p className="card-text mb-4 sm:mb-6 text-[#1a1f2e]">
                     Need urgent welding repairs? We offer 24/7 emergency service for
                     critical situations.
                   </p>
-                  <Link
-                    href="#contact-form"
-                    className="glass-button-dark hidden w-full sm:inline-flex"
-                  >
-                    Send Emergency Details
-                  </Link>
                   <a
-                    href="tel:5551234567"
-                    className="glass-button-primary flex w-full sm:hidden"
+                    href={businessPhones[0].href}
+                    className="btn-primary flex w-full"
                   >
-                    Call Now: (555) 123-4567
+                    Call Now: {businessPhones[0].display}
                   </a>
                 </div>
 
-                <div className="glass-panel-light rounded-[28px] p-6 sm:p-8">
+                <div className="border border-black/10 bg-white p-6 sm:p-8">
                   <h3 className="card-title mb-3 sm:mb-4">Service Area</h3>
                   <p className="card-text text-[#1a1f2e]">
                     Gulf coast region: MS, AL, FL, South GA. Contact us to confirm we serve your location.
@@ -198,7 +193,7 @@ export default function Contact() {
           </ScrollReveal>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <StaggerItem>
-              <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
+              <div className="border border-black/10 bg-white p-8 transition-all duration-300 hover:shadow-lg">
                 <h3 className="card-title mb-3">Do you offer free estimates?</h3>
                 <p className="card-text">
                   Yes! We provide free, no-obligation quotes for all welding and
@@ -207,7 +202,7 @@ export default function Contact() {
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
+              <div className="border border-black/10 bg-white p-8 transition-all duration-300 hover:shadow-lg">
                 <h3 className="card-title mb-3">What areas do you serve?</h3>
                 <p className="card-text">
                   We serve the Gulf Coast region: Mississippi, Alabama, Florida, and South Georgia. Contact us to confirm we serve your location.
@@ -215,7 +210,7 @@ export default function Contact() {
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
+              <div className="border border-black/10 bg-white p-8 transition-all duration-300 hover:shadow-lg">
                 <h3 className="card-title mb-3">How quickly can you start?</h3>
                 <p className="card-text">
                   Most projects can be scheduled within a few days. Emergency services
@@ -224,7 +219,7 @@ export default function Contact() {
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="glass-panel-light rounded-[28px] p-8 transition-all duration-300">
+              <div className="border border-black/10 bg-white p-8 transition-all duration-300 hover:shadow-lg">
                 <h3 className="card-title mb-3">Are you licensed and insured?</h3>
                 <p className="card-text">
                   Yes, we are fully licensed, insured, and our welders are AWS certified.

@@ -242,55 +242,108 @@
 @layer components {
   .page-hero-title {
     @apply text-4xl font-bold uppercase leading-[0.96] tracking-wide sm:text-5xl md:text-6xl;
-    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
-    letter-spacing: 0.02em;
+    font-family: var(--font-bebas), 'Bebas Neue', Oswald, sans-serif;
+    letter-spacing: 0.03em;
   }
 
   .page-hero-subtitle {
-    @apply text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl;
+    @apply text-base font-semibold leading-relaxed text-gray-300 sm:text-lg md:text-xl;
+    font-family: var(--font-barlow), Barlow, Inter, sans-serif;
   }
 
   .section-title {
     @apply text-3xl font-bold uppercase leading-tight tracking-wide text-[#0a0a0a] sm:text-4xl md:text-5xl;
-    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
-    letter-spacing: 0.02em;
+    font-family: var(--font-barlow-condensed), 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    letter-spacing: 0.01em;
   }
 
   .section-subtitle {
     @apply text-base leading-relaxed text-[#4a5568] sm:text-lg;
+    font-family: var(--font-inter), Inter, sans-serif;
   }
 
   .card-title {
-    @apply text-lg font-semibold text-[#0a0a0a] sm:text-xl;
+    @apply text-lg font-bold uppercase tracking-wide text-[#0a0a0a] sm:text-xl;
+    font-family: var(--font-barlow-condensed), 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    letter-spacing: 0.01em;
   }
 
   .card-text {
     @apply text-sm leading-relaxed text-[#4a5568] sm:text-base;
+    font-family: var(--font-inter), Inter, sans-serif;
   }
 
   .type-kicker {
-    @apply text-xs font-semibold uppercase tracking-[0.22em] text-[#FF6A00];
-    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', sans-serif;
+    @apply text-xs font-semibold text-[#FF6A00];
+    font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
   }
 
   .type-heading {
     @apply font-bold uppercase tracking-wide text-[#1C1C1C];
-    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', sans-serif;
+    font-family: var(--font-barlow-condensed), 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    letter-spacing: 0.01em;
   }
 
   .type-subheading {
     @apply text-lg font-semibold text-[#1a1f2e] sm:text-xl;
-    font-family: Montserrat, Inter, 'Segoe UI', sans-serif;
+    font-family: var(--font-barlow), Barlow, Inter, sans-serif;
   }
 
   .type-body {
     @apply text-base leading-relaxed text-[#4A4A4A] sm:text-lg;
-    font-family: Inter, 'Segoe UI', sans-serif;
+    font-family: var(--font-inter), Inter, sans-serif;
   }
 
   .type-note {
-    @apply text-sm italic text-[#374151];
-    font-family: Georgia, 'Times New Roman', serif;
+    @apply text-sm text-[#374151];
+    font-family: var(--font-inter), Inter, sans-serif;
+    font-style: italic;
+  }
+
+  /* Standardized button system */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-white transition-all duration-200;
+    background: #FF6A00;
+  }
+
+  .btn-primary:hover {
+    background: #e45f00;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(255, 106, 0, 0.3);
+  }
+
+  .btn-primary-glow {
+    @apply inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-white transition-all duration-200;
+    background: #FF6A00;
+    box-shadow: 0 0 28px rgba(255, 106, 0, 0.35);
+  }
+
+  .btn-primary-glow:hover {
+    background: #e45f00;
+    transform: translateY(-1px);
+    box-shadow: 0 0 36px rgba(255, 106, 0, 0.45);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-[#FF6A00] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-[#FF6A00] transition-all duration-200;
+  }
+
+  .btn-secondary:hover {
+    background: #FF6A00;
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary-white {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-white px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-white transition-all duration-200;
+  }
+
+  .btn-secondary-white:hover {
+    background: white;
+    color: #0a0a0a;
+    transform: translateY(-1px);
   }
 
   .glass-shell {
@@ -401,6 +454,25 @@
     outline: none;
   }
 
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .section-divider {
+    @apply h-px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.08), transparent);
+  }
+
+  .section-divider-dark {
+    @apply h-px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.08), transparent);
+  }
+
   .stock-ticker-track {
     animation: stock-ticker-scroll 26s linear infinite;
   }
@@ -419,4 +491,5 @@
       transform: translateX(-50%);
     }
   }
+
 }

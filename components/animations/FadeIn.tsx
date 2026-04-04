@@ -17,13 +17,13 @@ export function FadeIn({
   className = '',
 }: FadeInProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-50%' })
+  const isInView = useInView(ref, { once: true, margin: '-15%' })
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 1 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 1 }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
       transition={{
         duration,
         delay,

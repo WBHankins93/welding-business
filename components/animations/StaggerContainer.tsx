@@ -17,16 +17,16 @@ export function StaggerContainer({
   immediate = false,
 }: StaggerContainerProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-50%' })
+  const isInView = useInView(ref, { once: true, margin: '-15%' })
   const shouldAnimate = immediate || isInView
 
   return (
     <motion.div
       ref={ref}
-      initial="visible"
-      animate={shouldAnimate ? 'visible' : 'visible'}
+      initial="hidden"
+      animate={shouldAnimate ? 'visible' : 'hidden'}
       variants={{
-        hidden: { opacity: 1 },
+        hidden: { opacity: 0 },
         visible: {
           opacity: 1,
           transition: {
@@ -50,7 +50,7 @@ export function StaggerItem({ children, className = '' }: StaggerItemProps) {
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 24 },
         visible: {
           opacity: 1,
           y: 0,

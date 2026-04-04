@@ -18,9 +18,11 @@ import { FloatingOrbs } from '@/components/animations/FloatingOrbs'
 import { HoverLift } from '@/components/animations/HoverLift'
 import { ScrollReveal } from '@/components/animations/ScrollReveal'
 import { StaggerContainer, StaggerItem } from '@/components/animations/StaggerContainer'
+import { ProjectCarousel } from '@/components/ProjectCarousel'
+import { primaryPhone } from '@/lib/contact-info'
 
-const phoneNumber = '(555) 123-4567'
-const phoneHref = 'tel:5551234567'
+const phoneNumber = primaryPhone.display
+const phoneHref = primaryPhone.href
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -42,13 +44,6 @@ type Service = {
   title: string
   description: string
   icon: ComponentType<{ className?: string }>
-}
-
-type Project = {
-  title: string
-  type: string
-  image: string
-  alt: string
 }
 
 type Testimonial = {
@@ -90,26 +85,6 @@ const reasons = [
   'Responsive scheduling and dependable arrival times',
 ]
 
-const projects: Project[] = [
-  {
-    title: 'Mobile Welding Repair',
-    type: 'Mobile Welding',
-    image: '/images/services/mobile-welding.webp',
-    alt: 'DJN Services mobile welding work in progress',
-  },
-  {
-    title: 'Property Cleanout Haul',
-    type: 'Removal & Hauling',
-    image: '/images/services/trash-removal-djn.webp',
-    alt: 'DJN Services trash removal and hauling project',
-  },
-  {
-    title: 'Rock Material Delivery',
-    type: 'Material Hauling',
-    image: '/images/materials/rock-djn.webp',
-    alt: 'Rock material ready for hauling and delivery',
-  },
-]
 
 const testimonials: Testimonial[] = [
   {
@@ -179,29 +154,29 @@ export default function Home() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/45" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 sm:py-24 lg:grid-cols-[1.3fr_0.7fr] lg:px-8 lg:py-32">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-36 pb-20 sm:px-6 sm:pt-40 sm:pb-24 lg:grid-cols-[1.3fr_0.7fr] lg:px-8 lg:pt-44 lg:pb-32">
           <ScrollReveal direction="up">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#FF6A00]">Welding • Hauling • Removal</p>
-            <h1 className="mt-4 max-w-4xl text-5xl font-heading font-bold uppercase leading-[0.95] tracking-wide sm:text-6xl lg:text-7xl">
+            <p className="font-kicker text-sm text-[#FF6A00]">Welding • Hauling • Removal</p>
+            <h1 className="mt-4 max-w-4xl font-display text-5xl font-bold uppercase leading-[0.95] tracking-wide sm:text-6xl lg:text-7xl">
               Reliable Work.
               <br />
               Built to Last.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg text-gray-200 sm:text-xl">
+            <p className="mt-6 max-w-2xl font-subheading text-lg text-gray-200 sm:text-xl">
               <span className="font-semibold italic text-white">Welcome to DJN Services.</span> Heavy-duty help for homes, businesses, and job sites. Fast response, fair estimates, and serious workmanship from a local crew.
             </p>
             <div className="mt-10 flex">
               <Link
                 href="/booking"
-                className="inline-flex items-center justify-center gap-2 bg-[#FF6A00] px-8 py-4 text-base font-semibold uppercase tracking-wide text-white shadow-[0_0_30px_rgba(255,106,0,0.35)] transition hover:bg-[#e66000]"
+                className="btn-primary-glow gap-2 px-8 py-4 text-base"
               >
                 Get A Quote <ArrowRight className="size-4" />
               </Link>
             </div>
           </ScrollReveal>
 
-          <FadeIn delay={0.2} className="self-end rounded-sm border border-white/20 bg-black/45 p-6 backdrop-blur-sm">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Fast Response</p>
+          <FadeIn delay={0.2} className="glass-panel-dark self-end rounded-2xl p-6">
+            <p className="font-kicker text-xs text-[#FF6A00]">Fast Response</p>
             <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-gray-100">
               {['Same-day scheduling', 'Honest scope', 'Clear pricing', 'Residential', 'Commercial', 'Job-site service'].map((item) => (
                 <div key={item} className="glass-panel-light flex min-h-14 items-center justify-center rounded-2xl px-3 py-2 text-center text-xs font-semibold uppercase tracking-wide text-[#1C1C1C]">
@@ -221,7 +196,7 @@ export default function Home() {
           <StaggerContainer className="contents" immediate>
             {trustPoints.map((point) => (
               <StaggerItem key={point}>
-                <div className="flex items-center justify-center gap-2 rounded-2xl border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#1C1C1C] sm:text-sm">
+                <div className="flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#F4F4F4] px-3 py-3 text-center font-kicker text-xs text-[#1C1C1C] sm:text-sm">
                   <CheckCircle2 className="size-4 shrink-0 text-[#FF6A00]" aria-hidden="true" />
                   <span>{point}</span>
                 </div>
@@ -265,8 +240,8 @@ export default function Home() {
       <section className="bg-[#1C1C1C] py-16 text-white sm:py-20 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">Why Choose Us</p>
-            <h2 className="mt-3 text-3xl font-heading font-bold uppercase tracking-wide sm:text-4xl md:text-5xl">Dependable Crew. Durable Results.</h2>
+            <p className="type-kicker mb-3">Why Choose Us</p>
+            <h2 className="type-heading text-3xl leading-tight sm:text-4xl md:text-5xl">Dependable Crew. Durable Results.</h2>
             <p className="mt-5 max-w-2xl text-gray-300 sm:text-lg">
               We keep it simple: show up, work hard, and do it right. DJN Services is built on reliable service, practical planning, and quality that holds up.
             </p>
@@ -281,12 +256,12 @@ export default function Home() {
           </div>
           <div className="grid gap-4 self-end">
             <div className="glass-panel-dark rounded-[28px] p-5">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#FF6A00]">Priority Scheduling</p>
-              <p className="mt-2 text-2xl font-heading font-bold tracking-wide text-white sm:text-3xl">
+              <p className="font-kicker text-xs text-[#FF6A00]">Priority Scheduling</p>
+              <p className="mt-2 font-heading text-2xl font-bold uppercase tracking-wide text-white sm:text-3xl">
                 Fast communication for urgent work.
               </p>
               <Link
-                href="/contact"
+                href="/booking"
                 className="glass-button-primary mt-5 hidden w-full gap-2 text-xs tracking-wide sm:inline-flex"
               >
                 <ArrowRight className="size-4" /> Get A Quote
@@ -306,31 +281,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10">
           <SectionHeading
             eyebrow="Featured Work"
             title="Recent Projects"
-            description="A few examples of welding, hauling, and repair work handled by DJN Services. This layout is ready for before/after additions as your project gallery grows."
+            description="Commercial builds, structural steel, weld certifications, and on-site fabrication — real work from real job sites."
           />
-          <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-3">
-            {projects.map((project) => (
-              <StaggerItem key={project.title}>
-                <HoverLift>
-                  <article className="overflow-hidden border border-black/10 bg-[#F4F4F4]">
-                    <div className="relative h-56">
-                      <Image src={project.image} alt={project.alt} fill className="object-cover grayscale transition duration-500 hover:scale-105 hover:grayscale-0" sizes="(max-width: 768px) 100vw, 33vw" />
-                    </div>
-                    <div className="p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">{project.type}</p>
-                      <h3 className="mt-2 text-xl font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{project.title}</h3>
-                    </div>
-                  </article>
-                </HoverLift>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
         </div>
+        <ProjectCarousel />
       </section>
 
       <section className="bg-[#F4F4F4] py-16 sm:py-20 lg:py-24">
@@ -344,10 +303,10 @@ export default function Home() {
             {testimonials.map((testimonial) => (
               <StaggerItem key={testimonial.name}>
                 <figure className="flex h-full flex-col justify-between border border-black/10 bg-white p-6">
-                  <blockquote className="text-[#1C1C1C]">“{testimonial.quote}”</blockquote>
+                  <blockquote className="font-body text-[#1C1C1C]">{'\u201C'}{testimonial.quote}{'\u201D'}</blockquote>
                   <figcaption className="mt-6 border-t border-black/10 pt-4">
-                    <p className="font-bold uppercase tracking-wide text-[#1C1C1C]">{testimonial.name}</p>
-                    <p className="text-sm text-[#4A4A4A]">{testimonial.role}</p>
+                    <p className="font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{testimonial.name}</p>
+                    <p className="font-note text-sm text-[#4A4A4A]">{testimonial.role}</p>
                   </figcaption>
                 </figure>
               </StaggerItem>
@@ -365,7 +324,7 @@ export default function Home() {
           />
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {serviceAreas.map((area) => (
-              <div key={area} className="glass-panel-light flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C]">
+              <div key={area} className="flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#F4F4F4] px-4 py-3 font-kicker text-sm text-[#1C1C1C]">
                 <HomeIcon className="size-4 text-[#FF6A00]" aria-hidden="true" />
                 {area}
               </div>
@@ -376,15 +335,15 @@ export default function Home() {
 
       <section className="bg-[#1C1C1C] py-16 text-white sm:py-20 lg:py-24">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF6A00]">Ready to Get Started?</p>
-          <h2 className="mt-3 text-4xl font-heading font-bold uppercase tracking-wide sm:text-5xl">Get Your Quote Today</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-gray-300 sm:text-lg">
-            Need welding, hauling, or removal done fast? Reach out for priority response or send a quote request and we’ll follow up quickly.
+          <p className="type-kicker">Ready to Get Started?</p>
+          <h2 className="mt-3 font-display text-4xl font-bold uppercase tracking-wide sm:text-5xl">Get Your Quote Today</h2>
+          <p className="mx-auto mt-5 max-w-2xl font-subheading text-gray-300 sm:text-lg">
+            Need welding, hauling, or removal done fast? Reach out for priority response or send a quote request and we&apos;ll follow up quickly.
           </p>
           <div className="mt-9 flex justify-center">
             <Link
-              href="/contact#contact-form"
-              className="glass-button-primary gap-2 px-8 py-4 text-base tracking-wide"
+              href="/booking"
+              className="btn-primary-glow gap-2 px-8 py-4 text-base"
             >
               Get A Quote <ArrowRight className="size-4" />
             </Link>

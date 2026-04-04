@@ -1,12 +1,42 @@
 @layer base {
   body {
-    font-family: Inter, Montserrat, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: var(--font-inter), Inter, 'Segoe UI', Roboto, sans-serif;
   }
 }
 
 @layer utilities {
+  /* Display — page hero titles, large statement text */
+  .font-display {
+    font-family: var(--font-bebas), 'Bebas Neue', Oswald, sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  /* Heading — section headings, card titles */
   .font-heading {
-    font-family: 'Bebas Neue', Oswald, 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
-    letter-spacing: 0.02em;
+    font-family: var(--font-barlow-condensed), 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  /* Subheading — subsection headings, feature titles */
+  .font-subheading {
+    font-family: var(--font-barlow), Barlow, Inter, sans-serif;
+  }
+
+  /* Kicker — eyebrow text, category labels */
+  .font-kicker {
+    font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* Body — paragraph text, descriptions */
+  .font-body {
+    font-family: var(--font-inter), Inter, sans-serif;
+  }
+
+  /* Note — fine print, captions */
+  .font-note {
+    font-family: var(--font-inter), Inter, sans-serif;
+    font-style: italic;
   }
 }

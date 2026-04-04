@@ -1,8 +1,15 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Inter, Bebas_Neue, Barlow, Barlow_Condensed } from 'next/font/google'
 import { Navigation } from '@/components/Navigation'
+import { primaryPhone, businessPhones, businessEmail, businessAddress, businessHoursLabel } from '@/lib/contact-info'
 import '@/styles/index.css'
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
+const bebasNeue = Bebas_Neue({ weight: '400', subsets: ['latin'], variable: '--font-bebas', display: 'swap' })
+const barlow = Barlow({ weight: ['400', '600', '700'], subsets: ['latin'], variable: '--font-barlow', display: 'swap' })
+const barlowCondensed = Barlow_Condensed({ weight: ['600', '700'], subsets: ['latin'], variable: '--font-barlow-condensed', display: 'swap' })
 
 
 export const metadata: Metadata = {
@@ -63,33 +70,22 @@ export default function RootLayout({
     name: 'DJN Services LLC',
     description: 'Professional mobile welding, trash removal, and handyman services. 100% disabled veteran-owned business.',
     url: 'https://www.djnservicesllc.com',
-    telephone: '(555) 123-4567',
-    email: 'info@djnservicesllc.com',
+    telephone: primaryPhone.display,
+    email: businessEmail,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '123 Industrial Parkway',
-      addressLocality: 'Your City',
-      addressRegion: 'ST',
-      postalCode: '12345',
-      addressCountry: 'US',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: '40.7128',
-      longitude: '-74.0060',
+      streetAddress: businessAddress.street,
+      addressLocality: businessAddress.locality,
+      addressRegion: businessAddress.region,
+      postalCode: businessAddress.postalCode,
+      addressCountry: businessAddress.country,
     },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         opens: '08:00',
         closes: '18:00',
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: 'Saturday',
-        opens: '09:00',
-        closes: '14:00',
       },
     ],
     priceRange: '$$',
@@ -119,7 +115,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" style={{ scrollBehavior: 'smooth' }}>
+    <html lang="en" style={{ scrollBehavior: 'smooth', scrollPaddingTop: '80px' }} className={`${inter.variable} ${bebasNeue.variable} ${barlow.variable} ${barlowCondensed.variable}`}>
       <head>
         <link rel="canonical" href="https://www.djnservicesllc.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -129,7 +125,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-white">
+      <body className="min-h-screen bg-white font-body">
         <Navigation />
         <main>{children}</main>
         <footer className="bg-[#0a0a0a] text-white mt-8 sm:mt-12 md:mt-16 border-t border-[#1a1f2e]/20">
@@ -156,7 +152,7 @@ export default function RootLayout({
                 </p>
               </div>
               <nav aria-label="Footer navigation">
-                <h3 className="font-bold mb-4 sm:mb-6 text-[#FF6A00] text-base sm:text-lg">Quick Links</h3>
+                <h3 className="font-heading font-bold uppercase tracking-wide mb-4 sm:mb-6 text-[#FF6A00] text-base sm:text-lg">Quick Links</h3>
                 <div className="space-y-2 sm:space-y-3">
                   <Link href="/" className="block text-gray-400 hover:text-[#FF6A00] transition-colors duration-200 text-sm sm:text-base">
                     Home
@@ -173,24 +169,31 @@ export default function RootLayout({
                 </div>
               </nav>
               <address className="not-italic">
-                <h3 className="font-bold mb-4 sm:mb-6 text-[#FF6A00] text-base sm:text-lg">Contact</h3>
+                <h3 className="font-heading font-bold uppercase tracking-wide mb-4 sm:mb-6 text-[#FF6A00] text-base sm:text-lg">Contact</h3>
                 <div className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
+                  {businessPhones.map((phone) => (
+                    <p key={phone.label}>
+                      <a href={phone.href} className="hover:text-[#FF6A00] transition-colors duration-200">
+                        {phone.label}: {phone.display}
+                      </a>
+                    </p>
+                  ))}
                   <p>
-                    <a href="tel:5551234567" className="hover:text-[#FF6A00] transition-colors duration-200">
-                      Phone: (555) 123-4567
+                    <a href={`mailto:${businessEmail}`} className="hover:text-[#FF6A00] transition-colors duration-200">
+                      Email: {businessEmail}
                     </a>
                   </p>
-                  <p>
-                    <a href="mailto:info@djnservicesllc.com" className="hover:text-[#FF6A00] transition-colors duration-200">
-                      Email: info@djnservicesllc.com
-                    </a>
-                  </p>
-                  <p>Hours: Mon-Fri, 8AM-6PM</p>
+                  <p>Hours: {businessHoursLabel}</p>
                 </div>
               </address>
             </div>
-            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#1a1f2e]/30 text-center text-gray-500 text-sm sm:text-base">
-              <p>&copy; {new Date().getFullYear()} DJN Services LLC. All rights reserved.</p>
+            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/10 text-center">
+              <p className="font-kicker text-sm tracking-[0.25em] text-[#FF6A00]">
+                &copy; {new Date().getFullYear()} DJN Services LLC
+              </p>
+              <p className="mt-1.5 text-xs text-gray-500">
+                All rights reserved. 100% Disabled Veteran-Owned Business.
+              </p>
             </div>
           </div>
         </footer>

@@ -73,7 +73,7 @@ export default function About() {
       <section className="relative bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1762786219193-f34607f29d38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3ZWxkZXIlMjB3b3JraW5nfGVufDF8fHx8MTc3MTU1ODEyMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            src="/images/hero/welder-portrait.jpeg"
             alt="Professional certified welder performing precision welding work - DJN Services LLC team member"
             fill
             className="object-cover opacity-20"
@@ -142,8 +142,8 @@ export default function About() {
             {stats.map((stat) => (
               <StaggerItem key={stat.label}>
                 <div className="text-center">
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-3 text-[#0a0a0a]">{stat.number}</div>
-                  <div className="text-[#1a1f2e] font-semibold text-sm sm:text-base md:text-lg">{stat.label}</div>
+                  <div className="font-display text-4xl font-bold sm:text-5xl md:text-6xl mb-2 sm:mb-3 text-[#0a0a0a]">{stat.number}</div>
+                  <div className="font-heading text-[#1a1f2e] font-semibold uppercase tracking-wide text-sm sm:text-base md:text-lg">{stat.label}</div>
                 </div>
               </StaggerItem>
             ))}
@@ -167,9 +167,9 @@ export default function About() {
               const Icon = value.icon
               return (
                 <StaggerItem key={value.title}>
-                  <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg text-center hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#d4af37]/30">
-                    <div className="bg-[#fef3c7] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-md">
-                      <Icon className="size-8 sm:size-10 text-[#d4af37]" />
+                  <div className="bg-white p-6 sm:p-8 border border-black/10 text-center hover:shadow-lg transition-all duration-300">
+                    <div className="bg-[#1C1C1C] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                      <Icon className="size-7 sm:size-8 text-[#FF6A00]" />
                     </div>
                     <h3 className="card-title mb-2 sm:mb-3">{value.title}</h3>
                     <p className="card-text">{value.description}</p>
@@ -197,8 +197,8 @@ export default function About() {
           </ScrollReveal>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <StaggerItem>
-              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
-                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Certifications</h3>
+              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 border border-black/10">
+                <h3 className="card-title mb-4 sm:mb-6">Certifications</h3>
               <ul className="space-y-2 sm:space-y-3 text-[#1a1f2e] text-sm sm:text-base">
                 <li className="flex items-center gap-2">
                   <span className="text-[#d4af37] font-bold">•</span>
@@ -220,8 +220,8 @@ export default function About() {
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
-                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Specializations</h3>
+              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 border border-black/10">
+                <h3 className="card-title mb-4 sm:mb-6">Specializations</h3>
               <ul className="space-y-2 sm:space-y-3 text-[#1a1f2e] text-sm sm:text-base">
                 <li className="flex items-center gap-2">
                   <span className="text-[#d4af37] font-bold">•</span>
@@ -243,8 +243,8 @@ export default function About() {
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 rounded-xl border border-gray-100 shadow-md">
-                <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#0a0a0a]">Equipment</h3>
+              <div className="bg-[#f7f8fa] p-6 sm:p-8 md:p-10 border border-black/10">
+                <h3 className="card-title mb-4 sm:mb-6">Equipment</h3>
               <ul className="space-y-2 sm:space-y-3 text-[#1a1f2e] text-sm sm:text-base">
                 <li className="flex items-center gap-2">
                   <span className="text-[#d4af37] font-bold">•</span>
@@ -273,26 +273,26 @@ export default function About() {
       <section className="bg-[#0a0a0a] text-white py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-wide mb-4 sm:mb-6">
               Ready to Work With Us?
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 md:mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed px-4">
+            <p className="font-subheading text-base sm:text-lg md:text-xl mb-6 sm:mb-8 md:mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed px-4">
               Experience the DJN Services LLC difference on your next project
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
               <Link
-                href="/contact#contact-form"
-                className="bg-[#d4af37] hover:bg-[#fbbf24] text-[#0a0a0a] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-xl hover:shadow-2xl text-sm sm:text-base"
+                href="/booking"
+                className="btn-primary-glow px-8 sm:px-10 py-3.5 sm:py-4 text-sm sm:text-base"
               >
                 Get a Quote
               </Link>
               <Link
                 href="/contact"
-                className="border-2 border-white hover:bg-white hover:text-[#0a0a0a] px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 text-sm sm:text-base"
+                className="btn-secondary-white px-8 sm:px-10 py-3.5 sm:py-4 text-sm sm:text-base"
               >
                 Get in Touch
               </Link>
