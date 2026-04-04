@@ -73,23 +73,25 @@ export default function About() {
       <section className="relative bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/images/hero/welder-portrait.jpeg"
+            src="/images/projects/structural-worker-fabricating.jpeg"
             alt="Professional certified welder performing precision welding work - DJN Services LLC team member"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-25"
             priority
             sizes="100vw"
           />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal immediate>
-            <h1 className="page-hero-title mb-4 sm:mb-6">About DJN Services LLC</h1>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1} immediate>
-            <p className="page-hero-subtitle max-w-3xl">
-              Building trust through quality craftsmanship since day one
-            </p>
-          </ScrollReveal>
+          <div className="glass-panel-dark max-w-4xl rounded-2xl p-8 sm:p-10">
+            <ScrollReveal immediate>
+              <h1 className="page-hero-title mb-4 sm:mb-6">About DJN Services LLC</h1>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1} immediate>
+              <p className="page-hero-subtitle max-w-3xl">
+                Building trust through quality craftsmanship since day one
+              </p>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
