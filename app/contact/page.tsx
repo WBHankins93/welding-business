@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/ContactForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
@@ -8,14 +7,14 @@ import { businessPhones, businessEmail, businessAddress, businessHoursLabel } fr
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, trash removal, or handyman project. Available 24/7 for emergency services. We respond within 24 hours.',
+  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, trash removal, or handyman project. Business hours are Monday through Saturday, 8AM to 6PM. We respond within 24 hours.',
   keywords: ['contact welding services', 'welding quote', 'emergency welding', 'welding consultation'],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/contact',
   },
   openGraph: {
     title: 'Contact DJN Services LLC | Free Quote Available',
-    description: 'Get in touch for a free quote or to discuss your welding, trash removal, or handyman project. Available 24/7 for emergencies.',
+    description: 'Get in touch for a free quote or to discuss your welding, trash removal, or handyman project.',
     url: 'https://www.djnservicesllc.com/contact',
     type: 'website',
   },
@@ -71,7 +70,7 @@ export default function Contact() {
         name: 'How quickly can you start?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Most projects can be scheduled within a few days. Emergency services are available 24/7.',
+          text: 'Most projects can be scheduled within a few days based on availability during business hours.',
         },
       },
       {
@@ -133,11 +132,21 @@ export default function Contact() {
                       <Icon className="size-7 sm:size-8 text-[#FF6A00]" />
                     </div>
                     <h3 className="card-title mb-2 sm:mb-3">{info.title}</h3>
-                    {info.details.map((detail, index) => (
-                      <p key={index} className="card-text mb-1">
-                        {detail}
-                      </p>
-                    ))}
+                    {info.title === 'Phone'
+                      ? businessPhones.map((phone) => (
+                        <a
+                          key={phone.href}
+                          href={phone.href}
+                          className="card-text mb-1 block hover:text-[#FF6A00] transition-colors duration-200"
+                        >
+                          {phone.label}: {phone.display}
+                        </a>
+                      ))
+                      : info.details.map((detail, index) => (
+                        <p key={index} className="card-text mb-1">
+                          {detail}
+                        </p>
+                      ))}
                   </div>
                 </StaggerItem>
               )

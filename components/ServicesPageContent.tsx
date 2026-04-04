@@ -95,6 +95,8 @@ const materials = [
 
 export function ServicesPageContent() {
   const [activeService, setActiveService] = useState(services[0].id)
+  const activeServiceDetails = services.find((service) => service.id === activeService) ?? services[0]
+  const ActiveServiceIcon = activeServiceDetails.icon
 
   const jumpToService = (id: string) => {
     setActiveService(id)
