@@ -2,6 +2,7 @@
 -- DJN Services LLC — Form Submissions Schema
 -- Run this in the Neon SQL Editor:
 -- Dashboard > your project > SQL Editor
+-----------
 -- =============================================================
 
 -- Contact form submissions
