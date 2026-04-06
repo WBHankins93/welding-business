@@ -3,11 +3,10 @@
 import { useState } from 'react'
 import { Calendar, Clock, CheckCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
-import { submitInquiryToGoogle } from '@/lib/googleAppsScript'
-
 export function BookingForm() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const services = [
     'MIG Welding',
@@ -40,16 +39,37 @@ export function BookingForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError(false)
+    setSubmitting(true)
 
     const form = e.currentTarget
     const formData = new FormData(form)
 
     try {
-      await submitInquiryToGoogle(formData, 'booking')
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'booking',
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          serviceType: formData.get('serviceType'),
+          projectType: formData.get('projectType'),
+          location: formData.get('location'),
+          date: formData.get('date'),
+          time: formData.get('time'),
+          description: formData.get('description'),
+        }),
+      })
+
+      if (!response.ok) throw new Error('Submission failed')
+
       setSubmitted(true)
       form.reset()
     } catch {
       setError(true)
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -273,9 +293,10 @@ export function BookingForm() {
       {/* Submit Button */}
       <button
         type="submit"
-        className="glass-button-primary flex w-full text-base sm:text-lg"
+        disabled={submitting}
+        className="glass-button-primary flex w-full text-base sm:text-lg disabled:opacity-50"
       >
-        Submit Booking Request
+        {submitting ? 'Submitting...' : 'Submit Booking Request'}
       </button>
 
       <p className="text-xs sm:text-sm text-gray-500 text-center">

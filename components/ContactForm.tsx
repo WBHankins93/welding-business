@@ -2,21 +2,35 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { submitInquiryToGoogle } from '@/lib/googleAppsScript'
-
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError(false)
+    setSubmitting(true)
 
     const form = e.currentTarget
     const formData = new FormData(form)
 
     try {
-      await submitInquiryToGoogle(formData, 'contact')
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'contact',
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          subject: formData.get('subject'),
+          message: formData.get('message'),
+        }),
+      })
+
+      if (!response.ok) throw new Error('Submission failed')
+
       setSubmitted(true)
       form.reset()
       setTimeout(() => {
@@ -24,6 +38,8 @@ export function ContactForm() {
       }, 5000)
     } catch {
       setError(true)
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -122,9 +138,10 @@ export function ContactForm() {
       </div>
       <button
         type="submit"
-        className="glass-button-primary flex w-full"
+        disabled={submitting}
+        className="glass-button-primary flex w-full disabled:opacity-50"
       >
-        Send Message
+        {submitting ? 'Sending...' : 'Send Message'}
       </button>
     </form>
   )

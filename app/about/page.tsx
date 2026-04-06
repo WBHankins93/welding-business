@@ -87,7 +87,7 @@ export default function About() {
           </ScrollReveal>
           <ScrollReveal delay={0.1} immediate>
             <p className="page-hero-subtitle max-w-3xl">
-              Building trust through quality craftsmanship since day one
+              Building trust through quality craftsmanship since day one.
             </p>
           </ScrollReveal>
         </div>
