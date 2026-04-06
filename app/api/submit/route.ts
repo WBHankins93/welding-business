@@ -237,21 +237,27 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Insert into Supabase
+    // Insert into database — this is the critical operation.
+    // If this fails, we return an error to the user.
     await insertSubmission(payload)
 
-    // Send email notification
+    // Send email notification — best-effort, non-blocking.
+    // A failed email never causes the form to show an error;
+    // the submission is already safely stored in the database.
     const fromAddress = process.env.SMTP_FROM_EMAIL || 'notifications@djnservicesllc.com'
     const emailContent =
       payload.formType === 'contact'
         ? buildContactEmail(payload)
         : buildBookingEmail(payload)
 
-    await transporter.sendMail({
+    transporter.sendMail({
       from: `DJN Services LLC <${fromAddress}>`,
       to: businessEmail,
       subject: emailContent.subject,
       html: emailContent.html,
+    }).catch((err) => {
+      // Log the email failure but do not propagate — the DB write already succeeded.
+      console.error('Email notification failed (submission was saved):', err)
     })
 
     return NextResponse.json({ result: 'success' }, { status: 200 })
