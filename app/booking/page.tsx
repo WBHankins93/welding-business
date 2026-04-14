@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BookingForm } from '@/components/BookingForm'
 import { ScrollReveal } from '@/components/animations'
@@ -26,8 +27,18 @@ export default function BookingPage() {
         </div>
       </div>
 
-      <section className="bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-[#0a0a0a] text-white py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/images/projects/commercial-building-wide.jpeg"
+            alt="Commercial on-site welding team preparing a job estimate"
+            fill
+            className="object-cover opacity-30"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="glass-panel-dark max-w-4xl rounded-2xl p-8 sm:p-10">
             <ScrollReveal immediate>
               <h1 className="page-hero-title mb-4 sm:mb-6">Get A Quote</h1>
