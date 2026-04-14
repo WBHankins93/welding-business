@@ -123,7 +123,7 @@ export default function Contact() {
             </ScrollReveal>
             <ScrollReveal delay={0.1} immediate>
               <p className="page-hero-subtitle max-w-3xl">
-                Get in touch with us for a free quote or to discuss your welding project
+                Get in touch with us for a free quote or to discuss your welding project.
               </p>
             </ScrollReveal>
           </div>
