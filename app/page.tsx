@@ -25,18 +25,37 @@ const phoneNumber = primaryPhone.display
 const phoneHref = primaryPhone.href
 
 export const metadata: Metadata = {
-  title: 'Home',
+  title: 'Mobile Welding, Hauling & Handyman Services — Gulf Coast',
   description:
-    'DJN Services delivers welding, hauling, and removal work with fast response times, fair estimates, and dependable workmanship for homes, businesses, and job sites.',
+    'DJN Services LLC delivers mobile welding, trash removal, hauling, and handyman services across Mississippi, Alabama, Florida, and South Georgia. 100% disabled veteran-owned. AWS certified welders. Fast response, honest estimates.',
+  keywords: [
+    'mobile welding near me',
+    'welding services Mississippi',
+    'welding services Alabama',
+    'welding services Gulf Coast',
+    'trash removal Mississippi',
+    'junk hauling Gulf Coast',
+    'handyman Gulf Coast',
+    'veteran owned contractor',
+    'AWS certified welding',
+  ],
   alternates: {
     canonical: 'https://www.djnservicesllc.com',
   },
   openGraph: {
-    title: 'DJN Services | Welding • Hauling • Removal',
+    title: 'DJN Services LLC | Mobile Welding, Hauling & Handyman — Gulf Coast',
     description:
-      'Reliable local contractor services for welding, hauling, and removal. Fast turnaround. Built for hard jobs.',
+      'AWS certified mobile welding, trash removal, and handyman services across MS, AL, FL, and South GA. 100% disabled veteran-owned. Fast response, honest estimates.',
     url: 'https://www.djnservicesllc.com',
     type: 'website',
+    images: [
+      {
+        url: '/images/services/mobile-welding.webp',
+        width: 1200,
+        height: 630,
+        alt: 'DJN Services LLC — Mobile welding crew on site',
+      },
+    ],
   },
 }
 
@@ -283,11 +302,19 @@ export default function Home() {
 
       <section className="bg-white py-16 sm:py-20 lg:py-24 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10">
-          <SectionHeading
-            eyebrow="Featured Work"
-            title="Recent Projects"
-            description="Commercial builds, structural steel, weld certifications, and on-site fabrication — real work from real job sites."
-          />
+          <div className="flex items-end justify-between gap-4 flex-wrap">
+            <SectionHeading
+              eyebrow="Featured Work"
+              title="Recent Projects"
+              description="Commercial builds, structural steel, weld certifications, and on-site fabrication — real work from real job sites."
+            />
+            <Link
+              href="/gallery"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-black/10 bg-[#F4F4F4] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.1em] text-[#1C1C1C] transition hover:border-[#FF6A00]/40 hover:text-[#FF6A00]"
+            >
+              Full Gallery <ArrowRight className="size-4" />
+            </Link>
+          </div>
         </div>
         <ProjectCarousel />
       </section>

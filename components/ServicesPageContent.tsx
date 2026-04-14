@@ -52,8 +52,8 @@ const services = [
     id: 'handyman',
     icon: Hammer,
     title: 'Handyman Services',
-    image: 'https://images.pexels.com/photos/1249611/pexels-photo-1249611.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    alt: 'Handyman tools bag for repair and installation work',
+    image: '/images/handyman/antenna-installation-roofline.jpeg',
+    alt: 'DJN Services handyman — hi-boost antenna installation via boom lift',
     description:
       'Comprehensive handyman services for residential and commercial properties. From minor repairs to major renovations, we handle projects of all sizes with quality craftsmanship.',
     highlight: 'Ideal for: repairs, punch lists, installations, and finish work.',

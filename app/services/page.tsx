@@ -2,17 +2,42 @@ import type { Metadata } from 'next'
 import { ServicesPageContent } from '@/components/ServicesPageContent'
 
 export const metadata: Metadata = {
-  title: 'Services',
-  description: 'Mobile welding, trash removal, and handyman services. Professional on-site solutions for construction, repairs, and custom projects. Certified welders with expertise in SMAW, FCAW, and GMAW techniques.',
-  keywords: ['mobile welding', 'trash removal', 'dump services', 'handyman services', 'welding techniques', 'SMAW', 'FCAW', 'GMAW'],
+  title: 'Services — Mobile Welding, Trash Removal & Handyman',
+  description:
+    'DJN Services LLC offers professional mobile welding (SMAW, FCAW, GMAW), trash and junk removal, hauling, and handyman services across the Gulf Coast. Solar installs, antenna work, RV repairs, structural steel, and more.',
+  keywords: [
+    'mobile welding services',
+    'SMAW welding',
+    'FCAW welding',
+    'GMAW welding',
+    'AWS certified welding Mississippi',
+    'trash removal Gulf Coast',
+    'dump services Mississippi',
+    'handyman services Alabama',
+    'solar panel installation',
+    'antenna installation',
+    'RV trailer repair',
+    'elevator shaft welding',
+    'structural steel contractor',
+    'metal fabrication Gulf Coast',
+  ],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/services',
   },
   openGraph: {
-    title: 'Our Services | DJN Services LLC',
-    description: 'Professional mobile welding, trash removal, and handyman services. On-site solutions for construction, repairs, and custom projects.',
+    title: 'Services — Mobile Welding, Trash Removal & Handyman | DJN Services LLC',
+    description:
+      'AWS certified mobile welding, trash removal, hauling, and handyman services across MS, AL, FL, and South GA. SMAW, FCAW, GMAW — on site, on time.',
     url: 'https://www.djnservicesllc.com/services',
     type: 'website',
+    images: [
+      {
+        url: '/images/services/mobile-welding.webp',
+        width: 1200,
+        height: 630,
+        alt: 'DJN Services — Professional mobile welding service',
+      },
+    ],
   },
 }
 

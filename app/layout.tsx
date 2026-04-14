@@ -15,11 +15,32 @@ const barlowCondensed = Barlow_Condensed({ weight: ['600', '700'], subsets: ['la
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.djnservicesllc.com'),
   title: {
-    default: 'DJN Services LLC | Professional Welding & Handyman Services',
+    default: 'DJN Services LLC | Mobile Welding, Hauling & Handyman — Gulf Coast',
     template: '%s | DJN Services LLC',
   },
-  description: 'Professional mobile welding, trash removal, and handyman services. Certified welders with 20+ years of combined experience. 100% disabled veteran-owned business.',
-  keywords: ['welding services', 'mobile welding', 'trash removal', 'handyman services', 'metal fabrication', 'veteran owned business'],
+  description:
+    'DJN Services LLC is a 100% disabled veteran-owned business offering mobile welding, trash removal, hauling, and handyman services across Mississippi, Alabama, Florida, and South Georgia. AWS certified welders, fast response, honest estimates.',
+  keywords: [
+    'mobile welding Mississippi',
+    'mobile welding Alabama',
+    'mobile welding Florida',
+    'Gulf Coast welding services',
+    'AWS certified welder',
+    'structural welding',
+    'trash removal Gulf Coast',
+    'junk removal Mississippi',
+    'handyman services Mississippi',
+    'solar installation',
+    'RV repair welding',
+    'elevator shaft welding',
+    'metal fabrication',
+    'veteran owned business',
+    'disabled veteran contractor',
+    'commercial welding',
+    'residential welding',
+    'mobile welder near me',
+    'DJN Services LLC',
+  ],
   authors: [{ name: 'DJN Services LLC' }],
   creator: 'DJN Services LLC',
   publisher: 'DJN Services LLC',
@@ -28,19 +49,24 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.djnservicesllc.com',
     siteName: 'DJN Services LLC',
-    title: 'DJN Services LLC | Professional Welding & Handyman Services',
-    description: 'Professional mobile welding, trash removal, and handyman services. Certified welders with 20+ years of combined experience.',
+    title: 'DJN Services LLC | Mobile Welding, Hauling & Handyman — Gulf Coast',
+    description:
+      'AWS certified mobile welding, trash removal, and handyman services. 100% disabled veteran-owned. Serving MS, AL, FL, and South GA. Fast response, honest estimates.',
     images: [
       {
         url: '/images/services/mobile-welding.webp',
-        alt: 'DJN Services LLC mobile welding service',
+        width: 1200,
+        height: 630,
+        alt: 'DJN Services LLC — Mobile welding crew on site',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DJN Services LLC | Professional Welding Services',
-    description: 'Professional mobile welding, trash removal, and handyman services.',
+    title: 'DJN Services LLC | Mobile Welding & Handyman — Gulf Coast',
+    description:
+      'AWS certified mobile welding, trash removal, and handyman services. 100% disabled veteran-owned. Serving MS, AL, FL, and South GA.',
+    images: ['/images/services/mobile-welding.webp'],
   },
   robots: {
     index: true,
@@ -159,6 +185,9 @@ export default function RootLayout({
                   </Link>
                   <Link href="/services" className="block text-gray-400 hover:text-[#FF6A00] transition-colors duration-200 text-sm sm:text-base">
                     Services
+                  </Link>
+                  <Link href="/gallery" className="block text-gray-400 hover:text-[#FF6A00] transition-colors duration-200 text-sm sm:text-base">
+                    Gallery
                   </Link>
                   <Link href="/about" className="block text-gray-400 hover:text-[#FF6A00] transition-colors duration-200 text-sm sm:text-base">
                     About

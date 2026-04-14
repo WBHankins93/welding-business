@@ -7,17 +7,36 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animat
 import { businessPhones, businessEmail, businessAddress, businessHoursLabel } from '@/lib/contact-info'
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Get in touch with DJN Services LLC for a free quote or to discuss your welding, trash removal, or handyman project. Business hours are Monday through Saturday, 8AM to 6PM. We respond within 24 hours.',
-  keywords: ['contact welding services', 'welding quote', 'emergency welding', 'welding consultation'],
+  title: 'Contact Us — Free Quote for Welding & Handyman Services',
+  description:
+    'Contact DJN Services LLC for a free, no-obligation quote on mobile welding, trash removal, or handyman services. Serving MS, AL, FL, and South GA. Mon–Sat 8AM–6PM. Emergency service available 24/7.',
+  keywords: [
+    'contact welding company Mississippi',
+    'free welding quote Gulf Coast',
+    'emergency welding service',
+    'mobile welder contact',
+    'handyman quote Mississippi',
+    'trash removal quote',
+    'DJN Services contact',
+    'welding estimate near me',
+  ],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/contact',
   },
   openGraph: {
-    title: 'Contact DJN Services LLC | Free Quote Available',
-    description: 'Get in touch for a free quote or to discuss your welding, trash removal, or handyman project.',
+    title: 'Contact DJN Services LLC | Free Quote — Gulf Coast Welding & Handyman',
+    description:
+      'Reach out for a free quote on mobile welding, trash removal, or handyman work. Fast response. Emergency service available 24/7. Serving MS, AL, FL, and South GA.',
     url: 'https://www.djnservicesllc.com/contact',
     type: 'website',
+    images: [
+      {
+        url: '/images/projects/commercial-wawa-signage.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'DJN Services LLC — commercial project completed',
+      },
+    ],
   },
 }
 

@@ -6,17 +6,36 @@ import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations'
 
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: '100% disabled veteran-owned business delivering top-quality welding, trash removal, and handyman services with precision and reliability. 20+ years of combined experience, AWS certified welders.',
-  keywords: ['veteran owned business', 'disabled veteran owned', 'welding company', 'certified welders', 'AWS certified'],
+  title: 'About — 100% Disabled Veteran-Owned Contractor',
+  description:
+    'DJN Services LLC is a 100% disabled veteran-owned business with 20+ years of combined experience. AWS certified welders, OSHA safety trained, and committed to quality workmanship across Mississippi, Alabama, Florida, and South Georgia.',
+  keywords: [
+    'veteran owned business Gulf Coast',
+    'disabled veteran contractor',
+    'AWS certified welder',
+    'OSHA certified contractor',
+    'veteran owned welding company',
+    'DJN Services LLC about',
+    'welding company Mississippi',
+    'contractor Gulf Coast',
+  ],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/about',
   },
   openGraph: {
-    title: 'About DJN Services LLC | 100% Disabled Veteran-Owned Business',
-    description: 'Building trust through quality craftsmanship. 100% disabled veteran-owned business with 20+ years of combined experience.',
+    title: 'About DJN Services LLC | 100% Disabled Veteran-Owned Contractor',
+    description:
+      'Building trust through quality craftsmanship. AWS certified, OSHA trained, 100% disabled veteran-owned. 20+ years of combined experience across the Gulf Coast.',
     url: 'https://www.djnservicesllc.com/about',
     type: 'website',
+    images: [
+      {
+        url: '/images/projects/structural-worker-fabricating.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'DJN Services LLC — certified welding crew at work',
+      },
+    ],
   },
 }
 

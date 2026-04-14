@@ -5,16 +5,35 @@ import { BookingForm } from '@/components/BookingForm'
 import { ScrollReveal } from '@/components/animations'
 
 export const metadata: Metadata = {
-  title: 'Book a Service',
-  description: 'Request a booking for mobile welding, trash removal, or handyman services from DJN Services LLC. Fill out the form and we will contact you within 24 hours.',
+  title: 'Get A Quote — Book Mobile Welding, Hauling & Handyman Services',
+  description:
+    'Request a free quote from DJN Services LLC for mobile welding, trash removal, hauling, or handyman services. Fill out the form and we will respond within 24 hours. Serving Mississippi, Alabama, Florida, and South Georgia.',
+  keywords: [
+    'book welding service',
+    'welding quote Mississippi',
+    'request handyman service',
+    'mobile welding booking',
+    'trash removal quote Gulf Coast',
+    'get a welding estimate',
+    'DJN Services booking',
+  ],
   alternates: {
     canonical: 'https://www.djnservicesllc.com/booking',
   },
   openGraph: {
-    title: 'Book a Service | DJN Services LLC',
-    description: 'Request a booking for welding, hauling, or handyman work. Fast response, fair estimates.',
+    title: 'Get A Quote | DJN Services LLC — Gulf Coast Welding & Handyman',
+    description:
+      'Request a free quote for mobile welding, hauling, or handyman work. Fast response. Serving MS, AL, FL, and South GA.',
     url: 'https://www.djnservicesllc.com/booking',
     type: 'website',
+    images: [
+      {
+        url: '/images/projects/commercial-building-wide.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'DJN Services LLC — commercial construction project',
+      },
+    ],
   },
 }
 
