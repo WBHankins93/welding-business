@@ -1,6 +1,6 @@
 export const businessPhones = [
   { label: 'Jared', display: '(256) 665-6754', href: 'tel:2566656754' },
-  { label: 'David', display: '(256) 929-9234', href: 'tel:2569299234' },
+  { label: 'David', display: '(256) 929-3294', href: 'tel:2569293294' },
 ] as const
 
 export const primaryPhone = businessPhones[0]
