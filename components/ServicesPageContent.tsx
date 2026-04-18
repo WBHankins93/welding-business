@@ -93,10 +93,17 @@ const materials = [
   },
 ]
 
-export function ServicesPageContent() {
-  const [activeService, setActiveService] = useState(services[0].id)
-  const activeServiceDetails = services.find((service) => service.id === activeService) ?? services[0]
-  const ActiveServiceIcon = activeServiceDetails.icon
+type ServicesPageContentProps = {
+  initialService?: string
+}
+
+const getInitialService = (requestedService?: string) =>
+  requestedService && services.some((service) => service.id === requestedService)
+    ? requestedService
+    : services[0].id
+
+export function ServicesPageContent({ initialService }: ServicesPageContentProps) {
+  const [activeService, setActiveService] = useState(() => getInitialService(initialService))
 
   const jumpToService = (id: string) => {
     setActiveService(id)

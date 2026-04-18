@@ -41,7 +41,18 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ServicesPage() {
+type ServicesPageProps = {
+  searchParams?: Promise<{
+    service?: string | string[]
+  }>
+}
+
+export default async function ServicesPage({ searchParams }: ServicesPageProps) {
+  const resolvedSearchParams = await searchParams
+  const initialService = Array.isArray(resolvedSearchParams?.service)
+    ? resolvedSearchParams?.service[0]
+    : resolvedSearchParams?.service
+
   const servicesStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -93,7 +104,7 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesStructuredData) }}
       />
-      <ServicesPageContent />
+      <ServicesPageContent initialService={initialService} />
     </>
   )
 }
