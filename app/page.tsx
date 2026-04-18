@@ -60,6 +60,7 @@ export const metadata: Metadata = {
 }
 
 type Service = {
+  id: string
   title: string
   description: string
   icon: ComponentType<{ className?: string }>
@@ -73,16 +74,19 @@ type Testimonial = {
 
 const services: Service[] = [
   {
+    id: 'mobile-welding',
     title: 'Mobile Welding Service',
     description: 'On-site repairs and fabrication for gates, trailers, equipment, and structural steel.',
     icon: Wrench,
   },
   {
+    id: 'trash-removal',
     title: 'Trash & Junk Removal',
     description: 'Fast hauling for cleanouts, construction debris, and bulky items from homes and job sites.',
     icon: Truck,
   },
   {
+    id: 'handyman',
     title: 'Handyman Services',
     description: 'Dependable repair and install work done with practical solutions and clean finishes.',
     icon: Hammer,
@@ -244,7 +248,7 @@ export default function Home() {
                       </div>
                       <h3 className="text-2xl font-heading font-bold uppercase tracking-wide text-[#1C1C1C]">{service.title}</h3>
                       <p className="mt-4 text-[#4A4A4A]">{service.description}</p>
-                      <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C] transition hover:text-[#FF6A00]">
+                      <Link href={`/services?service=${service.id}`} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[#1C1C1C] transition hover:text-[#FF6A00]">
                         Learn More <ArrowRight className="size-4" />
                       </Link>
                     </article>
