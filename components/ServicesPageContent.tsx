@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useState, type MouseEvent } from 'react'
+import { useState, type MouseEvent } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
 import { Wrench, Package, Hammer } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
@@ -94,23 +93,23 @@ const materials = [
   },
 ]
 
-export function ServicesPageContent() {
-  const searchParams = useSearchParams()
-  const [activeService, setActiveService] = useState(services[0].id)
+type ServicesPageContentProps = {
+  initialService?: string
+}
+
+const getInitialService = (requestedService?: string) =>
+  requestedService && services.some((service) => service.id === requestedService)
+    ? requestedService
+    : services[0].id
+
+export function ServicesPageContent({ initialService }: ServicesPageContentProps) {
+  const [activeService, setActiveService] = useState(() => getInitialService(initialService))
 
   const jumpToService = (id: string) => {
     setActiveService(id)
   }
 
   const activeServiceData = services.find((s) => s.id === activeService) ?? services[0]
-
-  useEffect(() => {
-    const requestedService = searchParams.get('service')
-
-    if (requestedService && services.some((service) => service.id === requestedService)) {
-      setActiveService(requestedService)
-    }
-  }, [searchParams])
 
   const onMaterialMove = (event: MouseEvent<HTMLDivElement>) => {
     const card = event.currentTarget
